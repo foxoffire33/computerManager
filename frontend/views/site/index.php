@@ -7,45 +7,37 @@ $this->title = 'My Yii Application';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+        <h1></h1>
+        <p class="lead">Voordelig en effectief computeronderhoud in Groningen</p>
     </div>
 
     <div class="body-content">
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+                <h2>Trage computer?</h2>
+                <p>Een medewerker van Computeronderhouden.nl komt bij u langs,
+                    inventariseert uw computergebruik en maakt direct een schatting
+                    van de kosten om uw computer weer snel te laten werken.</p>
+                <p><a class="btn btn-default">Reparatie aanvragen</a></p>
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Computer stuk?</h2>
+                <p>Als uw computer het niet meer doet komt een medewerker van Computeronderhouden.nl bij u langs
+                    om de computer op te halen. Vervolgens wordt de computer gerepareerd en ontvangt u via de e-mail
+                    updates over de uitgevoerde werkzaamheden. Als uw computer weer klaar is wordt deze weer bij
+                    u thuisgebracht en geinstalleerd.</p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+                <p><a class="btn btn-default">Reparatie aanvragen</a></p>
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Nooit een trage computer?</h2>
+                <p>Bij Computeronderhouden.nl kunt u een onderhoudsabonnement afsluiten.
+                    Zo ontvangt u periodiek (vaak 1x per half jaar) een e-mail voor het inplannen van een afspraak.
+                    Na het inplannen komt een medewerker van Computeronderhouden.nl bij u langs en voert het onderhoud
+                    bij u uit. Voorkomen is immers beter dan genezen!</p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                <p><a class="btn btn-default">Reparatie aanvragen</a></p>
             </div>
         </div>
 

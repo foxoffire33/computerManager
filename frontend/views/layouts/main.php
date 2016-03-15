@@ -36,11 +36,13 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Informatie',[],'items' => [
+           ['label' => 'Hoe werken wij','url' => ['/hoe-werken-wij']],
+           ['label' => 'Traage computer?','url' => ['/waarom-wordt-mijn-computer-traag']]
+        ]],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/user/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
     } else {
         $menuItems[] = '<li>'

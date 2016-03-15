@@ -29,14 +29,13 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
             'rules' => [
+                '<page>' => '/site/static'
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

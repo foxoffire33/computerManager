@@ -3,32 +3,18 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\ContactForm;
-use yii\web\Controller;
 use frontend\components\web\FrontendController;
+use yii\helpers\Inflector;
+use yii\web\NotFoundHttpException;
 
-/**
- * Site controller
- */
 class SiteController extends FrontendController
 {
 
-    /**
-     * Displays homepage.
-     *
-     * @return mixed
-     */
     public function actionIndex()
     {
         return $this->render('index');
     }
 
-
-
-    /**
-     * Displays contact page.
-     *
-     * @return mixed
-     */
     public function actionContact()
     {
         $model = new ContactForm();
@@ -47,13 +33,11 @@ class SiteController extends FrontendController
         }
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
+    public function actionStatic($page = 'index') {
+        $filePath = Yii::getAlias('@frontend').'/views/site/page/' . Inflector::variablize($page) . '.php';
+        if (is_file($filePath)) {
+            return $this->render('page/' . Inflector::variablize($page));
+        }
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
