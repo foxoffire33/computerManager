@@ -28,10 +28,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'webpage')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'datetime_created')->textInput() ?>
-
-    <?= $form->field($model, 'datetime_updated')->textInput() ?>
-
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('brand', 'Create') : Yii::t('brand', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

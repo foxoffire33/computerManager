@@ -11,10 +11,7 @@ $this->title = Yii::t('brand', 'Brands');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="brand-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
         <?= Html::a(Yii::t('brand', 'Create Brand'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -24,19 +21,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'name',
             'country',
             'address',
             'zipcode',
-            // 'city',
-            // 'email:email',
-            // 'phone',
-            // 'webpage',
-            // 'datetime_created',
-            // 'datetime_updated',
-
+             'city',
+             'email:email',
+             'phone',
+             'webpage',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
