@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\db\ActiveRecord;
 use Yii;
 
 /**
@@ -14,7 +15,7 @@ use Yii;
  *
  * @property InvoiceRule[] $invoiceRules
  */
-class InvoiceRuleType extends \yii\db\ActiveRecord
+class InvoiceRuleType extends ActiveRecord
 {
     /**
      * @inheritdoc

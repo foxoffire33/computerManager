@@ -18,7 +18,7 @@ class ComputerSummarySearch extends ComputerSummary
     public function rules()
     {
         return [
-            [['id', 'customer_id', 'type_id', 'model_id'], 'integer'],
+            [['id', 'customer_id', 'type', 'model_id'], 'integer'],
             [['name', 'serial_number', 'datetime_created', 'datetime_updated'], 'safe'],
         ];
     }
@@ -58,7 +58,7 @@ class ComputerSummarySearch extends ComputerSummary
         $query->andFilterWhere([
             'id' => $this->id,
             'customer_id' => $this->customer_id,
-            'type_id' => $this->type_id,
+            'type' => $this->type,
             'model_id' => $this->model_id,
             'datetime_created' => $this->datetime_created,
             'datetime_updated' => $this->datetime_updated,

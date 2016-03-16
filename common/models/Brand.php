@@ -42,7 +42,8 @@ class Brand extends ActiveRecord
             ['email', 'email'],
             ['webpage', 'url'],
             [['datetime_created', 'datetime_updated'], 'safe'],
-            [['name', 'country', 'address', 'zipcode', 'city', 'email', 'phone', 'webpage'], 'string', 'max' => 128]
+            [['name', 'country', 'address', 'zipcode', 'city', 'email', 'phone', 'webpage'], 'string', 'max' => 128],
+            ['name', 'match', 'not' => true, 'pattern' => '/,/'],
         ];
     }
 

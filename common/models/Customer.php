@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\db\ActiveRecord;
 use Yii;
 
 /**
@@ -22,7 +23,7 @@ use Yii;
  * @property Invoice[] $invoices
  * @property User[] $users
  */
-class Customer extends \yii\db\ActiveRecord
+class Customer extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -38,6 +39,12 @@ class Customer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name','email','phone'],'unique'],
+            ['email','email'],
+            //regix for adres and zipcode
+            ['adres','match','pattern' => '/[A-Za-z0-9\-\\,.]/'],
+            ['zipcode','match', 'pattern' => '/^[0-9]{4}[A-Z]{2}/'],
+            //todo on register validatetors
             [['datetime_created', 'datetime_updated'], 'safe'],
             [['name', 'adres', 'zipcode', 'city', 'email', 'iban'], 'string', 'max' => 128],
             [['phone'], 'string', 'max' => 14]

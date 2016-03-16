@@ -43,7 +43,9 @@ class ComputerModel extends ActiveRecord
             //safe
             [['datetime_created', 'datetime_updated', 'virtualBrandName'], 'safe'],
             //char limits
-            [['name'], 'string', 'max' => 128]
+            [['name'], 'string', 'max' => 128],
+            //
+            ['name', 'match', 'not' => true, 'pattern' => '/,/'],
         ];
     }
 

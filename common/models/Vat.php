@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\db\ActiveRecord;
 use Yii;
 
 /**
@@ -15,7 +16,7 @@ use Yii;
  *
  * @property InvoiceRule[] $invoiceRules
  */
-class Vat extends \yii\db\ActiveRecord
+class Vat extends ActiveRecord
 {
     /**
      * @inheritdoc

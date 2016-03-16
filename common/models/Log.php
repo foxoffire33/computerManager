@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\db\ActiveRecord;
 use Yii;
 
 /**
@@ -18,7 +19,7 @@ use Yii;
  *
  * @property ComputerSummary $computer
  */
-class Log extends \yii\db\ActiveRecord
+class Log extends ActiveRecord
 {
     /**
      * @inheritdoc

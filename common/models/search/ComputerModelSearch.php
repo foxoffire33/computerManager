@@ -56,8 +56,8 @@ class ComputerModelSearch extends ComputerModel
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'datetime_created' => $this->datetime_created,
-            'datetime_updated' => $this->datetime_updated,
+            'computer_model.datetime_created' => $this->datetime_created,
+            'computer_model.datetime_updated' => $this->datetime_updated,
         ]);
 
         $query->joinWith('brand');
