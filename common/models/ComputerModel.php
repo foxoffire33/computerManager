@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\db\ActiveRecord;
 use Yii;
 
 /**
@@ -16,8 +17,10 @@ use Yii;
  * @property Brand $brand
  * @property ComputerSummary[] $computerSummaries
  */
-class ComputerModel extends \yii\db\ActiveRecord
+class ComputerModel extends ActiveRecord
 {
+    public $virtualBrandName;
+
     /**
      * @inheritdoc
      */
@@ -32,10 +35,25 @@ class ComputerModel extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['virtualBrandName', 'name'], 'required'],
             [['brand_id'], 'integer'],
-            [['datetime_created', 'datetime_updated'], 'safe'],
+            [['name', 'virtualBrandName'], 'unique', 'targetAttribute' => 'name'],
+            //deze validatetor voert een query uit op het brand model en kijkt of name bestaat
+            [['virtualBrandName'], 'exist', 'targetClass' => 'common\models\Brand', 'targetAttribute' => 'name'],
+            //safe
+            [['datetime_created', 'datetime_updated', 'virtualBrandName'], 'safe'],
+            //char limits
             [['name'], 'string', 'max' => 128]
         ];
+    }
+
+    public function beforeSave($insert)
+    {
+        //set brand_id
+        $brand = Brand::find()->where(['lower(name)' => strtolower($this->virtualBrandName)])->one();
+        $this->brand_id = $brand->id;
+        //return parent
+        return parent::beforeSave($insert);
     }
 
     /**

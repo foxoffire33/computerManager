@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\db\ActiveRecord;
 use Yii;
 
 /**
@@ -21,7 +22,7 @@ use Yii;
  *
  * @property ComputerModel[] $computerModels
  */
-class Brand extends \yii\db\ActiveRecord
+class Brand extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -37,6 +38,9 @@ class Brand extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name', 'email', 'phone', 'webpage'], 'unique'],
+            ['email', 'email'],
+            ['webpage', 'url'],
             [['datetime_created', 'datetime_updated'], 'safe'],
             [['name', 'country', 'address', 'zipcode', 'city', 'email', 'phone', 'webpage'], 'string', 'max' => 128]
         ];

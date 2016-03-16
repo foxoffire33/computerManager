@@ -18,8 +18,9 @@ class ComputerModelSearch extends ComputerModel
     public function rules()
     {
         return [
-            [['id', 'brand_id'], 'integer'],
-            [['name', 'datetime_created', 'datetime_updated'], 'safe'],
+            [['id'], 'integer'],
+            [['name'],'string','length' => [1,128]],
+            [['name', 'datetime_created', 'datetime_updated','brand_id'], 'safe'],
         ];
     }
 
@@ -50,18 +51,18 @@ class ComputerModelSearch extends ComputerModel
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'brand_id' => $this->brand_id,
             'datetime_created' => $this->datetime_created,
             'datetime_updated' => $this->datetime_updated,
         ]);
 
+        $query->joinWith('brand');
+
+        $query->andFilterWhere(['like', 'brand.name', $this->brand_id]);
         $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;

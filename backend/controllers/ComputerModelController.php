@@ -1,13 +1,13 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
-use Yii;
 use common\models\ComputerModel;
 use common\models\search\ComputerModelSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ComputerModelController implements the CRUD actions for ComputerModel model.
@@ -54,6 +54,22 @@ class ComputerModelController extends Controller
     }
 
     /**
+     * Finds the ComputerModel model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return ComputerModel the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = ComputerModel::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    /**
      * Creates a new ComputerModel model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -83,11 +99,10 @@ class ComputerModelController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+
+        $model->virtualBrandName = (isset($model->brand->name) ? $model->brand->name : '');
+        return $this->render('update', ['model' => $model]);
     }
 
     /**
@@ -101,21 +116,5 @@ class ComputerModelController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the ComputerModel model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return ComputerModel the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = ComputerModel::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
     }
 }
