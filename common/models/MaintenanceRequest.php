@@ -45,6 +45,7 @@ class MaintenanceRequest extends ActiveRecord
             [['computerNameVirtual', 'description', 'status'], 'required'],
             [['computer_id', 'status'], 'integer'],
             [['description'], 'string'],
+            [['date_apointment', 'date_done'], 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
             [['date_done', 'date_apointment', 'datetime_created', 'datetime_updated'], 'safe'],
             [['computerNameVirtual'], 'exist', 'targetClass' => 'common\models\ComputerSummary', 'targetAttribute' => 'name'],
             ['status', 'in', 'range' => [self::STATUS_REQUEST, self::STATUS_PROCESS, self::STATUS_DONE]]

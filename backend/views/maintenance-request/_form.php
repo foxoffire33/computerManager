@@ -1,13 +1,12 @@
 <?php
 
-use common\models\Customer;
+use common\models\ComputerSummary;
 use common\models\MaintenanceRequest;
 use kartik\datetime\DateTimePicker;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\models\ComputerSummary;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\MaintenanceRequest */
@@ -28,10 +27,10 @@ use common\models\ComputerSummary;
 
     <div class="form-group">
         <div class="col-sm-6">
-            <?= $form->field($model, 'date_apointment')->widget(DateTimePicker::classname(), ['pluginOptions' => ['autoclose' => true,'format' => 'yyyy-mm-dd']]); ?>
+            <?= $form->field($model, 'date_apointment')->widget(DateTimePicker::classname(), ['pluginOptions' => ['autoclose' => true,'format' => 'yyyy-mm-dd HH:ii:ss']]); ?>
         </div>
         <div class="col-sm-6">
-            <?= $form->field($model, 'date_done')->widget(DateTimePicker::classname(), ['pluginOptions' => ['autoclose' => true,'format' => 'yyyy-mm-dd']]); ?>
+            <?= $form->field($model, 'date_done')->widget(DateTimePicker::classname(), ['pluginOptions' => ['autoclose' => true,'format' => 'yyyy-mm-dd HH:ii:ss']]); ?>
         </div>
     </div>
 

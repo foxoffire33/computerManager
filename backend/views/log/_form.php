@@ -25,7 +25,7 @@ use common\models\Log;
         Log::TYPE_ERROR => Yii::t('log', 'Error')
     ]) ?>
 
-    <?= $form->field($model, 'event_datetime')->widget(DateTimePicker::classname(), ['pluginOptions' => ['autoclose' => true, 'format' => 'yyyy-mm-dd']]); ?>
+    <?= $form->field($model, 'event_datetime')->widget(DateTimePicker::classname(), ['pluginOptions' => ['autoclose' => true, 'format' => 'yyyy-mm-dd HH:ii:ss']]); ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 

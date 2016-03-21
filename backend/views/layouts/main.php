@@ -4,11 +4,11 @@
 /* @var $content string */
 
 use backend\assets\AppAsset;
-use yii\helpers\Html;
+use common\widgets\Alert;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
-use common\widgets\Alert;
 
 AppAsset::register($this);
 ?>
@@ -36,10 +36,12 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Customer','url' => ['/customer']],
-        ['label' => 'Brand','url' => ['/brand']],
-        ['label' => 'Computer model','url' => ['/computer-model']],
-        ['label' => 'Computer summary','url' => ['/computer-summary']]
+        ['label' => 'Customer', 'url' => ['/customer']],
+        ['label' => 'Brand', 'url' => ['/brand']],
+        ['label' => 'Computer model', 'url' => ['/computer-model']],
+        ['label' => 'Computer summary', 'url' => ['/computer-summary']],
+        ['label' => 'Maintenance request', 'url' => ['/maintenance-request']],
+        ['label' => 'Log', 'url' => ['/log']]
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

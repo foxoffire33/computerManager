@@ -44,6 +44,7 @@ class Log extends ActiveRecord
         return [
             [['computerNameVirtual', 'event_datetime', 'type', 'description'], 'required'],
             [['type'], 'integer'],
+            ['event_datetime','date','format' => 'yyyy-MM-dd HH:mm:ss'],
             [['event_datetime', 'datetime_created', 'datetime_updated'], 'safe'],
             [['computerNameVirtual'], 'exist', 'targetClass' => 'common\models\ComputerSummary', 'targetAttribute' => 'name'],
             [['description'], 'string'],
