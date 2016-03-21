@@ -17,10 +17,7 @@ use common\models\Customer;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'customerNameVirtual')->widget(Select2::classname(), [
-        'options' => ['placeholder' => 'Select a state ...'],
         'pluginOptions' => [
             'data' => ArrayHelper::getColumn(Customer::find()->all(), 'name'),
         ]
