@@ -1,7 +1,8 @@
 <?php
 
-use yii\helpers\Html;
+use common\models\ComputerSummary;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\ComputerSummarySearch */
@@ -25,12 +26,29 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'name',
-            'customer_id',
-            'type',
-            'model_id',
-             'serial_number',
-            // 'datetime_created',
-            // 'datetime_updated',
+            'customer_id' => [
+                'attribute' => 'customer_id',
+                'value' => function ($data) {
+                    return $data->customer->name;
+                }
+            ],
+            'type' => [
+                'filter' => [
+                    ComputerSummary::TYPE_DESKTOP => Yii::t('computerSummary', 'Desktop'),
+                    ComputerSummary::TYPE_LAPTOP => Yii::t('computerSummary', 'Laptop')
+                ],
+                'attribute' => 'type',
+                'value' => function ($data) {
+                    return ($data->type ? Yii::t('computerSummary', 'Laptop') : Yii::t('computerSummary', 'Desktop'));
+                }
+            ],
+            'model_id' => [
+                'attribute' => 'model_id',
+                'value' => function ($data) {
+                    return $data->model->brand->name . ', ' . $data->model->id;
+                }
+            ],
+            'serial_number',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

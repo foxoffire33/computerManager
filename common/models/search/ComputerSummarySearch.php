@@ -2,10 +2,10 @@
 
 namespace common\models\search;
 
+use common\models\ComputerSummary;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\ComputerSummary;
 
 /**
  * ComputerSummarySearch represents the model behind the search form about `common\models\ComputerSummary`.
@@ -18,8 +18,8 @@ class ComputerSummarySearch extends ComputerSummary
     public function rules()
     {
         return [
-            [['id', 'customer_id', 'type', 'model_id'], 'integer'],
-            [['name', 'serial_number', 'datetime_created', 'datetime_updated'], 'safe'],
+            [['id', 'type'], 'integer'],
+            [['name', 'serial_number', 'customer_id', 'model_id'], 'safe'],
         ];
     }
 
@@ -43,6 +43,8 @@ class ComputerSummarySearch extends ComputerSummary
     {
         $query = ComputerSummary::find();
 
+        $query->joinWith(['customer', 'model']);
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -57,12 +59,11 @@ class ComputerSummarySearch extends ComputerSummary
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'customer_id' => $this->customer_id,
             'type' => $this->type,
-            'model_id' => $this->model_id,
-            'datetime_created' => $this->datetime_created,
-            'datetime_updated' => $this->datetime_updated,
         ]);
+
+        $query->andFilterWhere(['like', 'customer.name', $this->customer_id]);
+        $query->andFilterWhere(['like', 'computer_model.name', $this->model_id]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'serial_number', $this->serial_number]);

@@ -28,10 +28,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'name',
-            'customer_id',
-            'type',
+            'customer_id' => [
+                'attribute' => 'customer_id',
+                'value' => $model->customer->name
+            ],
+            'type' => [
+                'attribute' => 'type',
+                'value' => ($model->type ? Yii::t('computerSummary', 'Laptop') : Yii::t('computerSummary', 'Desktop'))
+            ],
             'serial_number',
             'datetime_created:datetime',
             'datetime_updated:datetime',

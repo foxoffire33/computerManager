@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\CustomerSearch */
@@ -24,18 +24,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'name',
             'adres',
             'zipcode',
             'city',
-            // 'email:email',
-            // 'phone',
-            // 'iban',
-            // 'datetime_created',
-            // 'datetime_updated',
-
+            'email:email',
+            'phone',
+            'iban',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
