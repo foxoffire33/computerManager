@@ -25,6 +25,8 @@ use Yii;
 class InvoiceRule extends ActiveRecord
 {
 
+    const SCENARIO_INVOICEFORM = 'InvoiceForm';
+
     public $invoiceNameVirtual;
 
     /**
@@ -41,15 +43,22 @@ class InvoiceRule extends ActiveRecord
     public function rules()
     {
         return [
-            [['invoiceNameVirtual'], 'required', 'except' => 'invoiceForm'],
+            [['invoiceNameVirtual','name', 'price', 'quantity', 'type_id', 'vat_id'], 'required'],
             [['invoice_id', 'type_id', 'vat_id'], 'integer'],
             [['price', 'quantity'], 'number'],
-            [['datetime_created', 'datetime_updated'], 'safe'],
+            [['datetime_created', 'datetime_updated','name', 'price', 'quantity', 'type_id', 'vat_id'], 'safe'],
             [['name'], 'string', 'max' => 128],
             [['invoiceNameVirtual'], 'exist', 'targetClass' => 'common\models\Invoice', 'targetAttribute' => 'invoice_number'],
             ['type_id', 'exist', 'targetClass' => 'common\models\InvoiceRuleType', 'targetAttribute' => 'id'],
-            ['vat_id', 'exist', 'targetClass' => 'common\models\Vat', 'targetAttribute' => 'id']
+            ['vat_id', 'exist', 'targetClass' => 'common\models\Vat', 'targetAttribute' => 'id'],
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_INVOICEFORM] = ['name', 'price', 'quantity', 'type_id', 'vat_id'];
+        return $scenarios;
     }
 
     public function beforeSave($insert)

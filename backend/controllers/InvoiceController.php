@@ -2,12 +2,13 @@
 
 namespace backend\controllers;
 
-use Yii;
 use common\models\Invoice;
+use common\models\InvoiceRule;
 use common\models\search\InvoiceSearch;
+use Yii;
+use yii\base\Model;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * InvoiceController implements the CRUD actions for Invoice model.
@@ -43,56 +44,6 @@ class InvoiceController extends Controller
     }
 
     /**
-     * Creates a new Invoice model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Invoice();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Updates an existing Invoice model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Deletes an existing Invoice model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
      * Finds the Invoice model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
@@ -106,5 +57,78 @@ class InvoiceController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    /**
+     * Creates a new Invoice model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new Invoice();
+        $invoiceRuleModels = [];
+
+        if (Yii::$app->request->isPost && ($count = count(Yii::$app->request->post('InvoiceRule', []))) > 0) {
+            $invoiceRuleModels = array_fill(0, $count, new InvoiceRule(['scenario' => InvoiceRule::SCENARIO_INVOICEFORM]));
+            if ($model->load(['Invoice' => Yii::$app->request->post('Invoice')]) && Model::loadMultiple($invoiceRuleModels, Yii::$app->request->post())) {
+                if ($model->validate() && Model::validateMultiple($invoiceRuleModels)) {
+                    $model->save(false);
+                    foreach ($invoiceRuleModels as $invoiceRuleModel) {
+                        $invoiceRuleModel->invoice_id = $model->id;
+                        $invoiceRuleModel->save(false);
+                    }
+                    $this->redirect(['/invoice/view', 'id' => $model->id]);
+                }
+            }
+        } else {
+            $invoiceRuleModels[] = new InvoiceRule();
+        }
+
+        return $this->render('create', ['model' => $model, 'invoiceRules' => $invoiceRuleModels]);
+
+    }
+
+    /**
+     * Updates an existing Invoice model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+        $invoiceRuleModels = [];
+
+        if (Yii::$app->request->isPost && ($count = count(Yii::$app->request->post('InvoiceRule', []))) > 0) {
+            $invoiceRuleModels = array_fill(0, $count, new InvoiceRule(['scenario' => InvoiceRule::SCENARIO_INVOICEFORM]));
+            if ($model->load(['Invoice' => Yii::$app->request->post('Invoice')]) && Model::loadMultiple($invoiceRuleModels, Yii::$app->request->post())) {
+                if ($model->validate() && Model::validateMultiple($invoiceRuleModels)) {
+                    $model->save(false);
+                    foreach ($invoiceRuleModels as $invoiceRuleModel) {
+                        $invoiceRuleModel->invoice_id = $model->id;
+                        $invoiceRuleModel->save(false);
+                    }
+                    $this->redirect(['/invoice/view', 'id' => $model->id]);
+                }
+            }
+        } else {
+            $invoiceRuleModels = $model->invoiceRules;
+        }
+        return $this->render('update', ['model' => $model,'invoiceRules' => $invoiceRuleModels]);
+
+    }
+
+    /**
+     * Deletes an existing Invoice model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
     }
 }
