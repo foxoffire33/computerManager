@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\search\InvoiceSearch */
+/* @var $searchModel common\models\search\InvoiceRuleTypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('invoice', 'Invoices');
+$this->title = Yii::t('invoiceRuleType', 'Invoice Rule Types');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="invoice-index">
+<div class="invoice-rule-type-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('invoice', 'Create Invoice'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('invoiceRuleType', 'Create Invoice Rule Type'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -24,16 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'customer_id',
-            'reference',
-            'invoice_number',
-            'payed',
-            // 'description:ntext',
-            // 'datetime_created',
-            // 'datetime_updated',
-
+            'name',
+            'datetime_created:datetime',
+            'datetime_updated:datetime',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

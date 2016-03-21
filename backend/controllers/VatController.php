@@ -1,18 +1,18 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
 use Yii;
-use common\models\InvoiceRuleType;
-use common\models\search\InvoiceRuleTypeSearch;
+use common\models\Vat;
+use common\models\search\VatSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * InvoiceRuleTypeController implements the CRUD actions for InvoiceRuleType model.
+ * VatController implements the CRUD actions for Vat model.
  */
-class InvoiceRuleTypeController extends Controller
+class VatController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class InvoiceRuleTypeController extends Controller
     }
 
     /**
-     * Lists all InvoiceRuleType models.
+     * Lists all Vat models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new InvoiceRuleTypeSearch();
+        $searchModel = new VatSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class InvoiceRuleTypeController extends Controller
     }
 
     /**
-     * Displays a single InvoiceRuleType model.
+     * Displays a single Vat model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class InvoiceRuleTypeController extends Controller
     }
 
     /**
-     * Creates a new InvoiceRuleType model.
+     * Creates a new Vat model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new InvoiceRuleType();
+        $model = new Vat();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class InvoiceRuleTypeController extends Controller
     }
 
     /**
-     * Updates an existing InvoiceRuleType model.
+     * Updates an existing Vat model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class InvoiceRuleTypeController extends Controller
     }
 
     /**
-     * Deletes an existing InvoiceRuleType model.
+     * Deletes an existing Vat model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,15 +104,15 @@ class InvoiceRuleTypeController extends Controller
     }
 
     /**
-     * Finds the InvoiceRuleType model based on its primary key value.
+     * Finds the Vat model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return InvoiceRuleType the loaded model
+     * @return Vat the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = InvoiceRuleType::findOne($id)) !== null) {
+        if (($model = Vat::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

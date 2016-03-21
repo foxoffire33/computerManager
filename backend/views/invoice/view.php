@@ -28,11 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'customer_id',
+            'customer_id' => [
+                'attribute' => 'customer_id',
+                'value' => $model->customer->name,
+            ],
             'reference',
             'invoice_number',
-            'payed',
+            'payed:boolean',
             'description:ntext',
             'datetime_created',
             'datetime_updated',

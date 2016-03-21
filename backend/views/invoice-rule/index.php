@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\InvoiceRuleSearch */
@@ -24,9 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'invoice_id',
+            'invoice_id' => [
+                'attribute' => 'invoice_id',
+                'value' => function ($data) {
+                    return $data->invoice->invoice_number;
+                }
+            ],
             'type_id',
             'vat_id',
             'name',

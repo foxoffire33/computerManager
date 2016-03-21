@@ -22,6 +22,12 @@ use Yii;
  */
 class Invoice extends ActiveRecord
 {
+
+    const PAYED_NO = 0;
+    const PAYED_YES = 1;
+
+    public $customerNameVirtual;
+
     /**
      * @inheritdoc
      */
@@ -36,11 +42,22 @@ class Invoice extends ActiveRecord
     public function rules()
     {
         return [
+            [['customerNameVirtual', 'payed', 'invoice_number'], 'required'],
             [['customer_id', 'payed'], 'integer'],
             [['description'], 'string'],
             [['datetime_created', 'datetime_updated'], 'safe'],
-            [['reference', 'invoice_number'], 'string', 'max' => 128]
-        ];
+            [['reference', 'invoice_number'], 'string', 'max' => 128],
+            [['customerNameVirtual'], 'exist', 'targetClass' => 'common\models\Customer', 'targetAttribute' => 'name'],
+            [['payed'], 'in', 'range' => [self::PAYED_NO, self::PAYED_YES]]
+
+            ];
+    }
+
+    public function beforeSave($insert)
+    {
+        $customer = Customer::find()->where(['lower(name)' => strtolower($this->customerNameVirtual)])->one();
+        $this->customer_id = $customer->id;
+        return parent::beforeSave($insert);
     }
 
     /**

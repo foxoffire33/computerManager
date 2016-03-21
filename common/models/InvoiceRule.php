@@ -24,6 +24,9 @@ use Yii;
  */
 class InvoiceRule extends ActiveRecord
 {
+
+    public $invoiceNameVirtual;
+
     /**
      * @inheritdoc
      */
@@ -38,11 +41,23 @@ class InvoiceRule extends ActiveRecord
     public function rules()
     {
         return [
+            [['invoiceNameVirtual'], 'required', 'except' => 'invoiceForm'],
             [['invoice_id', 'type_id', 'vat_id'], 'integer'],
             [['price', 'quantity'], 'number'],
             [['datetime_created', 'datetime_updated'], 'safe'],
-            [['name'], 'string', 'max' => 128]
+            [['name'], 'string', 'max' => 128],
+            [['invoiceNameVirtual'], 'exist', 'targetClass' => 'common\models\Invoice', 'targetAttribute' => 'invoice_number'],
+            ['type_id', 'exist', 'targetClass' => 'common\models\InvoiceRuleType', 'targetAttribute' => 'id'],
+            ['vat_id', 'exist', 'targetClass' => 'common\models\Vat', 'targetAttribute' => 'id']
         ];
+    }
+
+    public function beforeSave($insert)
+    {
+        if (!empty($this->invoiceNameVirtual) && $this->scenario !== 'invoiceForm') {
+            $this->invoice_id = Invoice::find()->where(['invoice_number' => $this->invoiceNameVirtual])->one()->id;
+        }
+        return parent::beforeSave($insert);
     }
 
     /**

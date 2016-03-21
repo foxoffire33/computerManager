@@ -37,11 +37,19 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Customer', 'url' => ['/customer']],
-        ['label' => 'Brand', 'url' => ['/brand']],
-        ['label' => 'Computer model', 'url' => ['/computer-model']],
-        ['label' => 'Computer summary', 'url' => ['/computer-summary']],
-        ['label' => 'Maintenance request', 'url' => ['/maintenance-request']],
-        ['label' => 'Log', 'url' => ['/log']]
+        ['label' => 'Computer', 'items' => [
+            ['label' => 'Brand', 'url' => ['/brand']],
+            ['label' => 'Computer model', 'url' => ['/computer-model']],
+            ['label' => 'Computer summary', 'url' => ['/computer-summary']],
+            ['label' => 'Maintenance request', 'url' => ['/maintenance-request']],
+            ['label' => 'Log', 'url' => ['/log']],
+        ]],
+        ['label' => 'Invoice', 'items' => [
+            ['label' => 'Invoices', 'url' => ['/invoice']],
+            ['label' => 'Invoice rules', 'url' => ['/invoice-rule']],
+            ['label' => 'Invoice rule types', 'url' => ['/invoice-rule-type']],
+            ['label' => 'vat', 'url' => ['/vat']]
+        ]]
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

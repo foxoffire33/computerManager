@@ -1,38 +1,27 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
 use Yii;
-use common\models\InvoiceRule;
-use common\models\search\InvoiceRuleSearch;
+use common\models\Invoice;
+use common\models\search\InvoiceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * InvoiceRuleController implements the CRUD actions for InvoiceRule model.
+ * InvoiceController implements the CRUD actions for Invoice model.
  */
-class InvoiceRuleController extends Controller
+class InvoiceController extends Controller
 {
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                ],
-            ],
-        ];
-    }
 
     /**
-     * Lists all InvoiceRule models.
+     * Lists all Invoice models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new InvoiceRuleSearch();
+        $searchModel = new InvoiceSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +31,7 @@ class InvoiceRuleController extends Controller
     }
 
     /**
-     * Displays a single InvoiceRule model.
+     * Displays a single Invoice model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +43,13 @@ class InvoiceRuleController extends Controller
     }
 
     /**
-     * Creates a new InvoiceRule model.
+     * Creates a new Invoice model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new InvoiceRule();
+        $model = new Invoice();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +61,7 @@ class InvoiceRuleController extends Controller
     }
 
     /**
-     * Updates an existing InvoiceRule model.
+     * Updates an existing Invoice model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +80,7 @@ class InvoiceRuleController extends Controller
     }
 
     /**
-     * Deletes an existing InvoiceRule model.
+     * Deletes an existing Invoice model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,15 +93,15 @@ class InvoiceRuleController extends Controller
     }
 
     /**
-     * Finds the InvoiceRule model based on its primary key value.
+     * Finds the Invoice model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return InvoiceRule the loaded model
+     * @return Invoice the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = InvoiceRule::findOne($id)) !== null) {
+        if (($model = Invoice::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
