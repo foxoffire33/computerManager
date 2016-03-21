@@ -21,6 +21,13 @@ use Yii;
  */
 class Log extends ActiveRecord
 {
+
+    const TYPE_INFORMATION = 0;
+    const TYPE_WARNING = 1;
+    const TYPE_ERROR = 2;
+
+    public $computerNameVirtual;
+
     /**
      * @inheritdoc
      */
@@ -35,10 +42,19 @@ class Log extends ActiveRecord
     public function rules()
     {
         return [
-            [['computer_id', 'type_id', 'mode'], 'integer'],
+            [['computerNameVirtual', 'event_datetime', 'type', 'description'], 'required'],
+            [['type'], 'integer'],
             [['event_datetime', 'datetime_created', 'datetime_updated'], 'safe'],
-            [['description'], 'string']
+            [['computerNameVirtual'], 'exist', 'targetClass' => 'common\models\ComputerSummary', 'targetAttribute' => 'name'],
+            [['description'], 'string'],
+            ['type', 'in', 'range' => [self::TYPE_INFORMATION, self::TYPE_WARNING, self::TYPE_ERROR]]
         ];
+    }
+
+    public function beforeSave($insert)
+    {
+        $this->computer_id = ComputerSummary::find()->where(['name' => $this->computerNameVirtual])->one()->id;
+        return parent::beforeSave($insert);
     }
 
     /**
@@ -49,8 +65,7 @@ class Log extends ActiveRecord
         return [
             'id' => Yii::t('log', 'ID'),
             'computer_id' => Yii::t('log', 'Computer ID'),
-            'type_id' => Yii::t('log', 'Type ID'),
-            'mode' => Yii::t('log', 'Mode'),
+            'type' => Yii::t('log', 'Type ID'),
             'event_datetime' => Yii::t('log', 'Event Datetime'),
             'description' => Yii::t('log', 'Description'),
             'datetime_created' => Yii::t('log', 'Datetime Created'),

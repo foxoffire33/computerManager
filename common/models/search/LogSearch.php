@@ -18,8 +18,8 @@ class LogSearch extends Log
     public function rules()
     {
         return [
-            [['id', 'computer_id', 'type_id', 'mode'], 'integer'],
-            [['event_datetime', 'description', 'datetime_created', 'datetime_updated'], 'safe'],
+            [['id', 'type'], 'integer'],
+            [['event_datetime', 'description', 'computer_id'], 'safe'],
         ];
     }
 
@@ -43,6 +43,8 @@ class LogSearch extends Log
     {
         $query = Log::find();
 
+        $query->joinWith('computer');
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -56,14 +58,11 @@ class LogSearch extends Log
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
-            'computer_id' => $this->computer_id,
-            'type_id' => $this->type_id,
-            'mode' => $this->mode,
+            'log.type' => $this->type,
             'event_datetime' => $this->event_datetime,
-            'datetime_created' => $this->datetime_created,
-            'datetime_updated' => $this->datetime_updated,
         ]);
+
+        $query->andFilterWhere(['like', 'computer_summary.name', $this->computer_id]);
 
         $query->andFilterWhere(['like', 'description', $this->description]);
 

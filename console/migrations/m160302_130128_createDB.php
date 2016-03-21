@@ -66,7 +66,7 @@ class m160302_130128_createDB extends Migration
             'id' => $this->primaryKey(11)->unique(),
             'name' => $this->string(128),
             'customer_id' => $this->integer(11),
-            'type_id' => $this->smallInteger(1),
+            'type' => $this->smallInteger(1),
             'model_id' => $this->integer(11),
             'serial_number' => $this->string(128)
         ],$this->getDatetimeUpdateAndCreate()));
@@ -92,8 +92,7 @@ class m160302_130128_createDB extends Migration
         $this->createTable('log',ArrayHelper::merge([
             'id' => $this->primaryKey(11)->unique(),
             'computer_id' => $this->integer(11),
-            'type_id' => $this->smallInteger(1),
-            'mode' => $this->smallInteger(1),
+            'type' => $this->smallInteger(1),
             'event_datetime' => $this->dateTime(),
             'description' => $this->text()
         ],$this->getDatetimeUpdateAndCreate()));

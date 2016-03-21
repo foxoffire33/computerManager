@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Log;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -28,15 +29,22 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'computer_id',
-            'type_id',
-            'mode',
-            'event_datetime',
-            'description:ntext',
-            'datetime_created',
-            'datetime_updated',
+            'computer_id' => [
+                'attribute' => 'computer_id',
+                'value' => $model->computer->name
+            ],
+            'type' => [
+                'attribute' => 'type_id',
+                'value' => ($model->type == Log::TYPE_INFORMATION ? Yii::t('log', 'Information') : ($model->status == Log::TYPE_WARNING ? Yii::t('log', 'Warning') : Yii::t('log', 'Error')))
+            ],
+            'event_datetime:datetime',
+            'datetime_created:datetime',
+            'datetime_updated:datetime',
         ],
     ]) ?>
+
+    <div class="text-info">
+        <?= nl2br($model->description); ?>
+    </div>
 
 </div>
