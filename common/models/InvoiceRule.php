@@ -28,6 +28,8 @@ class InvoiceRule extends ActiveRecord
     const SCENARIO_INVOICEFORM = 'InvoiceForm';
 
     public $invoiceNameVirtual;
+    public $exBtw;
+    public $inBtw;
 
     /**
      * @inheritdoc
@@ -46,7 +48,7 @@ class InvoiceRule extends ActiveRecord
             [['invoiceNameVirtual','name', 'price', 'quantity', 'type_id', 'vat_id'], 'required'],
             [['invoice_id', 'type_id', 'vat_id'], 'integer'],
             [['price', 'quantity'], 'number'],
-            [['datetime_created', 'datetime_updated','name', 'price', 'quantity', 'type_id', 'vat_id'], 'safe'],
+            [['datetime_created', 'datetime_updated','name', 'price', 'quantity', 'type_id', 'vat_id','exBtw','inBtw'], 'safe'],
             [['name'], 'string', 'max' => 128],
             [['invoiceNameVirtual'], 'exist', 'targetClass' => 'common\models\Invoice', 'targetAttribute' => 'invoice_number'],
             ['type_id', 'exist', 'targetClass' => 'common\models\InvoiceRuleType', 'targetAttribute' => 'id'],
@@ -109,5 +111,17 @@ class InvoiceRule extends ActiveRecord
     public function getType()
     {
         return $this->hasOne(InvoiceRuleType::className(), ['id' => 'type_id']);
+    }
+
+    public function getSubtotal(){
+        return $this->quantity * $this->price;
+    }
+
+    public function getExBtw(){
+        return $this->price * $this->quantity;
+    }
+
+    public function getInBtw(){
+        return $this->exBtw / $this->vat->percentage + $this->exBtw;
     }
 }

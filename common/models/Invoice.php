@@ -50,7 +50,7 @@ class Invoice extends ActiveRecord
             [['customerNameVirtual'], 'exist', 'targetClass' => 'common\models\Customer', 'targetAttribute' => 'name'],
             [['payed'], 'in', 'range' => [self::PAYED_NO, self::PAYED_YES]]
 
-            ];
+        ];
     }
 
     public function beforeSave($insert)
@@ -91,5 +91,23 @@ class Invoice extends ActiveRecord
     public function getInvoiceRules()
     {
         return $this->hasMany(InvoiceRule::className(), ['invoice_id' => 'id']);
+    }
+
+    //this rrelation count total exBtw
+    public function getExBtw()
+    {
+        return $this->hasMany(InvoiceRule::className(), ['invoice_id' => 'id'])
+            ->select('sum(invoice_rule.quantity*invoice_rule.price) as inBtw')
+            ->one()
+            ->inBtw;
+    }
+
+    public function getInBtw()
+    {
+        return $this->hasMany(InvoiceRule::className(), ['invoice_id' => 'id'])
+            ->select('sum(invoice_rule.quantity*invoice_rule.price/100*vat.procentage+(invoice_rule.quantity*invoice_rule.price)) as exBtw')
+            ->joinWith('vat')
+            ->one()
+            ->exBtw;
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use yii\data\ArrayDataProvider;
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -25,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <div class="row">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -35,10 +38,34 @@ $this->params['breadcrumbs'][] = $this->title;
             'reference',
             'invoice_number',
             'payed:boolean',
+            'exBtw:currency',
+            'inBtw:currency',
             'description:ntext',
             'datetime_created',
             'datetime_updated',
         ],
     ]) ?>
+    </div>
+    <div class="row">
+        <h3><?= Yii::t('invoice', 'Invoice rules') ?></h3>
+        <p>
+            <?= GridView::widget([
+            'dataProvider' => new ArrayDataProvider(['allModels' => $model->invoiceRules]),
+            'columns' => [
+                'name',
+                'price:currency',
+                'quantity',
+                'subtotal:currency',
+                [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update}{delete}',
+                 'urlCreator' => function ($action, $model, $key, $index) {
+                     return Yii::$app->urlManager->createUrl(['/invoice-rule/'.$action,'id' => $model->id]);
+                 },
+                ],
+            ],
+        ]) ?>
+        </p>
+    </div>
 
 </div>

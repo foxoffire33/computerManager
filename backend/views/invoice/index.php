@@ -41,6 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     return ($data->payed ? Yii::t('invoice', 'Yes') : Yii::t('nvoice', 'No'));
                 }
             ],
+            'exBtw:currency',
+            'inBtw:currency',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

@@ -46,8 +46,7 @@ class InvoiceRuleController extends Controller
      * @return InvoiceRule the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected
-    function findModel($id)
+    protected function findModel($id)
     {
         if (($model = InvoiceRule::findOne($id)) !== null) {
             return $model;

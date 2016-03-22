@@ -126,11 +126,11 @@ $this->registerJs('
             <?php if (!empty($invoiceRules)): ?>
                 <?php foreach ($invoiceRules as $lineModel): ?>
                     <tr>
-                        <td><?= $form->field($lineModel, 'name')->textInput(['name' => "InvoiceRule[$index]name"])->label(false) ?></td>
-                        <td><?= $form->field($lineModel, 'quantity')->textInput(['name' => "InvoiceRule[$index]quantity"])->label(false) ?></td>
-                        <td><?= $form->field($lineModel, 'price')->textInput(['name' => "InvoiceRule[$index]price"])->label(false) ?></td>
-                        <td><?= $form->field($lineModel, 'type_id')->dropDownList($invoiceRuleTypes, ['name' => "InvoiceRule[$index]type_id", 'prompt' => Yii::t('common', 'Select')])->label(false) ?></td>
-                        <td><?= $form->field($lineModel, 'vat_id')->dropDownList($vatOptions, ['name' => "InvoiceRule[$index]type_id", 'prompt' => Yii::t('common', 'Select')])->label(false) ?></td>
+                        <td><?= $form->field($lineModel, 'name')->textInput(['name' => "InvoiceRule[$index][name]"])->label(false) ?></td>
+                        <td><?= $form->field($lineModel, 'quantity')->textInput(['name' => "InvoiceRule[$index][quantity]"])->label(false) ?></td>
+                        <td><?= $form->field($lineModel, 'price')->textInput(['name' => "InvoiceRule[$index][price]"])->label(false) ?></td>
+                        <td><?= $form->field($lineModel, 'type_id')->dropDownList($invoiceRuleTypes, ['name' => "InvoiceRule[$index][type_id]", 'prompt' => Yii::t('common', 'Select')])->label(false) ?></td>
+                        <td><?= $form->field($lineModel, 'vat_id')->dropDownList($vatOptions, ['name' => "InvoiceRule[$index][vat_id]", 'prompt' => Yii::t('common', 'Select')])->label(false) ?></td>
                         <td><?= Html::activeHiddenInput($lineModel, "[$index]id") ?><?= Html::a('<span class="glyphicon glyphicon-trash"></span>', '#', ['class' => 'remove-invoice-line']) ?></td>
                     </tr>
                     <?php ++$index ?>

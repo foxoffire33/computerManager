@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'invoiceNameVirtual')->widget(Select2::classname(), ['pluginOptions' => ['data' => ArrayHelper::getColumn(Invoice::find()->all(), 'name'),]]); ?>
+    <?= $form->field($model, 'invoiceNameVirtual')->widget(Select2::classname(), ['pluginOptions' => ['data' => ArrayHelper::getColumn(Invoice::find()->all(), 'invoice_number'),]]); ?>
 
     <?= $form->field($model, 'type_id')->dropDownList(ArrayHelper::map(InvoiceRuleType::find()->all(), 'id', 'name')) ?>
 
