@@ -26,7 +26,7 @@ class MaintenanceRequestController extends FrontendController
                 Yii::$app->response->format = Response::FORMAT_JSON;
                 return ActiveForm::validate($model);
             } else if ($model->validate() && $model->save()) {
-                Yii::$app->session->setFlash('success', Yii::t('maintenanceRequest', 'Thenks, we send you a mail with your account'));
+                Yii::$app->session->setFlash('alert alert-success', Yii::t('maintenanceRequest', 'Thenks, we send you a mail with your account'));
                 //send mail
                 Yii::$app->mailer->compose('maintenanceRequest', ['model' => $model])
                     ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']])

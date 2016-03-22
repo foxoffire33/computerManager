@@ -98,7 +98,6 @@ class m160302_130128_createDB extends Migration
         ], $this->getDatetimeUpdateAndCreate()));
 
 
-        $this->addForeignKey('customer_id_user', 'user', 'customer_id', 'customer', 'id', 'CASCADE', 'NO ACTION');
         $this->addForeignKey('customer_id_invoice_fk', 'invoice', 'customer_id', 'customer', 'id', 'CASCADE', 'NO ACTION');
         $this->addForeignKey('invoice_id_fk', 'invoice_rule', 'invoice_id', 'invoice', 'id', 'CASCADE', 'NO ACTION');
         $this->addForeignKey('type_id_fk', 'invoice_rule', 'type_id', 'invoice_rule_type', 'id', 'CASCADE', 'NO ACTION');
@@ -124,7 +123,6 @@ class m160302_130128_createDB extends Migration
     public function safeDown()
     {
         //delete relations
-        $this->dropForeignKey('customer_id_user', 'user');
         $this->dropForeignKey('customer_id_invoice_fk', 'invoice');
         $this->dropForeignKey('invoice_id_fk', 'invoice_rule');
         $this->dropForeignKey('type_id_fk', 'invoice_rule');
@@ -134,7 +132,7 @@ class m160302_130128_createDB extends Migration
         $this->dropForeignKey('model_id_fk', 'computer_summary');
         $this->dropForeignKey('brand_id_model_fk', 'computer_model');
         $this->dropForeignKey('computer_id_log_fk', 'log');
-        $this->dropForeignKey('customer_user_id_fk', 'user');
+        $this->dropForeignKey('customer_user_id_fk', 'customer');
         //delete tables
         $this->dropTable('customer');
         $this->dropTable('invoice');

@@ -1,11 +1,15 @@
 <?php
-use yii\widgets\ActiveForm;
 use yii\bootstrap\Html;
+use yii\widgets\ActiveForm;
+
 ?>
 <div class="container">
     <?php $form = ActiveForm::begin([
         'enableClientValidation' => false,
         'enableAjaxValidation' => true,
+        'validateOnSubmit' => true,
+        'validateOnChange' => false,
+        'validateOnBlur' => false,
     ]); ?>
     <div class="row">
         <div class="col-sm-6">

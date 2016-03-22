@@ -30,7 +30,7 @@ class MaintenanceRequestForm extends Model
     public $city;
     public $customerName;
     //user password
-    private $userPassword;
+    public $userPassword;
 
     /**
      * @inheritdoc
@@ -46,8 +46,8 @@ class MaintenanceRequestForm extends Model
             // email has to be a valid email address
             ['email', 'email'],
             [['firstName', 'lastName'], 'string', 'length' => [2, 128]],
-            [['customerName'], 'unique', 'targetClass' => 'common\models\Customer', 'targetAttribute' => 'name'],
-            [['email','phone'], 'unique', 'targetClass' => 'common\models\Customer'],
+            [['firstName', 'lastName'], 'unique', 'targetClass' => 'common\models\Customer', 'targetAttribute' => ['customerName' => 'name']],
+            [['email', 'phone'], 'unique', 'targetClass' => 'common\models\Customer'],
             [['email'], 'unique', 'targetClass' => 'common\models\User'],
             //custom validatetor postcode Api
             [['zipcode', 'houseNumber'], 'CheckAddressValidatetor']
