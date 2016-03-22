@@ -25,6 +25,8 @@ class MaintenanceRequest extends ActiveRecord
     const STATUS_REQUEST = 0;
     const STATUS_PROCESS = 1;
     const STATUS_DONE = 2;
+    //scenarios
+    const SCENARIO_FRONTEND = 'frontend';
 
     public $computerNameVirtual;
 
@@ -42,7 +44,9 @@ class MaintenanceRequest extends ActiveRecord
     public function rules()
     {
         return [
-            [['computerNameVirtual', 'description', 'status'], 'required'],
+            [['computerNameVirtual', 'description'], 'required'],
+            ['status', 'required', 'on' => self::SCENARIO_DEFAULT],
+            [['status'], 'default', 'value' => self::STATUS_REQUEST],
             [['computer_id', 'status'], 'integer'],
             [['description'], 'string'],
             [['date_apointment', 'date_done'], 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
@@ -55,8 +59,17 @@ class MaintenanceRequest extends ActiveRecord
 
     public function beforeSave($insert)
     {
-        $this->computer_id = ComputerSummary::find()->where(['name' => $this->computerNameVirtual])->one()->id;
+        if ($this->scenario == self::SCENARIO_DEFAULT) {
+            $this->computer_id = ComputerSummary::find()->where(['name' => $this->computerNameVirtual])->one()->id;
+        }
         return parent::beforeSave($insert);
+    }
+
+    public function scenarios()
+    {
+        return array_merge([
+            self::SCENARIO_FRONTEND => ['computer_id', 'description', 'status']
+        ], parent::scenarios());
     }
 
     /**

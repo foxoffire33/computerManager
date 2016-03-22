@@ -87,4 +87,9 @@ class ComputerModel extends ActiveRecord
     {
         return $this->hasMany(ComputerSummary::className(), ['model_id' => 'id']);
     }
+
+    public function beforeDelete()
+    {
+        return $this->name !== 'Onbekend';
+    }
 }

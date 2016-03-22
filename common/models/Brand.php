@@ -74,4 +74,9 @@ class Brand extends ActiveRecord
     {
         return $this->hasMany(ComputerModel::className(), ['brand_id' => 'id']);
     }
+
+    public function beforeDelete()
+    {
+        return $this->name !== 'Onbekend';
+    }
 }

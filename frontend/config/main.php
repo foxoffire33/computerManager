@@ -32,10 +32,16 @@ return [
 
         'urlManager' => [
             'rules' => [
-                '<page>' => '/site/static'
+                'page/<page>' => '/site/static',
             ],
         ],
-
+        'view' => [
+            'theme' => [
+                'basePath' => '',
+                'pathMap' => ['@app/views' => '@frontend/themes/moderna'],
+                'baseUrl' => '@web/'
+            ]
+        ],
     ],
     'params' => $params,
 ];

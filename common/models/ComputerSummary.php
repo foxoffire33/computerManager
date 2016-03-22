@@ -29,6 +29,8 @@ class ComputerSummary extends ActiveRecord
 
     const TYPE_DESKTOP = 0;
     const TYPE_LAPTOP = 1;
+    //scenarios
+    const SCENARIO_FRONTEND = 'frontend';
 
     public $modelNameVirtual;
     public $customerNameVirtual;
@@ -47,15 +49,31 @@ class ComputerSummary extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'modelNameVirtual', 'customerNameVirtual', 'serial_number', 'type'], 'required'],
-            [['serial_number'], 'unique'],
-            [['customer_id', 'type', 'model_id'], 'integer'],
-            [['datetime_created', 'datetime_updated'], 'safe'],
+            [['name', 'modelNameVirtual', 'customerNameVirtual', 'serial_number'], 'required'],
+            ['type', 'required', 'on' => self::SCENARIO_DEFAULT],
             [['name', 'serial_number'], 'string', 'max' => 128],
-            ['type', 'in', 'range' => [self::TYPE_DESKTOP, self::TYPE_LAPTOP]],
+            //defaults
+            ['type', 'default', 'value' => self::TYPE_DESKTOP],
+            ['model_id', 'default', 'value' => ComputerModel::find()->where(['name' => 'Onbekend'])->one()->id],
+            //unique
+            [['serial_number'], 'unique'],
+            //exist
             [['customerNameVirtual'], 'exist', 'targetClass' => 'common\models\Customer', 'targetAttribute' => 'name'],
             [['modelNameVirtual'], 'checkIfComputerModelExist'],
+            //integer
+            [['customer_id', 'type', 'model_id'], 'integer'],
+            //in voor dropdown
+            ['type', 'in', 'range' => [self::TYPE_DESKTOP, self::TYPE_LAPTOP]],
+            //safe
+            [['datetime_created', 'datetime_updated'], 'safe'],
         ];
+    }
+
+    public function scenarios()
+    {
+        return array_merge([
+            self::SCENARIO_FRONTEND => ['name', 'customer_id', 'model_id', 'type']
+        ], parent::scenarios());
     }
 
     public function checkIfComputerModelExist()
@@ -74,8 +92,10 @@ class ComputerSummary extends ActiveRecord
 
     public function beforeSave($insert)
     {
-        $customer = Customer::find()->where(['lower(name)' => strtolower($this->customerNameVirtual)])->one();
-        $this->customer_id = $customer->id;
+        if ($this->scenario == self::SCENARIO_DEFAULT) {
+            $customer = Customer::find()->where(['lower(name)' => strtolower($this->customerNameVirtual)])->one();
+            $this->customer_id = $customer->id;
+        }
         return parent::beforeSave($insert);
     }
 
