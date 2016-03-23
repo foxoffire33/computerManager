@@ -16,6 +16,9 @@ use yii\helpers\Html;
 <body>
     <?php $this->beginBody() ?>
     <?= $content ?>
+    <p>
+        Met vrienderlijke groet <?= Yii::$app->params['adminName']; ?><br/>
+    </p>
     <?php $this->endBody() ?>
 </body>
 </html>

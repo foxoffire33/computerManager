@@ -29,7 +29,7 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-sm-4">
-            <?= $form->field($model,'zipcode')->textInput() ?>
+            <?= $form->field($model, 'zipcode')->textInput(['keyup' => 'alert($(this).val())']) ?>
         </div>
         <div class="col-sm-2">
             <?= $form->field($model,'houseNumber')->textInput(['tpye' => 'number']) ?>
@@ -43,3 +43,4 @@ use yii\widgets\ActiveForm;
     </div>
     <?php ActiveForm::end(); ?>
 </div>
+<?php $this->registerJs('$(\'#maintenancerequestform-zipcode\').keyup(function(e){$(this).val($(this).val().toUpperCase());})'); ?>

@@ -50,7 +50,7 @@ class MaintenanceRequestForm extends Model
             [['email', 'phone'], 'unique', 'targetClass' => 'common\models\Customer'],
             [['email'], 'unique', 'targetClass' => 'common\models\User'],
             //custom validatetor postcode Api
-            [['zipcode', 'houseNumber'], 'CheckAddressValidatetor']
+            [['zipcode', 'houseNumber'], 'checkAddressValidatetor']
         ];
     }
 
@@ -123,7 +123,7 @@ class MaintenanceRequestForm extends Model
         ];
     }
 
-    public function CheckAddressValidatetor()
+    public function checkAddressValidatetor()
     {
         $postcodeApi = new PostcodeApi($this->zipcode, $this->houseNumber);
         if (($postcodeApiData = $postcodeApi->return) !== false) {

@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use frontend\components\web\BreadcrumsSeo;
-use yii\bootstrap\Alert;
+//
+use common\widgets\Alert;
 use frontend\components\web\MyMenu;
 use frontend\themes\moderna\AssetsBundel\ModernaAsset;
 
@@ -62,13 +63,7 @@ $bundel = ModernaAsset::register($this);
                             <a class="navbar-brand" href="/" style="padding-bottom: 15px"><span>Computer</span><br />onderhouden.nl</a>
                         </div>
                         <div class="navbar-collapse collapse ">
-                            <?=
-                            MyMenu::MyMenu([
-                                'options' => [
-                                    'class' => 'nav navbar-nav'
-                                ]
-                            ]);
-                            ?>
+                            <?= MyMenu::MyMenu(['options' => ['class' => 'nav navbar-nav']]); ?>
                         </div>
                     </div>
                 </div>

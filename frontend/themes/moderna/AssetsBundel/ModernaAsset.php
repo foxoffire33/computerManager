@@ -32,7 +32,7 @@ class ModernaAsset extends AssetBundle {
         'js/jquery.fancybox-media.js',
         'js/google-code-prettify/prettify.js',
         'js/jquery.flexslider.js',
-        'js/setting.js',
+        // 'js/setting.js',
         'js/animate.js',
         'js/custom.js',
     ];

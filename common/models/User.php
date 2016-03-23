@@ -166,4 +166,9 @@ class User extends \common\components\db\ActiveRecord implements IdentityInterfa
     {
         $this->password_reset_token = null;
     }
+
+    public function getCustomer()
+    {
+        return $this->hasOne(Customer::className(), ['user_id' => 'id']);
+    }
 }
