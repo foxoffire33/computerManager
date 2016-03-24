@@ -54,53 +54,6 @@ class MaintenanceRequestForm extends Model
         ];
     }
 
-    public function save()
-    {
-        //create models
-        $user = new User();
-        $customer = new Customer();
-        $computerSummary = new ComputerSummary(['scenario' => ComputerSummary::SCENARIO_FRONTEND]);
-        $maintenanceRequest = new MaintenanceRequest(['scenario' => MaintenanceRequest::SCENARIO_FRONTEND]);
-        //set userPassword
-        $this->userPassword = Yii::$app->security->generateRandomString(8);
-        //set user attributes
-        $user->setAttributes([
-            'username' => $this->email,
-            'email' => $this->email,
-            'password' => $user->setPassword($this->userPassword),
-            'status' => User::STATUS_ACTIVE,
-        ], false);
-        //set customer attributes
-        $customer->setAttributes([
-            'name' => $this->customerName,
-            'email' => $this->email,
-            'zipcode' => $this->zipcode,
-            'adres' => $this->address,
-            'city' => $this->city,
-            'phone' => $this->phone
-        ], false);
-        //set computer attributes
-        $computerSummary->setAttributes([
-            'name' => "{$this->customerName}s, computer",
-        ], false);
-        //set maintenance request attributes
-        $maintenanceRequest->setAttributes([
-            'description' => $this->description
-        ], false);
-        //save kopel en save
-        if ($user->save()) {
-            $customer->user_id = $user->id;
-            if ($customer->save()) {
-                $computerSummary->customer_id = $customer->id;
-                if ($computerSummary->save()) {
-                    $maintenanceRequest->computer_id = $computerSummary->id;
-                    return $maintenanceRequest->save();
-                }
-            }
-        }
-        return false;
-    }
-
     public function beforeValidate()
     {
         $this->customerName = trim("{$this->firstName}, {$this->lastName}");

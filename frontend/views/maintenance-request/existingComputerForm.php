@@ -2,6 +2,9 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+$this->params['breadcrumbs'][] = ['label' => Yii::t('dashboard', 'Dashboard'), 'url' => ['/dashboard']];
+$this->params['breadcrumbs'][] = Yii::t('dashboard', 'maintenance request');
+$this->params['breadcrumbs'][] = $computer->name;
 ?>
 
 <?php $form = ActiveForm::begin(['action' => ['/maintenance-request/existing-computer', 'id' => $model->computer_id]]); ?>

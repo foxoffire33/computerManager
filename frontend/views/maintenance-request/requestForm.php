@@ -2,6 +2,7 @@
 use yii\bootstrap\Html;
 use yii\widgets\ActiveForm;
 
+$this->params['breadcrumbs'][] = Yii::t('maintenanceRequest', 'maintenance request');
 ?>
 <div class="container">
     <?php $form = ActiveForm::begin([

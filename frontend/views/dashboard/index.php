@@ -4,6 +4,7 @@ use yii\data\ArrayDataProvider;
 use yii\grid\GridView;
 use yii\widgets\DetailView;
 
+$this->params['breadcrumbs'][] = Yii::t('dahboard', 'Dashboard');
 ?>
 <div class="row">
     <div class="col-sm-8">

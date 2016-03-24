@@ -4,7 +4,6 @@ namespace frontend\components\web;
 
 use Yii;
 use yii\bootstrap\Nav;
-use common\models\ComputerSummary;
 
 class MyMenu
 {
@@ -36,28 +35,18 @@ class MyMenu
     {
         return [['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Maintenance request', 'url' => '/maintenance-request', 'visible' => Yii::$app->user->isGuest],
+            ['label' => Yii::t('nav', 'Tariven'), 'url' => ['/page/computer-onderhoud-en-reparatie-tarieven']],
             ['label' => 'Informatie', [], 'items' => [
-                ['label' => 'Hoe werken wij', 'url' => ['/hoe-werken-wij']],
-                ['label' => 'Traage computer?', 'url' => ['/waarom-wordt-mijn-computer-traag']]
+                ['label' => 'Hoe werken wij', 'url' => ['/page/onderhoud-waarom']],
+                ['label' => 'Traage computer?', 'url' => ['/page/waarom-wordt-mijn-computer-traag']]
             ]],
             ['label' => 'Contact', 'url' => ['/site/contact']]
         ];
     }
 
-    private static function userComputers()
-    {
-        $findUserComputers = Yii::$app->user->identity->customer->computerSummaries;
-        $returnArray[] = ['label' => 'Overzicht', 'url' => ['/dashboard']];
-        if ($findUserComputers != null) {
-            foreach ($findUserComputers as $computer) {
-                $returnArray[] = ['label' => $computer['name'], 'url' => ['/dashboard/view-computer', 'id' => $computer['id']]];
-            }
-        }
-        return $returnArray;
-    }
-
     private static function getEndDefaultItems()
     {
+        $items = [];
         if (!Yii::$app->user->isGuest) {
             $userNameItems = [
                 [
@@ -69,6 +58,17 @@ class MyMenu
             $items [] = ['label' => \Yii::$app->user->identity->email . '', 'items' => array_merge(self::userComputers(), $userNameItems)];
         }
         return $items;
+    }
+
+    private static function userComputers()
+    {
+        $returnArray[] = ['label' => 'Overzicht', 'url' => ['/dashboard']];
+        if (!empty(Yii::$app->user->identity->customer->computerSummaries)) {
+            foreach (Yii::$app->user->identity->customer->computerSummaries as $computer) {
+                $returnArray[] = ['label' => $computer['name'], 'url' => ['/dashboard/view-computer', 'id' => $computer['id']]];
+            }
+        }
+        return $returnArray;
     }
 
     private static function GetMenu($ttems)

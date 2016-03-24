@@ -2,6 +2,8 @@
 use yii\bootstrap\Html;
 use yii\widgets\ActiveForm;
 
+$this->params['breadcrumbs'][] = ['label' => Yii::t('dashboard', 'Dashboard'), 'url' => ['/dashboard']];
+$this->params['breadcrumbs'][] = Yii::t('dashboard', 'Update information');
 ?>
 <?php $form = ActiveForm::begin(); ?>
 <?= $form->field($model, 'name')->textInput(); ?>

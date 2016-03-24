@@ -1,15 +1,17 @@
 <?php
 namespace frontend\controllers;
+
 use common\models\LoginForm;
 use common\models\User;
+use frontend\components\web\FrontendController;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
-use frontend\components\web\FrontendController;
-use yii\base\InvalidParamException;
-use yii\web\BadRequestHttpException;
-use yii\filters\AccessControl;
 use yii;
+use yii\base\InvalidParamException;
+use yii\filters\AccessControl;
+use yii\web\BadRequestHttpException;
+
 class UserController extends FrontendController
 {
     public function behaviors()
@@ -20,11 +22,6 @@ class UserController extends FrontendController
                 'only' => ['logout', 'signup'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
@@ -33,6 +30,7 @@ class UserController extends FrontendController
             ],
         ];
     }
+
     /**
      * Logs in a user.
      *
@@ -44,14 +42,18 @@ class UserController extends FrontendController
             return $this->goHome();
         }
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if (Yii::$app->authManager->checkAccess($model->user->id, 'customer')) {
+                $model->login();
+                return $this->goBack();
+            } else {
+                $model->addError('username', Yii::t('user', 'This is not a customer account'));
+            }
         }
+        return $this->render('login', ['model' => $model]);
+
     }
+
     /**
      * Logs out the current user.
      *
@@ -62,27 +64,7 @@ class UserController extends FrontendController
         Yii::$app->user->logout();
         return $this->goHome();
     }
-    /**
-     * Signs user up.
-     *
-     * @return mixed
-     */
-    public function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                $mail = \Yii::$app->mailer->compose('welcome', ['model' => $user])
-                    ->setFrom([\Yii::$app->params['adminEmail'] => \Yii::$app->params['adminName']])
-                    ->setTo($user->email)
-                    ->setSubject(Yii::t('signup', 'Welcome by budgetManager'))
-                    ->send();
-            }
-        }
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }
+
     /**
      * Requests password reset.
      *
@@ -99,10 +81,9 @@ class UserController extends FrontendController
                 Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
             }
         }
-        return $this->render('requestPasswordResetToken', [
-            'model' => $model,
-        ]);
+        return $this->render('requestPasswordResetToken', ['model' => $model]);
     }
+
     /**
      * Resets password.
      *
@@ -125,6 +106,7 @@ class UserController extends FrontendController
             'model' => $model,
         ]);
     }
+
     public function actionActivateAccount($token)
     {
         if (($model = User::find()->where(['auth_key' => $token])->one()) !== null) {
