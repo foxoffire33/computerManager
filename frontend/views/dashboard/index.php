@@ -20,17 +20,11 @@ use yii\widgets\DetailView;
                     'inBtw:currency',
                     [
                         'class' => 'yii\grid\ActionColumn',
-                        'template' => '{download}{mail}{print}',
-                        'contentOptions' => ['width' => 70],
+                        'template' => '{download}',
+                        'contentOptions' => ['width' => 15],
                         'buttons' => [
                             'download' => function ($url, $model, $key) {
-                                return Html::a('<i class="fa fa-download"></i> ', ['download-pdf', 'id' => $model->id]);
-                            },
-                            'mail' => function ($url, $model, $key) {
-                                return Html::a('<i class="fa fa-envelope"></i> ', ['mail', 'id' => $model->id]);
-                            },
-                            'print' => function ($url, $model, $key) {
-                                return Html::a('<i class="fa fa-print"></i> ', ['print', 'id' => $model->id]);
+                                return Html::a('<i class="fa fa-download"></i> ', ['download-invoice', 'id' => $model->id]);
                             },
                         ]
                     ],
@@ -40,7 +34,7 @@ use yii\widgets\DetailView;
     </div>
     <div class="col-sm-4">
         <h3><?= Yii::t('dashboard', 'My information') ?></h3>
-        <p>
+        <div class="row">
             <?= DetailView::widget([
                 'model' => $customer,
                 'attributes' => [
@@ -53,7 +47,8 @@ use yii\widgets\DetailView;
                     'iban',
                 ],
             ]) ?>
-        </p>
+            <?= Html::a(Yii::t('dashboard', 'Update'), ['update-information'], ['class' => 'btn btn-lg btn-theme col-sm-12']) ?>
+        </div>
     </div>
 </div>
 <div class="row">

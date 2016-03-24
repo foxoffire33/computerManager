@@ -110,4 +110,17 @@ class Invoice extends ActiveRecord
             ->one()
             ->exBtw;
     }
+
+    public function getAllBtwPercanges()
+    {
+        $query = InvoiceRule::find()
+            ->select('vat.*,invoice_rule.vat_id,sum(invoice_rule.price*invoice_rule.quantity/100*vat.procentage) as total')
+            ->joinWith('vat')
+            ->where(['invoice_rule.invoice_id' => $this->id])
+            ->groupBy('vat.id')
+            ->asArray()
+            ->all();
+        return $query;
+    }
+
 }
