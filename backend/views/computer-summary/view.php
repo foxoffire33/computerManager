@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -10,8 +9,7 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('computerSummary', 'Computer Summaries'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="computer-summary-view">
-
+<div class="row">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
@@ -42,5 +40,5 @@ $this->params['breadcrumbs'][] = $this->title;
             'datetime_updated:datetime',
         ],
     ]) ?>
-
 </div>
+

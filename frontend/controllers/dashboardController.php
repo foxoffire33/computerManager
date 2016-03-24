@@ -47,7 +47,7 @@ class DashboardController extends FrontendController
             if ($customer->load(Yii::$app->request->post()) && $customer->save()) {
                 return $this->redirect('/dashboard');
             }
-            return $this->render('customerUpdateForm', ['model' => $customer]);
+            return $this->render('forms/customerUpdateForm', ['model' => $customer]);
         }
         throw new NotFoundHttpException();
     }

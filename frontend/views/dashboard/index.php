@@ -74,7 +74,8 @@ use yii\widgets\DetailView;
                         </ul>
                     </div>
                     <div class="pricing-action">
-                        <?= Html::a(Yii::t('common', 'view'), ['dashboard/computer', 'id' => $computer->id], ['class' => 'btn btn-medium btn-theme']) ?>
+                        <?= Html::a(Yii::t('common', 'view'), ['dashboard/view-computer', 'id' => $computer->id], ['class' => 'btn btn-medium btn-theme']) ?>
+                        <?= Html::a(Yii::t('common', 'Maintenance request'), ['maintenance-request/existing-computer', 'id' => $computer->id], ['class' => 'btn btn-medium btn-warning']) ?>
                     </div>
                 </div>
             </div>
