@@ -1,6 +1,6 @@
 <?php
 
-use common\widgets\Alert;
+use yii\bootstrap\Alert;
 use frontend\components\web\BreadcrumsSeo;
 use frontend\components\web\MyMenu;
 use frontend\themes\moderna\AssetsBundel\ModernaAsset;
