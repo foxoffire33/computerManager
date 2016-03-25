@@ -28,10 +28,10 @@ $this->registerJs('
 		$newRow = $(\'<tr/>\');
 
 		$(\'<td/>\').append(formGroup(\'name\', textInput(\'description\'))).appendTo($newRow);
-		$(\'<td/>\').append(formGroup(\'quantity\', textInput(\'description\'))).appendTo($newRow);
-		$(\'<td/>\').append(formGroup(\'price\', textInput(\'description\'))).appendTo($newRow);
+		$(\'<td/>\').append(formGroup(\'quantity\', textInput(\'quantity\'))).appendTo($newRow);
+		$(\'<td/>\').append(formGroup(\'price\', textInput(\'price\'))).appendTo($newRow);
 		$(\'<td/>\').append(formGroup(\'type_id\', selectInput(\'type\',$(invoiceRuleTypes)))).appendTo($newRow);
-		$(\'<td/>\').append(formGroup(\'vat_id\', selectInput(\'type\',$(vatOptions)))).appendTo($newRow);
+		$(\'<td/>\').append(formGroup(\'vat_id\', selectInput(\'vat_id\',$(vatOptions)))).appendTo($newRow);
 
 		$(\'#invoice-lines tbody\').append($newRow);
 
@@ -47,19 +47,19 @@ $this->registerJs('
 	function textInput(attribute)
 	{
 		return $(\'<input/>\', {
-			id: \'invoiceline-\' + nextIndex + \'-\' + attribute.toLowerCase(),
+			id: \'InvoiceRule\' + nextIndex + \'-\' + attribute.toLowerCase(),
 			class: \'form-control\',
 			type: \'text\',
-			name: \'InvoiceLine[\' + nextIndex + \'][\' + attribute + \']\'
+			name: \'InvoiceRule[\' + nextIndex + \'][\' + attribute + \']\'
 		});
 	}
 
 	function selectInput(attribute, options)
 	{
 		$select =  $(\'<select/>\', {
-			id: \'invoiceline-\' + nextIndex + \'-\' + attribute.toLowerCase(),
+			id: \'InvoiceRule\' + nextIndex + \'-\' + attribute.toLowerCase(),
 			class: \'form-control\',
-			name: \'InvoiceLine[\' + nextIndex + \'][\' + attribute + \']\'
+			name: \'InvoiceRule[\' + nextIndex + \'][\' + attribute + \']\'
 		});
 
 		$(options).each(function(key,option) {
@@ -77,7 +77,7 @@ $this->registerJs('
 	function formGroup(attribute, input)
 	{
 		return $(\'<div/>\', {
-			class: \'form-group field-invoiceline-\' + nextIndex + \'-\' + attribute.toLowerCase() + \' required\'
+			class: \'form-group field-InvoiceRule\' + nextIndex + \'-\' + attribute.toLowerCase() + \' required\'
 		}).append(input);
 	}
 
