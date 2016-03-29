@@ -106,11 +106,11 @@ class ComputerSummary extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('computerSummary', 'ID'),
+            'id' => 'ID',
             'name' => Yii::t('computerSummary', 'Name'),
-            'customer_id' => Yii::t('computerSummary', 'Customer ID'),
+            'customer_id' => Yii::t('computerSummary', 'Customer'),
             'type' => Yii::t('computerSummary', 'Type'),
-            'model_id' => Yii::t('computerSummary', 'Model ID'),
+            'model_id' => Yii::t('computerSummary', 'Model'),
             'serial_number' => Yii::t('computerSummary', 'Serial Number'),
             'datetime_created' => Yii::t('computerSummary', 'Datetime Created'),
             'datetime_updated' => Yii::t('computerSummary', 'Datetime Updated'),

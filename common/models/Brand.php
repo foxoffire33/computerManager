@@ -62,8 +62,8 @@ class Brand extends ActiveRecord
             'email' => Yii::t('brand', 'Email'),
             'phone' => Yii::t('brand', 'Phone'),
             'webpage' => Yii::t('brand', 'Webpage'),
-            'datetime_created' => Yii::t('brand', 'Datetime Created'),
-            'datetime_updated' => Yii::t('brand', 'Datetime Updated'),
+            'datetime_created' => Yii::t('common', 'Datetime Created'),
+            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 
