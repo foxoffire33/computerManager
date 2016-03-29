@@ -2,29 +2,17 @@
 
 namespace backend\controllers;
 
+use backend\components\web\BackendController;
 use common\models\ComputerSummary;
 use common\models\search\ComputerSummarySearch;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * ComputerSummaryController implements the CRUD actions for ComputerSummary model.
  */
-class ComputerSummaryController extends Controller
+class ComputerSummaryController extends BackendController
 {
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all ComputerSummary models.

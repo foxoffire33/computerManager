@@ -1,6 +1,6 @@
 <?php
 
-use yii\bootstrap\Alert;
+use common\widgets\Alert;
 use frontend\components\web\BreadcrumsSeo;
 use frontend\components\web\MyMenu;
 use frontend\themes\moderna\AssetsBundel\ModernaAsset;
@@ -68,8 +68,8 @@ $bundel = ModernaAsset::register($this);
                         <a class="navbar-brand" href="/" style="padding-bottom: 15px"><span>Computer</span><br/>onderhouden.nl</a>
                     </div>
                     <div class="navbar-collapse collapse ">
-                            <?= MyMenu::MyMenu(['options' => ['class' => 'nav navbar-nav']]); ?>
-                        </div>
+                        <?= MyMenu::MyMenu(['options' => ['class' => 'nav navbar-nav']]); ?>
+                    </div>
                 </div>
             </div>
         </header>
@@ -85,12 +85,12 @@ $bundel = ModernaAsset::register($this);
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                                <?=
-                                BreadcrumsSeo::widget([
-                                    'homeLink' => ['label' => '', 'url' => ['/'], 'class' => 'fa fa-home'],
-                                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                                ])
-                                ?>
+                            <?=
+                            BreadcrumsSeo::widget([
+                                'homeLink' => ['label' => '', 'url' => ['/'], 'class' => 'fa fa-home'],
+                                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                            ])
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -121,10 +121,12 @@ $bundel = ModernaAsset::register($this);
 
 
 
+
     </script>
     <?php if (isset($this->params['breadcrumbs'])): ?>
         <script type='application/ld+json'>
     <?= BreadcrumsSeo::makeBreadcrums($this->params['breadcrumbs']) ?>
+
 
 
 

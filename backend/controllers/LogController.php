@@ -2,16 +2,16 @@
 
 namespace backend\controllers;
 
+use backend\components\web\BackendController;
 use common\models\Log;
 use common\models\search\LogSearch;
 use Yii;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * LogController implements the CRUD actions for Log model.
  */
-class LogController extends Controller
+class LogController extends BackendController
 {
 
     /**

@@ -2,16 +2,16 @@
 
 namespace backend\controllers;
 
+use backend\components\web\BackendController;
 use common\models\MaintenanceRequest;
 use common\models\search\MaintenanceRequestSearch;
 use Yii;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * MaintenanceRequestController implements the CRUD actions for MaintenanceRequest model.
  */
-class MaintenanceRequestController extends Controller
+class MaintenanceRequestController extends BackendController
 {
 
     /**

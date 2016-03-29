@@ -34,8 +34,8 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    if (Yii::$app->user->can('admin')) {
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Customer', 'url' => ['/customer']],
         ['label' => 'Computer', 'items' => [
             ['label' => 'Brand', 'url' => ['/brand']],
@@ -51,11 +51,12 @@ AppAsset::register($this);
             ['label' => 'vat', 'url' => ['/vat']]
         ]]
     ];
+    }
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
     } else {
         $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
+            . Html::beginForm(['/user/logout'], 'post')
             . Html::submitButton(
                 'Logout (' . Yii::$app->user->identity->email . ')',
                 ['class' => 'btn btn-link']

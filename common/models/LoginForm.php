@@ -3,18 +3,19 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
 
 /**
  * Login form
  */
 class LoginForm extends Model
 {
+    const RBAC_BACKEND_ROLE = 'admin';
+    const RBAC_FRONTEND_ROLE = 'customer';
     public $username;
     public $password;
     public $rememberMe = true;
-
     private $_user;
-
 
     /**
      * @inheritdoc
@@ -29,6 +30,33 @@ class LoginForm extends Model
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
         ];
+    }
+
+    public function scenarios()
+    {
+        return ArrayHelper::merge([
+            self::RBAC_BACKEND_ROLE => ['username', 'password', 'rememberMe'],
+            self::RBAC_FRONTEND_ROLE => ['username', 'password', 'rememberMe'],
+        ], parent::scenarios());
+    }
+
+    public function beforeValidate()
+    {
+        if (!empty($this->username)) {
+            if (!empty(($user = User::findOne(['email' => $this->username])))) {
+                $hasNoError = false;
+                if ($this->scenario == self::RBAC_BACKEND_ROLE) {
+                    $hasNoError = Yii::$app->authManager->checkAccess($user->id, 'admin');
+                } elseif ($this->scenario == self::RBAC_FRONTEND_ROLE) {
+                    $hasNoError = !Yii::$app->authManager->checkAccess($user->id, 'admin') &&
+                        Yii::$app->authManager->checkAccess($user->id, 'customer');
+                }
+                if (!$hasNoError) {
+                    $this->addError('password', 'Incorrect username or password.');
+                }
+            }
+        }
+        return parent::beforeValidate();
     }
 
     /**
@@ -49,20 +77,6 @@ class LoginForm extends Model
     }
 
     /**
-     * Logs in a user using the provided username and password.
-     *
-     * @return boolean whether the user is logged in successfully
-     */
-    public function login()
-    {
-        if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
-        } else {
-            return false;
-        }
-    }
-
-    /**
      * Finds user by [[username]]
      *
      * @return User|null
@@ -74,5 +88,19 @@ class LoginForm extends Model
         }
 
         return $this->_user;
+    }
+
+    /**
+     * Logs in a user using the provided username and password.
+     *
+     * @return boolean whether the user is logged in successfully
+     */
+    public function login()
+    {
+        if ($this->validate()) {
+            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+        } else {
+            return false;
+        }
     }
 }

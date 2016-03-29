@@ -1,5 +1,7 @@
 <?php
 namespace backend\controllers;
+
+use backend\components\web\BackendController;
 use common\models\LoginForm;
 use common\models\User;
 use frontend\models\PasswordResetRequestForm;
@@ -8,7 +10,8 @@ use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\filters\AccessControl;
 use yii;
-class UserController extends yii\web\Controller
+
+class UserController extends BackendController
 {
     public function behaviors()
     {
@@ -36,7 +39,7 @@ class UserController extends yii\web\Controller
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-        $model = new LoginForm();
+        $model = new LoginForm(['scenario' => LoginForm::RBAC_BACKEND_ROLE]);
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {

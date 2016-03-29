@@ -2,29 +2,17 @@
 
 namespace backend\controllers;
 
+use backend\components\web\BackendController;
 use common\models\ComputerModel;
 use common\models\search\ComputerModelSearch;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * ComputerModelController implements the CRUD actions for ComputerModel model.
  */
-class ComputerModelController extends Controller
+class ComputerModelController extends BackendController
 {
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all ComputerModel models.

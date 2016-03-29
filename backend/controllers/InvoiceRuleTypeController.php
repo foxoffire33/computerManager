@@ -2,17 +2,16 @@
 
 namespace backend\controllers;
 
+use backend\components\web\BackendController;
 use Yii;
 use common\models\InvoiceRuleType;
 use common\models\search\InvoiceRuleTypeSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * InvoiceRuleTypeController implements the CRUD actions for InvoiceRuleType model.
  */
-class InvoiceRuleTypeController extends Controller
+class InvoiceRuleTypeController extends BackendController
 {
 
     /**

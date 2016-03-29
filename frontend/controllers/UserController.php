@@ -41,14 +41,9 @@ class UserController extends FrontendController
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if (Yii::$app->authManager->checkAccess($model->user->id, 'customer')) {
-                $model->login();
-                return $this->goBack();
-            } else {
-                $model->addError('username', Yii::t('user', 'This is not a customer account'));
-            }
+        $model = new LoginForm(['scenario' => LoginForm::RBAC_FRONTEND_ROLE]);
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
         }
         return $this->render('login', ['model' => $model]);
 
