@@ -5,7 +5,7 @@ use common\models\Brand;
 
 class m160322_135434_defaultData extends Migration
 {
-    public function up()
+    public function safeUp()
     {
         $this->insert('user',[
             'email' => 'reinierdlp@gmail.com',
@@ -27,7 +27,7 @@ class m160322_135434_defaultData extends Migration
         return true;
     }
 
-    public function down()
+    public function safeDown()
     {
         $this->delete('user',['email' => 'reinierdlp@gmail.com']);
         $this->delete('brand',['name' => 'Onbekend']);

@@ -20,13 +20,6 @@ return [
                     'basePath' => '@common/messages',
                     'sourceLanguage' => 'en-US',
                 ],
-                'app*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@common/messages',
-                    'fileMap' => [
-                        'app' => 'app.php',
-                    ],
-                ],
             ],
         ],
     ],

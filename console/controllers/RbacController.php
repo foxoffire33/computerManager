@@ -95,7 +95,6 @@ class RbacController extends Controller
         $auth->addChild($adminRule, $manageVat);
 
         //set primission childs
-        $auth->addChild($updateMyInformation, $manageCustomer);
         $auth->addChild($viewOwnComputer, $amanageComputerSummary);
         $auth->addChild($downloadOwnInvoice, $manageInvoice);
         //kokppel rollen

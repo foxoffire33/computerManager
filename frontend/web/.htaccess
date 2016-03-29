@@ -1,19 +1,34 @@
-Options +FollowSymLinks
-IndexIgnore */*
-
 RewriteEngine on
-
-# if a directory or a file exists, use it directly
+# If a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# otherwise forward it to index.php
+# Otherwise forward it to index.php
 RewriteRule . index.php
 
-SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+# Turn on Expires and set default to 0
+ExpiresActive On
+ExpiresDefault A0
 
-php_value open_basedir none
-php_flag display_startup_errors on
-php_flag display_errors on
-php_flag html_errors on
-php_flag  log_errors on
+# Set up caching on media files for 1 year (forever?)
+
+ExpiresDefault A29030400
+Header append Cache-Control "public"
+
+
+# Set up caching on media files for 1 week
+
+ExpiresDefault A604800
+Header append Cache-Control "public"
+
+
+# Set up 2 Hour caching on commonly updated files
+
+ExpiresDefault A7200
+Header append Cache-Control "proxy-revalidate"
+
+
+# Force no caching for dynamic files
+
+ExpiresActive Off
+Header set Cache-Control "private, no-cache, no-store, proxy-revalidate, no-transform"
+Header set Pragma "no-cache"
