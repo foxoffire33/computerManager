@@ -28,10 +28,10 @@ $this->registerJs('
 	{
 		$newRow = $(\'<tr/>\');
 
-		$(\'<td/>\').append(formGroup(\'name\', textInput(\'description\'))).appendTo($newRow);
+		$(\'<td/>\').append(formGroup(\'name\', textInput(\'name\'))).appendTo($newRow);
 		$(\'<td/>\').append(formGroup(\'quantity\', textInput(\'quantity\'))).appendTo($newRow);
 		$(\'<td/>\').append(formGroup(\'price\', textInput(\'price\'))).appendTo($newRow);
-		$(\'<td/>\').append(formGroup(\'type_id\', selectInput(\'type\',$(invoiceRuleTypes)))).appendTo($newRow);
+		$(\'<td/>\').append(formGroup(\'type_id\', selectInput(\'type_id\',$(invoiceRuleTypes)))).appendTo($newRow);
 		$(\'<td/>\').append(formGroup(\'vat_id\', selectInput(\'vat_id\',$(vatOptions)))).appendTo($newRow);
 		$(\'<td/>\').append(hiddenInput(\'id\')).append(deleteIcon()).appendTo($newRow);
 

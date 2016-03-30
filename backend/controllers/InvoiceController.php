@@ -8,6 +8,7 @@ use common\models\InvoiceRule;
 use common\models\search\InvoiceSearch;
 use Yii;
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -109,8 +110,8 @@ class InvoiceController extends BackendController
         $invoiceRuleModels = [];
 
         if (Yii::$app->request->isPost && ($count = count(Yii::$app->request->post('InvoiceRule', []))) > 0) {
-
             $postedInvoiceRules = Yii::$app->request->post('InvoiceRule', []);
+            $postedInvoiceRules = array_values($postedInvoiceRules);
             for ($i = 0; $i < $count; $i++) {
                 if (isset($postedInvoiceRules[$i]['id']) && !empty(($invoiceRule = InvoiceRule::findOne($postedInvoiceRules[$i]['id'])))) {
                     $invoiceRule->scenario = InvoiceRule::SCENARIO_INVOICEFORM;
@@ -119,11 +120,18 @@ class InvoiceController extends BackendController
                     $invoiceRuleModels[] = new InvoiceRule(['scenario' => InvoiceRule::SCENARIO_INVOICEFORM]);
                 }
             }
-            if ($model->load(['Invoice' => Yii::$app->request->post('Invoice')]) && Model::loadMultiple($invoiceRuleModels, Yii::$app->request->post())) {
+            //load
+            if ($model->load(['Invoice' => Yii::$app->request->post('Invoice')]) && Model::loadMultiple($invoiceRuleModels, ['InvoiceRule' => $postedInvoiceRules])) {
+                //delete in form deleted invoiceRules
+                $deletedInvoiceRules = array_diff(ArrayHelper::getColumn($model->invoiceRules, 'id'), ArrayHelper::getColumn($invoiceRuleModels, 'id'));
+                InvoiceRule::deleteAll(['in', 'id', $deletedInvoiceRules, 'invoice_id' => $model->id]);
+                //is form validated
                 $modelValidate = $model->validate();
                 $invoiceRuleModelsValidate = Model::validateMultiple($invoiceRuleModels);
                 if (($modelValidate && $invoiceRuleModelsValidate)) {
+                    //save model
                     $model->save(false);
+                    //save invoiceRules
                     foreach ($invoiceRuleModels as $invoiceRuleModel) {
                         $invoiceRuleModel->invoice_id = $model->id;
                         $invoiceRuleModel->save(false);
