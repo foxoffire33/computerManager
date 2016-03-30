@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $model->name;
 
 ?>
 <div class="pull-right row">
-    <?= Html::a(Yii::t('common', 'Maintenance request'), ['maintenance-request/existing-computer', 'id' => $model->id], ['class' => 'btn btn-medium btn-warning']) ?>
+    <?= Html::a(Yii::t('maintenaceRequest', 'Maintenance Requests'), ['maintenance-request/existing-computer', 'id' => $model->id], ['class' => 'btn btn-medium btn-warning']) ?>
 </div>
 <div class="row">
     <?= DetailView::widget([
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $model->name;
             ],
             'serial_number',
             [
-                'label' => Yii::t('maintenanceRequest', 'MaintenanceRequests'),
+                'label' => Yii::t('maintenaceRequest', 'Maintenance Requests'),
                 'value' => count($model->maintenanceRequests)
             ],
             [
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $model->name;
     ]) ?>
 </div>
 <div class="col-sm-6">
-    <h3><?= Yii::t('dashboard', 'Logs') ?></h3>
+    <h3><?= Yii::t('log', 'Logs') ?></h3>
     <?php if (!empty($model->logs)) {
         $logItems = [];
         foreach ($model->logs as $log) {
@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $model->name;
     <?php endif; ?>
 </div>
 <div class="col-sm-6">
-    <h3><?= Yii::t('dashboard', 'Maintenance requests') ?></h3>
+    <h3><?= Yii::t('maintenaceRequest', 'Maintenance Requests') ?></h3>
     <?php if (!empty($model->maintenanceRequests)) {
         $logItems = [];
         foreach ($model->maintenanceRequests as $maintenanceRequest) {

@@ -2,6 +2,7 @@
 return [
     'Maintenance Request' => 'Onderhoud aanvraag',
     'Maintenance Requests' => 'Onderhoud aanvragen',
+    'Requesting' => 'Aanvragen',
     //attributes frontend maintenanceRequestForm
     'First name' => 'Voornaam',
     'Lastname' => 'naam',
@@ -18,4 +19,5 @@ return [
     'Request' => 'Aangevraagd',
     'Process' => 'Bezig',
     'Done' => 'Klaar',
+    'Maintenance requests ({count})' => 'Onderhoud aanvragen ({count})'
 ];

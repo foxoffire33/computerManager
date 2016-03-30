@@ -10,4 +10,7 @@ return [
     'Are you sure you want to delete this item?' => 'Weet u zekker dat u dit wil verwijderen',
     'Yes' => 'Ja',
     'No' => 'Nee',
+    'view' => 'Bekijk',
+    'Back' => 'Vorige',
+    'send' => 'Verstuur'
 ];

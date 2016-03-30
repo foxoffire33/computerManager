@@ -4,7 +4,7 @@ return [
     'Invoices' => 'Facturen',
     //model attributes
     'Customer ID' => 'Klant',
-    'Reference' => 'referentie',
+    'Reference' => 'Referentie',
     'Invoice Number' => 'Factuurnummer',
     'Payed' => 'Betaald',
     'Description' => 'Omschrijving',

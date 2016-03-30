@@ -11,12 +11,21 @@ $this->params['breadcrumbs'][] = Yii::t('dahboard', 'Dashboard');
         <h3><?= Yii::t('dashboard', 'My invoices') ?></h3>
         <p>
             <?= GridView::widget([
-                'dataProvider' => new ArrayDataProvider(['allModels' => $customer->invoices]),
+                'dataProvider' => new ArrayDataProvider(['allModels' => $customer->invoices,
+                    'pagination' => [
+                        'pageSize' => 10,
+                    ]]),
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-                    'reference',
-                    'invoice_number',
-                    'payed:boolean',
+                    'reference' => [
+                        'header' => Yii::t('invoice', 'Reference')
+                    ],
+                    'invoice_number' => [
+                        'header' => Yii::t('invoice', 'Invoice Number')
+                    ],
+                    'payed:boolean' => [
+                        'header' => Yii::t('invoice', 'Payed')
+                    ],
                     'exBtw:currency',
                     'inBtw:currency',
                     [
@@ -48,7 +57,7 @@ $this->params['breadcrumbs'][] = Yii::t('dahboard', 'Dashboard');
                     'iban',
                 ],
             ]) ?>
-            <?= Html::a(Yii::t('dashboard', 'Update'), ['update-information'], ['class' => 'btn btn-lg btn-theme col-sm-12']) ?>
+            <?= Html::a(Yii::t('common', 'Update'), ['update-information'], ['class' => 'btn btn-lg btn-theme col-sm-12']) ?>
         </div>
     </div>
 </div>
@@ -67,7 +76,7 @@ $this->params['breadcrumbs'][] = Yii::t('dahboard', 'Dashboard');
                     <div class="pricing-content">
                         <ul>
                             <li>
-                                <i class="icon-ok"></i><?= \Yii::t('maintenance', 'Maintenance requests ({count})', ['count' => count($computer->maintenanceRequests)]) ?>
+                                <i class="icon-ok"></i><?= \Yii::t('maintenaceRequest', 'Maintenance requests ({count})', ['count' => count($computer->maintenanceRequests)]) ?>
                             </li>
                             <li>
                                 <i class="icon-ok"></i><?= \Yii::t('log', 'Logs ({count})', ['count' => count($computer->logs)]) ?>
@@ -76,7 +85,7 @@ $this->params['breadcrumbs'][] = Yii::t('dahboard', 'Dashboard');
                     </div>
                     <div class="pricing-action">
                         <?= Html::a(Yii::t('common', 'view'), ['dashboard/view-computer', 'id' => $computer->id], ['class' => 'btn btn-medium btn-theme']) ?>
-                        <?= Html::a(Yii::t('common', 'Maintenance request'), ['maintenance-request/existing-computer', 'id' => $computer->id], ['class' => 'btn btn-medium btn-warning']) ?>
+                        <?= Html::a(Yii::t('maintenaceRequest', 'Maintenance Requests'), ['maintenance-request/existing-computer', 'id' => $computer->id], ['class' => 'btn btn-medium btn-warning']) ?>
                     </div>
                 </div>
             </div>

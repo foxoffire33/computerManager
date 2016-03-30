@@ -48,27 +48,13 @@ class MyMenu
     {
         $items = [];
         if (!Yii::$app->user->isGuest) {
-            $userNameItems = [
-                [
-                    'label' => 'Logout (' . \Yii::$app->user->identity->email . ')',
-                    'url' => ['/user/logout'],
-                    'linkOptions' => ['data-method' => 'post']
-                ]
+            $items [] = ['label' => \Yii::$app->user->identity->email, 'url' => ['/dashboard']];
+            $items [] = ['label' => 'Logout',
+                'url' => ['/user/logout'],
+                'linkOptions' => ['data-method' => 'post']
             ];
-            $items [] = ['label' => \Yii::$app->user->identity->email . '', 'items' => array_merge(self::userComputers(), $userNameItems)];
         }
         return $items;
-    }
-
-    private static function userComputers()
-    {
-        $returnArray[] = ['label' => 'Overzicht', 'url' => ['/dashboard']];
-        if (!empty(Yii::$app->user->identity->customer->computerSummaries)) {
-            foreach (Yii::$app->user->identity->customer->computerSummaries as $computer) {
-                $returnArray[] = ['label' => $computer['name'], 'url' => ['/dashboard/view-computer', 'id' => $computer['id']]];
-            }
-        }
-        return $returnArray;
     }
 
     private static function GetMenu($ttems)
