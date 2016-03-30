@@ -16,17 +16,12 @@ use kartik\select2\Select2;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'virtualBrandName')->widget(Select2::classname(), [
-        'options' => ['placeholder' => 'Select a state ...'],
-        'pluginOptions' => [
-            'data' => ArrayHelper::getColumn(Brand::find()->all(), 'name'),
-        ],
-    ]); ?>
+    <?= $form->field($model, 'virtualBrandName')->widget(Select2::classname(), ['pluginOptions' => ['data' => ArrayHelper::getColumn(Brand::find()->all(), 'name')]]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('computerModel', 'Create') : Yii::t('computerModel', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('common', 'Create') : Yii::t('common', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

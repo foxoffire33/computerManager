@@ -112,8 +112,11 @@ class ComputerSummary extends ActiveRecord
             'type' => Yii::t('computerSummary', 'Type'),
             'model_id' => Yii::t('computerSummary', 'Model'),
             'serial_number' => Yii::t('computerSummary', 'Serial Number'),
-            'datetime_created' => Yii::t('computerSummary', 'Datetime Created'),
-            'datetime_updated' => Yii::t('computerSummary', 'Datetime Updated'),
+            'datetime_created' => Yii::t('common', 'Datetime Created'),
+            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            //form labels
+            'customerNameVirtual' => Yii::t('computerSummary', 'Customer'),
+            'modelNameVirtual' => Yii::t('computerModels', 'Model'),
         ];
     }
 

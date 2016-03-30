@@ -13,5 +13,9 @@ return [
     'Computer ID' => 'Computer',
     'Description' => 'Omschrijving',
     'Date Done' => 'Afleveren op',
-    'Date Apointment' => 'Ophalen op'
+    'Date Apointment' => 'Ophalen op',
+    //status
+    'Request' => 'Aangevraagd',
+    'Process' => 'Bezig',
+    'Done' => 'Klaar',
 ];

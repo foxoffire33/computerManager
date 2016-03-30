@@ -86,6 +86,8 @@ class MaintenanceRequest extends ActiveRecord
             'date_apointment' => Yii::t('maintenaceRequest', 'Date Apointment'),
             'datetime_created' => Yii::t('common', 'Datetime Created'),
             'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            //form labels
+            'computerNameVirtual' => Yii::t('computerSummary', 'Computer')
         ];
     }
 

@@ -17,11 +17,7 @@ use common\models\Customer;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'customerNameVirtual')->widget(Select2::classname(), [
-        'pluginOptions' => [
-            'data' => ArrayHelper::getColumn(Customer::find()->all(), 'name'),
-        ]
-    ]); ?>
+    <?= $form->field($model, 'customerNameVirtual')->widget(Select2::classname(), ['pluginOptions' => ['data' => ArrayHelper::getColumn(Customer::find()->all(), 'name')]]); ?>
 
     <?= $form->field($model, 'type')->dropDownList([
         ComputerSummary::TYPE_DESKTOP => Yii::t('computerSumaary','Desktop'),
@@ -29,7 +25,6 @@ use common\models\Customer;
     ]) ?>
 
     <?= $form->field($model, 'modelNameVirtual')->widget(Select2::classname(), [
-        'options' => ['placeholder' => 'Select a state ...'],
         'pluginOptions' => [
             'data' => ArrayHelper::getColumn(ComputerModel::find()->all(), function ($element) {
                 return "{$element->brand->name}, $element->name";
@@ -40,7 +35,7 @@ use common\models\Customer;
     <?= $form->field($model, 'serial_number')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('computerSummary', 'Create') : Yii::t('computerSummary', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('common', 'Create') : Yii::t('common', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

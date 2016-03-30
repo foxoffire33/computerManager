@@ -65,8 +65,8 @@ class Customer extends ActiveRecord
             'email' => Yii::t('customer', 'Email'),
             'phone' => Yii::t('customer', 'Phone'),
             'iban' => Yii::t('customer', 'Iban'),
-            'datetime_created' => Yii::t('customer', 'Datetime Created'),
-            'datetime_updated' => Yii::t('customer', 'Datetime Updated'),
+            'datetime_created' => Yii::t('common', 'Datetime Created'),
+            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 

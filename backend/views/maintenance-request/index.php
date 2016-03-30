@@ -8,16 +8,15 @@ use yii\helpers\Html;
 /* @var $searchModel common\models\search\MaintenanceRequestSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('maintenanceRequest', 'Maintenance Requests');
+$this->title = Yii::t('maintenaceRequest', 'Maintenance Requests');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="maintenance-request-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('maintenanceRequest', 'Create Maintenance Request'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('common', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -33,15 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'status' => [
                 'filter' => [
-                    MaintenanceRequest::STATUS_REQUEST => Yii::t('maintenanceRequest', 'Request'),
-                    MaintenanceRequest::STATUS_PROCESS => Yii::t('maintenanceRequest', 'Process'),
-                    MaintenanceRequest::STATUS_DONE => Yii::t('maintenanceRequest', 'Done'),
+                    MaintenanceRequest::STATUS_REQUEST => Yii::t('maintenaceRequest', 'Request'),
+                    MaintenanceRequest::STATUS_PROCESS => Yii::t('maintenaceRequest', 'Process'),
+                    MaintenanceRequest::STATUS_DONE => Yii::t('maintenaceRequest', 'Done'),
                 ],
                 'attribute' => 'status',
                 'value' => function ($data) {
-                    return ($data->status == MaintenanceRequest::STATUS_REQUEST ? Yii::t('maintenanceRequest', 'Request') :
-                        ($data->status == MaintenanceRequest::STATUS_PROCESS ? Yii::t('maintenanceRequest', 'Process')
-                            : Yii::t('maintenanceRequest', 'Done')));
+                    return ($data->status == MaintenanceRequest::STATUS_REQUEST ? Yii::t('maintenaceRequest', 'Request') :
+                        ($data->status == MaintenanceRequest::STATUS_PROCESS ? Yii::t('maintenaceRequest', 'Process')
+                            : Yii::t('maintenaceRequest', 'Done')));
                 }
             ],
             'description:ntext',

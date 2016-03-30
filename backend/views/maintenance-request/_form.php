@@ -20,9 +20,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'computerNameVirtual')->widget(Select2::classname(), ['pluginOptions' => ['data' => ArrayHelper::getColumn(ComputerSummary::find()->all(), 'name'),]]); ?>
 
     <?= $form->field($model, 'status')->dropDownList([
-        MaintenanceRequest::STATUS_REQUEST => Yii::t('maintenanceRequest', 'Request'),
-        MaintenanceRequest::STATUS_PROCESS => Yii::t('maintenanceRequest', 'Process'),
-        MaintenanceRequest::STATUS_DONE => Yii::t('maintenanceRequest', 'Done'),
+        MaintenanceRequest::STATUS_REQUEST => Yii::t('maintenaceRequest', 'Request'),
+        MaintenanceRequest::STATUS_PROCESS => Yii::t('maintenaceRequest', 'Process'),
+        MaintenanceRequest::STATUS_DONE => Yii::t('maintenaceRequest', 'Done'),
     ]) ?>
 
     <div class="form-group">
@@ -37,7 +37,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('maintenanceRequest', 'Create') : Yii::t('maintenanceRequest', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('common', 'Create') : Yii::t('common', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

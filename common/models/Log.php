@@ -71,6 +71,8 @@ class Log extends ActiveRecord
             'description' => Yii::t('log', 'Description'),
             'datetime_created' => Yii::t('common', 'Datetime Created'),
             'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            //form labels
+            'computerNameVirtual' => Yii::t('computerSummary', 'Computer'),
         ];
     }
 

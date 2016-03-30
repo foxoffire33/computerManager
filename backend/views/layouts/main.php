@@ -46,7 +46,7 @@ AppAsset::register($this);
         ]],
         ['label' => Yii::t('invoice', 'Invoice'), 'items' => [
             ['label' => Yii::t('invoice', 'Invoices'), 'url' => ['/invoice']],
-            ['label' => Yii::t('invoiceRules', 'Invoice Rules'), 'url' => ['/invoice-rule']],
+            ['label' => Yii::t('invoiceRule', 'Invoice rules'), 'url' => ['/invoice-rule']],
             ['label' => Yii::t('invoiceRuleType', 'Invoice Rule Types'), 'url' => ['/invoice-rule-type']],
             ['label' => Yii::t('vat', 'Vats'), 'url' => ['/vat']]
         ]]

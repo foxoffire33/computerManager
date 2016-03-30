@@ -67,6 +67,7 @@ class ComputerModel extends ActiveRecord
             'id' => 'ID',
             'brand_id' => Yii::t('brand', 'Brand'),
             'name' => Yii::t('computerModel', 'Name'),
+            'virtualBrandName' => Yii::t('brand', 'Brand'),
             'datetime_created' => Yii::t('common', 'Datetime Created'),
             'datetime_updated' => Yii::t('common', 'Datetime Updated'),
         ];

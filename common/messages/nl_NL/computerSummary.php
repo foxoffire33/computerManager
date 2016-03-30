@@ -1,9 +1,7 @@
 <?php
 return [
-    'Computer model' => 'Model',
-    'Computer Models' => 'Modellen',
-    //nav
     'Computer summary' => 'Computer onverzicht',
+    'Computer Summaries' => 'Computers',
     //attributes
     'Name' => 'Naam',
     'Customer' => 'Klant',
