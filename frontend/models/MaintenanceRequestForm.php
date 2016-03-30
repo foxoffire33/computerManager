@@ -67,12 +67,12 @@ class MaintenanceRequestForm extends Model
     {
         return [
             'email' => Yii::t('customer', 'Email'),
-            'firstName' => Yii::t('maintenanceRequest', 'First name'),
-            'lastname' => Yii::t('maintenanceRequest', 'Last name'),
+            'firstName' => Yii::t('maintenaceRequest', 'First name'),
+            'lastname' => Yii::t('maintenaceRequest', 'Last name'),
             'zipcode' => Yii::t('maintenanceRequest', 'Zipcode'),
-            'houseNumber' => Yii::t('maintenanceRequest', 'House number'),
-            'phone' => Yii::t('maintenanceRequest', 'Phone'),
-            'description' => Yii::t('maintenanceRequest', 'Description'),
+            'houseNumber' => Yii::t('maintenaceRequest', 'House number'),
+            'phone' => Yii::t('maintenaceRequest', 'Phone'),
+            'description' => Yii::t('maintenaceRequest', 'Description'),
         ];
     }
 

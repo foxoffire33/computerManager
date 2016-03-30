@@ -48,8 +48,8 @@ class Vat extends ActiveRecord
             'id' => Yii::t('vat', 'ID'),
             'name' => Yii::t('vat', 'Name'),
             'procentage' => Yii::t('vat', 'Procentage'),
-            'datetime_created' => Yii::t('vat', 'Datetime Created'),
-            'datetime_updated' => Yii::t('vat', 'Datetime Updated'),
+            'datetime_created' => Yii::t('common', 'Datetime Created'),
+            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 

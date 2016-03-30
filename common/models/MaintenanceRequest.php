@@ -84,8 +84,8 @@ class MaintenanceRequest extends ActiveRecord
             'description' => Yii::t('maintenaceRequest', 'Description'),
             'date_done' => Yii::t('maintenaceRequest', 'Date Done'),
             'date_apointment' => Yii::t('maintenaceRequest', 'Date Apointment'),
-            'datetime_created' => Yii::t('maintenaceRequest', 'Datetime Created'),
-            'datetime_updated' => Yii::t('maintenaceRequest', 'Datetime Updated'),
+            'datetime_created' => Yii::t('common', 'Datetime Created'),
+            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 

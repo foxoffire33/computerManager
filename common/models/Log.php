@@ -44,7 +44,7 @@ class Log extends ActiveRecord
         return [
             [['computerNameVirtual', 'event_datetime', 'type', 'description'], 'required'],
             [['type'], 'integer'],
-            ['event_datetime','date','format' => 'yyyy-MM-dd HH:mm:ss'],
+            ['event_datetime', 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
             [['event_datetime', 'datetime_created', 'datetime_updated'], 'safe'],
             [['computerNameVirtual'], 'exist', 'targetClass' => 'common\models\ComputerSummary', 'targetAttribute' => 'name'],
             [['description'], 'string'],
@@ -66,11 +66,11 @@ class Log extends ActiveRecord
         return [
             'id' => Yii::t('log', 'ID'),
             'computer_id' => Yii::t('log', 'Computer ID'),
-            'type' => Yii::t('log', 'Type ID'),
+            'type' => Yii::t('log', 'Type'),
             'event_datetime' => Yii::t('log', 'Event Datetime'),
             'description' => Yii::t('log', 'Description'),
-            'datetime_created' => Yii::t('log', 'Datetime Created'),
-            'datetime_updated' => Yii::t('log', 'Datetime Updated'),
+            'datetime_created' => Yii::t('common', 'Datetime Created'),
+            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 

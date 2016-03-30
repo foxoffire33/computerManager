@@ -42,10 +42,10 @@ class InvoiceRuleType extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('customer', 'ID'),
-            'name' => Yii::t('customer', 'Name'),
-            'datetime_created' => Yii::t('customer', 'Datetime Created'),
-            'datetime_updated' => Yii::t('customer', 'Datetime Updated'),
+            'id' => Yii::t('invoiceRuleType', 'ID'),
+            'name' => Yii::t('invoiceRuleType', 'Name'),
+            'datetime_created' => Yii::t('common', 'Datetime Created'),
+            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 

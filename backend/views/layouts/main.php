@@ -36,19 +36,19 @@ AppAsset::register($this);
     ]);
     if (Yii::$app->user->can('admin')) {
     $menuItems = [
-        ['label' => 'Customer', 'url' => ['/customer']],
-        ['label' => 'Computer', 'items' => [
-            ['label' => 'Brand', 'url' => ['/brand']],
-            ['label' => 'Computer model', 'url' => ['/computer-model']],
-            ['label' => 'Computer summary', 'url' => ['/computer-summary']],
-            ['label' => 'Maintenance request', 'url' => ['/maintenance-request']],
-            ['label' => 'Log', 'url' => ['/log']],
+        ['label' => Yii::t('customer', 'Customers'), 'url' => ['/customer']],
+        ['label' => Yii::t('computerSummary', 'Computer'), 'items' => [
+            ['label' => Yii::t('brand', 'Brand'), 'url' => ['/brand']],
+            ['label' => Yii::t('computerModel', 'Computer Model'), 'url' => ['/computer-model']],
+            ['label' => Yii::t('computerSummary', 'Computer summary'), 'url' => ['/computer-summary']],
+            ['label' => Yii::t('maintenaceRequest', 'Maintenance Requests'), 'url' => ['/maintenance-request']],
+            ['label' => Yii::t('log', 'Log'), 'url' => ['/log']],
         ]],
-        ['label' => 'Invoice', 'items' => [
-            ['label' => 'Invoices', 'url' => ['/invoice']],
-            ['label' => 'Invoice rules', 'url' => ['/invoice-rule']],
-            ['label' => 'Invoice rule types', 'url' => ['/invoice-rule-type']],
-            ['label' => 'vat', 'url' => ['/vat']]
+        ['label' => Yii::t('invoice', 'Invoice'), 'items' => [
+            ['label' => Yii::t('invoice', 'Invoices'), 'url' => ['/invoice']],
+            ['label' => Yii::t('invoiceRules', 'Invoice Rules'), 'url' => ['/invoice-rule']],
+            ['label' => Yii::t('invoiceRuleType', 'Invoice Rule Types'), 'url' => ['/invoice-rule-type']],
+            ['label' => Yii::t('vat', 'Vats'), 'url' => ['/vat']]
         ]]
     ];
     }

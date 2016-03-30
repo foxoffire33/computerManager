@@ -66,14 +66,14 @@ class Invoice extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('customer', 'ID'),
-            'customer_id' => Yii::t('customer', 'Customer ID'),
-            'reference' => Yii::t('customer', 'Reference'),
-            'invoice_number' => Yii::t('customer', 'Invoice Number'),
-            'payed' => Yii::t('customer', 'Payed'),
-            'description' => Yii::t('customer', 'Description'),
-            'datetime_created' => Yii::t('customer', 'Datetime Created'),
-            'datetime_updated' => Yii::t('customer', 'Datetime Updated'),
+            'id' => Yii::t('invoice', 'ID'),
+            'customer_id' => Yii::t('invoice', 'Customer ID'),
+            'reference' => Yii::t('invoice', 'Reference'),
+            'invoice_number' => Yii::t('invoice', 'Invoice Number'),
+            'payed' => Yii::t('invoice', 'Payed'),
+            'description' => Yii::t('invoice', 'Description'),
+            'datetime_created' => Yii::t('common', 'Datetime Created'),
+            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 
