@@ -74,6 +74,8 @@ class Invoice extends ActiveRecord
             'description' => Yii::t('invoice', 'Description'),
             'datetime_created' => Yii::t('common', 'Datetime Created'),
             'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            //form labels
+            'customerNameVirtual' => Yii::t('customer', 'Customer')
         ];
     }
 

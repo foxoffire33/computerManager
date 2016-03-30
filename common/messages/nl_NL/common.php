@@ -8,4 +8,6 @@ return [
     'Update' => 'Bewerk',
     'Delete' => 'Verwijder',
     'Are you sure you want to delete this item?' => 'Weet u zekker dat u dit wil verwijderen',
+    'Yes' => 'Ja',
+    'No' => 'Nee',
 ];

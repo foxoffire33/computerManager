@@ -103,21 +103,21 @@ $this->registerJs('
 
     <?= $form->field($model, 'invoice_number')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'payed')->dropDownList([Invoice::PAYED_NO => Yii::t('releaz', 'No'), Invoice::PAYED_YES => Yii::t('releaz', 'Yes')]) ?>
+    <?= $form->field($model, 'payed')->dropDownList([Invoice::PAYED_NO => Yii::t('common', 'No'), Invoice::PAYED_YES => Yii::t('common', 'Yes')]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <div class="row">
-        <h2><?= Yii::t('invoice-line', 'Invoice Lines') ?></h2>
+        <h2><?= Yii::t('invoiceRule', 'Invoice Rules') ?></h2>
 
         <table class="table table-bordered table-striped" id="invoice-lines">
             <thead>
             <tr>
-                <th><?= Yii::t('invoice-line', 'Name') ?></th>
-                <th><?= Yii::t('invoice-line', 'Quantity') ?></th>
-                <th><?= Yii::t('invoice-line', 'Price') ?></th>
-                <th><?= Yii::t('invoice-line', 'Type') ?></th>
-                <th><?= Yii::t('invoice-line', 'VAT') ?></th>
+                <th><?= Yii::t('invoiceRule', 'Name') ?></th>
+                <th><?= Yii::t('invoiceRule', 'Quantity') ?></th>
+                <th><?= Yii::t('invoiceRule', 'Price') ?></th>
+                <th><?= Yii::t('invoiceRule', 'Type') ?></th>
+                <th><?= Yii::t('invoiceRule', 'Vat ID') ?></th>
                 <th></th>
             </tr>
             </thead>
@@ -145,7 +145,7 @@ $this->registerJs('
     </div>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('invoice', 'Create') : Yii::t('invoice', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('common', 'Create') : Yii::t('common', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

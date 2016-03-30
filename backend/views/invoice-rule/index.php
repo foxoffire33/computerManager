@@ -2,6 +2,9 @@
 
 use yii\grid\GridView;
 use yii\helpers\Html;
+use common\models\Vat;
+use common\models\InvoiceRuleType;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\InvoiceRuleSearch */
@@ -13,10 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="invoice-rule-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('invoiceRule', 'Create Invoice Rule'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('common', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -24,20 +26,29 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+            'name',
             'invoice_id' => [
                 'attribute' => 'invoice_id',
                 'value' => function ($data) {
                     return $data->invoice->invoice_number;
                 }
             ],
-            'type_id',
-            'vat_id',
-            'name',
-            // 'price',
-            // 'quantity',
-            // 'datetime_created',
-            // 'datetime_updated',
-
+            'type_id' => [
+                'filter' => ArrayHelper::map(InvoiceRuleType::find()->asArray()->all(), 'id', 'name'),
+                'attribute' => 'type_id',
+                'value' => function ($data) {
+                    return $data->type->name;
+                }
+            ],
+            'vat_id' => [
+                'filter' => ArrayHelper::map(Vat::find()->asArray()->all(), 'id', 'name'),
+                'attribute' => 'vat_id',
+                'value' => function ($data) {
+                    return $data->vat->name;
+                }
+            ],
+            'quantity',
+            'price:currency',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

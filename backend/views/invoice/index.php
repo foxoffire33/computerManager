@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <p>
-        <?= Html::a(Yii::t('invoice', 'Create Invoice'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('common', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -33,12 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'invoice_number',
             'payed' => [
                 'filter' => [
-                    Invoice::PAYED_NO => Yii::t('invoice', 'No'),
-                    Invoice::PAYED_YES => Yii::t('invoice', 'Yes')
+                    Invoice::PAYED_NO => Yii::t('common', 'No'),
+                    Invoice::PAYED_YES => Yii::t('common', 'Yes')
                 ],
                 'attribute' => 'payed',
                 'value' => function ($data) {
-                    return ($data->payed ? Yii::t('invoice', 'Yes') : Yii::t('nvoice', 'No'));
+                    return ($data->payed ? Yii::t('common', 'Yes') : Yii::t('common', 'No'));
                 }
             ],
             'exBtw:currency',

@@ -86,6 +86,7 @@ class InvoiceRule extends ActiveRecord
             'quantity' => Yii::t('invoiceRule', 'Quantity'),
             'datetime_created' => Yii::t('common', 'Datetime Created'),
             'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            'invoiceNameVirtual' => Yii::t('invoice', 'Invoice Number')
         ];
     }
 

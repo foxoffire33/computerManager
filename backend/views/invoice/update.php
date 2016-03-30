@@ -5,9 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Invoice */
 
-$this->title = Yii::t('invoice', 'Update {modelClass}: ', [
-    'modelClass' => 'Invoice',
-]) . ' ' . $model->id;
+$this->title = Yii::t('common', 'Update: {name}', ['name' => $model->invoice_number]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('invoice', 'Invoices'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('invoice', 'Update');

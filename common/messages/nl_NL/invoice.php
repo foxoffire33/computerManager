@@ -8,4 +8,5 @@ return [
     'Invoice Number' => 'Factuurnummer',
     'Payed' => 'Betaald',
     'Description' => 'Omschrijving',
+    'Add invoice line' => 'Factuur regel toevoegen'
 ];
