@@ -63,7 +63,6 @@ class InvoiceRuleController extends BackendController
     public function actionCreate()
     {
         $model = new InvoiceRule();
-        $model->scenario = 'invoiceForm';
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -80,7 +79,6 @@ class InvoiceRuleController extends BackendController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->scenario = 'invoiceForm';
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -98,6 +96,6 @@ class InvoiceRuleController extends BackendController
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Yii::$app->request->referrer);
     }
 }

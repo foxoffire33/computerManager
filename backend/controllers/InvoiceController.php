@@ -70,9 +70,15 @@ class InvoiceController extends BackendController
         $invoiceRuleModels = [];
 
         if (Yii::$app->request->isPost && ($count = count(Yii::$app->request->post('InvoiceRule', []))) > 0) {
-            $invoiceRuleModels = array_fill(0, $count, new InvoiceRule(['scenario' => InvoiceRule::SCENARIO_INVOICEFORM]));
+            $count = count(Yii::$app->request->post('InvoiceRule', []));
+            $invoiceRuleModels = [new InvoiceRule(['scenario' => InvoiceRule::SCENARIO_INVOICEFORM])];
+            for ($i = 1; $i < $count; $i++) {
+                $invoiceRuleModels[] = new InvoiceRule(['scenario' => InvoiceRule::SCENARIO_INVOICEFORM]);
+            }
             if ($model->load(['Invoice' => Yii::$app->request->post('Invoice')]) && Model::loadMultiple($invoiceRuleModels, Yii::$app->request->post())) {
-                if ($model->validate() && Model::validateMultiple($invoiceRuleModels)) {
+                $modelValidate = $model->validate();
+                $invoiceRuleModelsValidate = Model::validateMultiple($invoiceRuleModels);
+                if (($modelValidate && $invoiceRuleModelsValidate)) {
                     $model->save(false);
                     foreach ($invoiceRuleModels as $invoiceRuleModel) {
                         $invoiceRuleModel->invoice_id = $model->id;
@@ -83,8 +89,10 @@ class InvoiceController extends BackendController
             }
         } else {
             $invoiceRuleModels[] = new InvoiceRule();
+            $model->invoice_date = date('Y-m-d');
         }
 
+        $model->checkInvoiceNumber();
         return $this->render('create', ['model' => $model, 'invoiceRules' => $invoiceRuleModels]);
 
     }
@@ -101,9 +109,20 @@ class InvoiceController extends BackendController
         $invoiceRuleModels = [];
 
         if (Yii::$app->request->isPost && ($count = count(Yii::$app->request->post('InvoiceRule', []))) > 0) {
-            $invoiceRuleModels = array_fill(0, $count, new InvoiceRule(['scenario' => InvoiceRule::SCENARIO_INVOICEFORM]));
+
+            $postedInvoiceRules = Yii::$app->request->post('InvoiceRule', []);
+            for ($i = 0; $i < $count; $i++) {
+                if (isset($postedInvoiceRules[$i]['id']) && !empty(($invoiceRule = InvoiceRule::findOne($postedInvoiceRules[$i]['id'])))) {
+                    $invoiceRule->scenario = InvoiceRule::SCENARIO_INVOICEFORM;
+                    $invoiceRuleModels[] = $invoiceRule;
+                } else {
+                    $invoiceRuleModels[] = new InvoiceRule(['scenario' => InvoiceRule::SCENARIO_INVOICEFORM]);
+                }
+            }
             if ($model->load(['Invoice' => Yii::$app->request->post('Invoice')]) && Model::loadMultiple($invoiceRuleModels, Yii::$app->request->post())) {
-                if ($model->validate() && Model::validateMultiple($invoiceRuleModels)) {
+                $modelValidate = $model->validate();
+                $invoiceRuleModelsValidate = Model::validateMultiple($invoiceRuleModels);
+                if (($modelValidate && $invoiceRuleModelsValidate)) {
                     $model->save(false);
                     foreach ($invoiceRuleModels as $invoiceRuleModel) {
                         $invoiceRuleModel->invoice_id = $model->id;
@@ -115,7 +134,7 @@ class InvoiceController extends BackendController
         } else {
             $invoiceRuleModels = $model->invoiceRules;
         }
-        return $this->render('update', ['model' => $model,'invoiceRules' => $invoiceRuleModels]);
+        return $this->render('update', ['model' => $model, 'invoiceRules' => $invoiceRuleModels]);
 
     }
 

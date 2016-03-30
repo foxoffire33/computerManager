@@ -26,6 +26,7 @@ class m160302_130128_createDB extends Migration
             'customer_id' => $this->integer(11),
             'reference' => $this->string(128),
             'invoice_number' => $this->string(128),
+            'invoice_date' => $this->date(),
             'payed' => $this->boolean()->defaultValue(false),
             'description' => $this->text()
         ], $this->getDatetimeUpdateAndCreate()));

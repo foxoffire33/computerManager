@@ -42,7 +42,7 @@ class Invoice extends ActiveRecord
     public function rules()
     {
         return [
-            [['customerNameVirtual', 'payed', 'invoice_number'], 'required'],
+            [['customerNameVirtual', 'payed', 'invoice_number', 'invoice_date'], 'required'],
             [['customer_id', 'payed'], 'integer'],
             [['description'], 'string'],
             [['datetime_created', 'datetime_updated'], 'safe'],
@@ -70,6 +70,7 @@ class Invoice extends ActiveRecord
             'customer_id' => Yii::t('invoice', 'Customer ID'),
             'reference' => Yii::t('invoice', 'Reference'),
             'invoice_number' => Yii::t('invoice', 'Invoice Number'),
+            'invoice_date' => Yii::t('invoice', 'Invoice Date'),
             'payed' => Yii::t('invoice', 'Payed'),
             'description' => Yii::t('invoice', 'Description'),
             'datetime_created' => Yii::t('common', 'Datetime Created'),
@@ -77,6 +78,21 @@ class Invoice extends ActiveRecord
             //form labels
             'customerNameVirtual' => Yii::t('customer', 'Customer')
         ];
+    }
+
+    public function checkInvoiceNumber()
+    {
+        if (empty($this->invoice_number)) {
+            $query = self::find()->select('max(invoice_number) as invoice_number')
+                ->where(['year(invoice_date)' => $this->invoice_date])
+                ->asArray()
+                ->one();
+            if (intval($query['invoice_number']) == 0) {
+                $this->invoice_number = date('Y') . '00001';
+            } else {
+                $this->invoice_number = intval($query['invoice_number']) + 1;
+            }
+        }
     }
 
     /**

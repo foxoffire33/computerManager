@@ -4,6 +4,7 @@ use common\models\Customer;
 use common\models\Invoice;
 use common\models\InvoiceRuleType;
 use common\models\Vat;
+use kartik\date\DatePicker;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -32,6 +33,7 @@ $this->registerJs('
 		$(\'<td/>\').append(formGroup(\'price\', textInput(\'price\'))).appendTo($newRow);
 		$(\'<td/>\').append(formGroup(\'type_id\', selectInput(\'type\',$(invoiceRuleTypes)))).appendTo($newRow);
 		$(\'<td/>\').append(formGroup(\'vat_id\', selectInput(\'vat_id\',$(vatOptions)))).appendTo($newRow);
+		$(\'<td/>\').append(hiddenInput(\'id\')).append(deleteIcon()).appendTo($newRow);
 
 		$(\'#invoice-lines tbody\').append($newRow);
 
@@ -81,6 +83,15 @@ $this->registerJs('
 		}).append(input);
 	}
 
+	function hiddenInput(attribute)
+	{
+		return $(\'<input/>\', {
+			id: \'InvoiceRule\' + nextIndex + \'-\' + attribute.toLowerCase(),
+			type: \'hidden\',
+			name: \'InvoiceRule[\' + nextIndex + \'][\' + attribute + \']\'
+		});
+	}
+
 	function deleteIcon()
 	{
 		return $(\'<a/>\', {
@@ -95,13 +106,15 @@ $this->registerJs('
 
 <div class="invoice-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['enableClientValidation' => false]); ?>
 
     <?= $form->field($model, 'customerNameVirtual')->widget(Select2::classname(), ['pluginOptions' => ['data' => ArrayHelper::getColumn(Customer::find()->all(), 'name')]]); ?>
 
     <?= $form->field($model, 'reference')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'invoice_number')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'invoice_date')->widget(DatePicker::classname(), ['pluginOptions' => ['autoclose' => true, 'format' => 'yyyy-mm-dd']]); ?>
 
     <?= $form->field($model, 'payed')->dropDownList([Invoice::PAYED_NO => Yii::t('common', 'No'), Invoice::PAYED_YES => Yii::t('common', 'Yes')]) ?>
 
@@ -131,7 +144,8 @@ $this->registerJs('
                         <td><?= $form->field($lineModel, 'price')->textInput(['name' => "InvoiceRule[$index][price]"])->label(false) ?></td>
                         <td><?= $form->field($lineModel, 'type_id')->dropDownList($invoiceRuleTypes, ['name' => "InvoiceRule[$index][type_id]", 'prompt' => Yii::t('common', 'Select')])->label(false) ?></td>
                         <td><?= $form->field($lineModel, 'vat_id')->dropDownList($vatOptions, ['name' => "InvoiceRule[$index][vat_id]", 'prompt' => Yii::t('common', 'Select')])->label(false) ?></td>
-                        <td><?= Html::activeHiddenInput($lineModel, "[$index]id") ?><?= Html::a('<span class="glyphicon glyphicon-trash"></span>', '#', ['class' => 'remove-invoice-line']) ?></td>
+                        <td><?= $form->field($lineModel, 'id')->hiddenInput(['name' => "InvoiceRule[$index][id]"])->label(false) ?>
+                            <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', '#', ['class' => 'remove-invoice-line']) ?></td>
                     </tr>
                     <?php ++$index ?>
                 <?php endforeach ?>
