@@ -30,7 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'invoice_id' => [
                 'attribute' => 'invoice_id',
-                'value' => $model->invoice->invoice_number
+                'format' => 'html',
+                'value' => Html::a($model->invoice->invoice_number, ['/invoice/view', 'id' => $model->invoice_id]),
             ],
             'type_id' => [
                 'attribute' => 'type_id',

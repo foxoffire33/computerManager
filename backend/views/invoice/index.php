@@ -25,8 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'customer_id' => [
                 'attribute' => 'customer_id',
+                'format' => 'html',
                 'value' => function ($data) {
-                    return $data->customer->name;
+                    return Html::a($data->customer->name, ['/customer/view', 'id' => $data->customer_id]);
                 }
             ],
             'reference',

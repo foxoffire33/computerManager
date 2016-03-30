@@ -29,8 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'invoice_id' => [
                 'attribute' => 'invoice_id',
+                'format' => 'html',
                 'value' => function ($data) {
-                    return $data->invoice->invoice_number;
+                    return Html::a($data->invoice->invoice_number, ['/invoice/view', 'id' => $data->invoice_id]);
                 }
             ],
             'type_id' => [
