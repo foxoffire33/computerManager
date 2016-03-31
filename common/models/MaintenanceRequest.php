@@ -50,12 +50,10 @@ class MaintenanceRequest extends ActiveRecord
             [['computer_id', 'status'], 'integer'],
             [['description'], 'string'],
             [['date_apointment', 'date_done'], 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
-            [['date_done', 'date_apointment', 'datetime_created', 'datetime_updated'], 'safe'],
+            [['date_done', 'date_apointment', 'datetime_created', 'datetime_updated', 'computerNameVirtual'], 'safe'],
             [['computerNameVirtual'], 'exist', 'targetClass' => 'common\models\ComputerSummary', 'targetAttribute' => 'name'],
             ['status', 'in', 'range' => [self::STATUS_REQUEST, self::STATUS_PROCESS, self::STATUS_DONE]],
-            [['computerNameVirtual', 'computer_id'], 'hasComputerAlReadyAMaintenenceRequestValidatetor', 'when' => function () {
-                return $this->isNewRecord;
-            }]
+            [['computerNameVirtual', 'computer_id'], 'hasComputerAlReadyAMaintenenceRequestValidatetor']
         ];
     }
 
@@ -65,14 +63,20 @@ class MaintenanceRequest extends ActiveRecord
      */
     public function hasComputerAlReadyAMaintenenceRequestValidatetor()
     {
-        //backend
-        if (isset($this->computerNameVirtual) && ($computer = ComputerSummary::find()->where(['name' => $this->computerNameVirtual])->one())) {
-            if (!empty(self::find()->where('computer_id = :computerID and status != :status', ['computerID' => $computer->id, 'status' => self::STATUS_DONE])->one())) {
-                $this->addError('computerNameVirtual', Yii::t('error', 'Computer has already an maintenance request.'));
-            }
-        } elseif (isset($this->computer_id)) {//frontend
-            if (!empty(self::find()->where('computer_id = :computerID and status != :status', ['computerID' => $this->computer_id, 'status' => self::STATUS_DONE])->one())) {
-                $this->addError('description', Yii::t('error', 'Computer has already an maintenance request.'));
+
+        //todo dit fixen
+        var_dump($this->dirtyAttributes);
+        exit;
+        if ($this->isAttributeChanged('computer_id') || $this->isAttributeChanged('computerNameVirtual')) {
+            //backend
+            if (isset($this->computerNameVirtual) && ($computer = ComputerSummary::find()->where(['name' => $this->computerNameVirtual])->one())) {
+                if (!empty(self::find()->where('computer_id = :computerID and status != :status', ['computerID' => $computer->id, 'status' => self::STATUS_DONE])->one())) {
+                    $this->addError('computerNameVirtual', Yii::t('error', 'Computer has already an maintenance request.'));
+                }
+            } elseif (isset($this->computer_id)) {//frontend
+                if (!empty(self::find()->where('computer_id = :computerID and status != :status', ['computerID' => $this->computer_id, 'status' => self::STATUS_DONE])->one())) {
+                    $this->addError('description', Yii::t('error', 'Computer has already an maintenance request.'));
+                }
             }
         }
     }
