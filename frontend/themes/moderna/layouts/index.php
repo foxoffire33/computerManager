@@ -11,7 +11,7 @@
                                 <h3>Is uw computer langzaam?</h3>
                                 <p>Via ComputerOnderhouden.nl kunt u snel en simpel een onderhoudsbeurt aanvragen voor
                                     uw computer</p>
-                                <?= Html::a('Reparatie aanvragen', '/computer-onderhoud-of-reparatie-aanvragen', ['class' => 'btn btn-theme']) ?>
+                                <?= Html::a('Reparatie aanvragen', '/maintenance-request', ['class' => 'btn btn-theme']) ?>
                             </div>
                         </li>
                         <li>
@@ -20,7 +20,7 @@
                                 <h3>Computer informatie bekijken</h3>
                                 <p>Nadat uw computer bij ons is geweest kunt u zien wat er in uw computer zit en welke
                                     programma's er op staan</p>
-                                <?= Html::a('Reparatie aanvragen', '/computer-onderhoud-of-reparatie-aanvragen', ['class' => 'btn btn-theme']) ?>
+                                <?= Html::a('Reparatie aanvragen', '/maintenance-request', ['class' => 'btn btn-theme']) ?>
                             </div>
                         </li>
                         <li>
@@ -29,7 +29,7 @@
                                 <h3>Reparaties inzien</h3>
                                 <p>Uw kunt per computer zien wat de status van de reparatie is en wat wij gedaan
                                     hebben</p>
-                                <?= Html::a('Reparatie aanvragen', '/computer-onderhoud-of-reparatie-aanvragen', ['class' => 'btn btn-theme']) ?>
+                                <?= Html::a('Reparatie aanvragen', '/maintenance-request', ['class' => 'btn btn-theme']) ?>
                             </div>
                         </li>
                     </ul>

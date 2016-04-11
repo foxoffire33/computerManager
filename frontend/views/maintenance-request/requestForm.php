@@ -5,6 +5,14 @@ use yii\widgets\ActiveForm;
 $this->params['breadcrumbs'][] = Yii::t('maintenanceRequest', 'maintenance request');
 ?>
     <div class="container">
+        <p>
+            Via het formulier hier onder kunt u snel en makkelijk een reparaie aanvragen.<br/>
+            Wij nemen dan zo snel mogelijk contact met u op om de computer bij u thuis op te halen.<br/>
+            En als uw computer klaar is sluiten wij alles weer bij u thuis aan.
+            Nog vragen? neem dan contact met ons op via het <?= Html::a('contact formulier', ['/site/contact']) ?> of
+            bel
+
+        </p>
         <?php $form = ActiveForm::begin([
             'enableClientValidation' => false,
             'enableAjaxValidation' => true,
@@ -40,7 +48,7 @@ $this->params['breadcrumbs'][] = Yii::t('maintenanceRequest', 'maintenance reque
             <?= $form->field($model, 'description')->textArea(['rows' => 6]); ?>
         </div>
         <div class="form-group">
-            <?= Html::submitButton(Yii::t('maintenanceRequest', 'Send request'), ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Yii::t('MaintenaceRequest', 'Requesting'), ['class' => 'btn btn-primary']) ?>
         </div>
         <?php ActiveForm::end(); ?>
     </div>

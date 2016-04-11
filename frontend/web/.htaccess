@@ -32,3 +32,9 @@ Header append Cache-Control "proxy-revalidate"
 ExpiresActive Off
 Header set Cache-Control "private, no-cache, no-store, proxy-revalidate, no-transform"
 Header set Pragma "no-cache"
+
+<IfModule mod_deflate.c>
+    #<filesMatch "\.(js|css|html|php)$">
+        SetOutputFilter DEFLATE
+    #</filesMatch>
+</IfModule>

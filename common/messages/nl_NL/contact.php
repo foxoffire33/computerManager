@@ -1,7 +1,7 @@
 <?php
 return [
     'Name' => 'Naam',
-    'subject' => 'Onderwerp',
+    'Subject' => 'Onderwerp',
     'Body' => 'Bericht',
     'Verification Code' => 'Verificatie',
     //falsh messages

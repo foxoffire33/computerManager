@@ -63,10 +63,6 @@ class MaintenanceRequest extends ActiveRecord
      */
     public function hasComputerAlReadyAMaintenenceRequestValidatetor()
     {
-
-        //todo dit fixen
-        var_dump($this->dirtyAttributes);
-        exit;
         if ($this->isAttributeChanged('computer_id') || $this->isAttributeChanged('computerNameVirtual')) {
             //backend
             if (isset($this->computerNameVirtual) && ($computer = ComputerSummary::find()->where(['name' => $this->computerNameVirtual])->one())) {

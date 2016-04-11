@@ -34,7 +34,7 @@ class MyMenu
     private static function getBeginDefaultItems()
     {
         return [['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Maintenance request', 'url' => '/maintenance-request', 'visible' => Yii::$app->user->isGuest],
+            ['label' => Yii::t('nav', 'Maintenance request'), 'url' => '/maintenance-request', 'visible' => Yii::$app->user->isGuest],
             ['label' => Yii::t('nav', 'Tariven'), 'url' => ['/page/computer-onderhoud-en-reparatie-tarieven']],
             ['label' => 'Informatie', [], 'items' => [
                 ['label' => 'Hoe werken wij', 'url' => ['/page/onderhoud-waarom']],

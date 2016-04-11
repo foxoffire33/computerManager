@@ -12,6 +12,21 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'assetManager' => [
+            'linkAssets' => true,
+            'bundles' => [
+                'all' => [
+                    'class' => 'yii\web\AssetBundle',
+                    'basePath' => '@webroot/assets',
+                    'baseUrl' => '@web/assets',
+                    'css' => ['all-xyz.css'],
+                    'js' => ['all-xyz.js'],
+                ],
+                'yii\web\JqueryAsset' => ['js' => ['jquery.min.js']],
+                'yii\bootstrap\BootstrapAsset' => ['css' => ['css/bootstrap.min.css']],
+                'yii\bootstrap\BootstrapPluginAsset' => ['js' => ['js/bootstrap.min.js']]
+            ],
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

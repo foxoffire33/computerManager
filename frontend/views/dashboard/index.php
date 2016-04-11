@@ -17,15 +17,9 @@ $this->params['breadcrumbs'][] = Yii::t('dahboard', 'Dashboard');
                     ]]),
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-                    'reference' => [
-                        'header' => Yii::t('invoice', 'Reference')
-                    ],
-                    'invoice_number' => [
-                        'header' => Yii::t('invoice', 'Invoice Number')
-                    ],
-                    'payed:boolean' => [
-                        'header' => Yii::t('invoice', 'Payed')
-                    ],
+                    'reference',
+                    'invoice_number',
+                    'payed:boolean',
                     'exBtw:currency',
                     'inBtw:currency',
                     [

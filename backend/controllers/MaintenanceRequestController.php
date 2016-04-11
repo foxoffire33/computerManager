@@ -84,7 +84,6 @@ class MaintenanceRequestController extends BackendController
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
         $model->computerNameVirtual = (isset($model->computer->name) ? $model->computer->name : '');
         return $this->render('update', ['model' => $model]);
     }

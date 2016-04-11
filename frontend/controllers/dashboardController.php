@@ -22,13 +22,12 @@ class DashboardController extends FrontendController
     {
         if (!empty(($invoice = Invoice::findOne($id))) && Yii::$app->user->can('downloadOwnInvoice', ['id' => $id])) {
             $this->layout = '//print';
-
             $content = $this->render('invoicePdf', ['model' => $invoice]);
 
             $pdf = new mPDF();
             $pdf->WriteHTML($content);
 
-            return $pdf->Output("{$invoice->customer->name}-{$invoice->invoice_number}", 'D');
+            return $pdf->Output("{$invoice->customer->name}-{$invoice->invoice_number}.pdf", 'D');
         }
         throw new NotFoundHttpException();
     }

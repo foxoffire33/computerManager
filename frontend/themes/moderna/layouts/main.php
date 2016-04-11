@@ -115,24 +115,10 @@ $bundel = ModernaAsset::register($this);
             "url" : "http://www.computeronderhouden.nl",
             "sameAs" : [ "https://www.facebook.com/pages/ComputerOnderhoudennl/442709885907316"]
             }
-
-
-
-
-
-
-
     </script>
     <?php if (isset($this->params['breadcrumbs'])): ?>
         <script type='application/ld+json'>
     <?= BreadcrumsSeo::makeBreadcrums($this->params['breadcrumbs']) ?>
-
-
-
-
-
-
-
         </script>
     <?php endif; ?>
     <?php $this->endBody() ?>
