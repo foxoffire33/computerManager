@@ -1,3 +1,7 @@
+<?php
+$this->params['breadcrumbs'][] = ['label' => 'Informatie'];
+$this->params['breadcrumbs'][] = ['label' => 'Onderhoud en reparatie tarieven'];
+?>
 <div class="container">
     <div class="row">
         <h2>Kosten voor eenmalige actie</h2>

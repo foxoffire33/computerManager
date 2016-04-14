@@ -1,5 +1,9 @@
+<?php
+$this->params['breadcrumbs'][] = ['label' => 'Informatie'];
+$this->params['breadcrumbs'][] = ['label' => 'Mogelijkheden thuis'];
+?>
 <div class="container">
-    <h1>Computreronderhouden.nl kan ook veel bij u thuis</h1>
+    <h1>ComputerOnderhouden.nl kan ook veel bij u thuis</h1>
     <p>Wij repareeren / installeren bij u thuis, en u kunt de zelfde dag uw computer weer gebruiken.</p>
     <div class="row">
         <span class="col-xs-7 fa fa-search" style="font-weight: 700"> Onderzoek </span>

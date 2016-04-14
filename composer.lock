@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2a48ac137050b4beecbaf8d849d80134",
-    "content-hash": "23886edf26944804065fc7f47ed978c7",
+    "hash": "716e7db626974423529922424700d3ad",
+    "content-hash": "7b9185f53900dcc312798663d5749d19",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -411,12 +411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-social.git",
-                "reference": "244e9fadd712e653562355389081be3cd85b8e38"
+                "reference": "ff3a5e82cccba2868a6e7a4c4b4ecabfa2a40f23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-social/zipball/244e9fadd712e653562355389081be3cd85b8e38",
-                "reference": "244e9fadd712e653562355389081be3cd85b8e38",
+                "url": "https://api.github.com/repos/kartik-v/yii2-social/zipball/ff3a5e82cccba2868a6e7a4c4b4ecabfa2a40f23",
+                "reference": "ff3a5e82cccba2868a6e7a4c4b4ecabfa2a40f23",
                 "shasum": ""
             },
             "require": {
@@ -456,7 +456,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-03-14 21:33:56"
+            "time": "2016-04-13 13:57:48"
         },
         {
             "name": "kartik-v/yii2-widget-datepicker",

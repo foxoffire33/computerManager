@@ -1,4 +1,4 @@
-<?php //use kartik\social\FacebookPlugin;  ?>
+<?php use kartik\social\FacebookPlugin; ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
@@ -29,7 +29,7 @@
         <div class="col-lg-4">
             <div class="widget">
                 <h5 class="widgetheading">Laatste computernieuws</h5>
-                <?php // FacebookPlugin::widget(['type'=>FacebookPlugin::POST, 'settings' => ['href'=>'https://www.facebook.com/FacebookDevelopers/posts/10151471074398553']]); ?>
+                <?php // FacebookPlugin::widget(['type'=>FacebookPlugin::POST, 'settings' => ['href'=>'http://facebook.com/<page_name>/posts/<id>']]); ?>
                 <ul class="link-list">
                     <!--                                    <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
                                                         <li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
