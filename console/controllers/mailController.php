@@ -38,14 +38,8 @@ class MailController extends Controller
         } else {
             return 1;
         }
-        if (($models = $this->getMaintenanceRequestByDateTime($this->modifyDatetime('-6 month'))) !== false) {
+        if (($models = $this->getMaintenanceRequestByDateTime($this->modifyDatetime('-5 month'))) !== false) {
             $this->sendMail('maintenanceRequests/sixMonths', $models); //6 maanden na reparatie
-        } else {
-            return 1;
-        }
-
-        if (($models = $this->getMaintenanceRequestByDateTime($this->modifyDatetime('-18 month'))) !== false) {
-            $this->sendMail('maintenanceRequests/twoYears', $models); //twee jaar na reparatie
         } else {
             return 1;
         }
