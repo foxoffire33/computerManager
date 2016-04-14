@@ -30,6 +30,14 @@ return [
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
+            'identityCookie' => [
+                'name' => '_frontendUser',
+                'path' => '/'
+            ]
+        ],
+        'session' => [
+            'name' => '_frontendSessionId',
+            'savePath' => __DIR__ . '/../runtime',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
