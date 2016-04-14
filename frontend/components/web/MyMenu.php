@@ -35,11 +35,12 @@ class MyMenu
     {
         return [['label' => 'Home', 'url' => ['/site/index']],
             ['label' => Yii::t('nav', 'Maintenance request'), 'url' => '/maintenance-request', 'visible' => Yii::$app->user->isGuest],
+            ['label' => Yii::t('nav', 'Wij komen naar u'), 'url' => ['/page/mogelijkheden-thuis']],
             ['label' => Yii::t('nav', 'Tariven'), 'url' => ['/page/computer-onderhoud-en-reparatie-tarieven']],
-            ['label' => 'Informatie', [], 'items' => [
-                ['label' => 'Hoe werken wij', 'url' => ['/page/onderhoud-waarom']],
-                ['label' => 'Traage computer?', 'url' => ['/page/waarom-wordt-mijn-computer-traag']]
-            ]],
+            /* ['label' => 'Informatie', [], 'items' => [
+                 ['label' => 'Hoe werken wij', 'url' => ['/page/onderhoud-waarom']],
+                 ['label' => 'Traage computer?', 'url' => ['/page/waarom-wordt-mijn-computer-traag']]
+             ]],*/
             ['label' => 'Contact', 'url' => ['/site/contact']]
         ];
     }

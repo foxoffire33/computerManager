@@ -29,6 +29,8 @@ class MaintenanceRequest extends ActiveRecord
     const SCENARIO_FRONTEND = 'frontend';
 
     public $computerNameVirtual;
+    public $query_customer_email;
+    public $query_customer_name;
 
     /**
      * @inheritdoc
