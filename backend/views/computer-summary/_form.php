@@ -17,6 +17,8 @@ use common\models\Customer;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model,'name')->textInput() ?>
+
     <?= $form->field($model, 'customerNameVirtual')->widget(Select2::classname(), ['pluginOptions' => ['data' => ArrayHelper::getColumn(Customer::find()->all(), 'name')]]); ?>
 
     <?= $form->field($model, 'type')->dropDownList([
