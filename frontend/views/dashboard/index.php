@@ -4,7 +4,7 @@ use yii\data\ArrayDataProvider;
 use yii\grid\GridView;
 use yii\widgets\DetailView;
 
-$this->params['breadcrumbs'][] = Yii::t('dahboard', 'Dashboard');
+$this->params['breadcrumbs'][] = Yii::t('dashboard', 'Dashboard');
 ?>
 <div class="row">
     <div class="col-sm-8">
@@ -17,11 +17,26 @@ $this->params['breadcrumbs'][] = Yii::t('dahboard', 'Dashboard');
                     ]]),
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-                    'reference',
-                    'invoice_number',
-                    'payed:boolean',
-                    'exBtw:currency',
-                    'inBtw:currency',
+                    'reference' => [
+                        'attribute' => 'reference',
+                        'header' => Yii::t('invoice', 'Reference'),
+                    ],
+                    'invoice_number' => [
+                        'attribute' => 'invoice_number',
+                        'header' => Yii::t('invoice', 'Invoice Number')
+                    ],
+                    'payed:boolean' => [
+                        'attribute' => 'payed',
+                        'header' => Yii::t('invoice', 'Payed')
+                    ],
+                    'exBtw:currency' => [
+                        'attribute' => 'exBtw',
+                        'header' => Yii::t('invoice', 'Excl btw'),
+                    ],
+                    'inBtw:currency' => [
+                        'attribute' => 'inBtw',
+                        'header' => Yii::t('invoice', 'Incl btw'),
+                    ],
                     [
                         'class' => 'yii\grid\ActionColumn',
                         'template' => '{download}',

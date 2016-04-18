@@ -5,7 +5,7 @@ return [
     'Requesting' => 'Aanvragen',
     //attributes frontend maintenanceRequestForm
     'First name' => 'Voornaam',
-    'Lastname' => 'naam',
+    'Lastname' => 'Naam',
     'Zipcode' => 'Postcode',
     'House number' => 'Huisnummer',
     'Phone' => 'Telefoon',

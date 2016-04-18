@@ -7,10 +7,8 @@ use yii\web\AssetBundle;
 class ModernaAsset extends AssetBundle {
 
     public $baseUrl = '@web';
-    public $sourcePath = '@webroot/..//themes/moderna/AssetsBundel';
-    public $publishOptions = [
-        'forceCopy' => false,
-    ];
+    public $sourcePath = '@frontend/themes/moderna/AssetsBundel';
+    public $publishOptions = ['forceCopy' => false];
     //public $cssOptions = ["media" => "none","onload"=>"if(media!='all')media='all'"];
     public $jsOptions = ['position' => \yii\web\View::POS_END, 'async' => 'async',];
     public $css = [

@@ -20,9 +20,7 @@
         "yiisoft/yii2-swiftmailer": "*",
         "kartik-v/yii2-widget-datetimepicker": "*",
         "kartik-v/yii2-widget-datepicker": "*",
-        "mpdf/mpdf": "*",
-        "skeeks/yii2-assets-auto-compress": "^1.1",
-        "kartik-v/yii2-social": "dev-master"
+        "mpdf/mpdf": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

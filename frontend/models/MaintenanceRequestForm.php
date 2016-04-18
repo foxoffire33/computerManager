@@ -24,7 +24,7 @@ class MaintenanceRequestForm extends Model
     public $phone;
     //MaintenanceRequest model
     public $description;
-    //private
+
     public $address;
     //private vars for customer model
     public $city;
@@ -39,7 +39,7 @@ class MaintenanceRequestForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['firstName', 'lastName', 'email', 'zipcode', 'houseNumber', 'phone', 'description'], 'required'],
+            [['firstName', 'lastName', 'email', 'zipcode', 'address', 'phone', 'description'], 'required'],
             [['houseNumber'], 'integer'],
             ['zipcode', 'match', 'pattern' => '/^[0-9]{4}[A-Z]{2}/'],
             [['phone'], 'string', 'max' => 10],
@@ -50,7 +50,7 @@ class MaintenanceRequestForm extends Model
             [['email', 'phone'], 'unique', 'targetClass' => 'common\models\Customer'],
             [['email'], 'unique', 'targetClass' => 'common\models\User'],
             //custom validatetor postcode Api
-            [['zipcode', 'houseNumber'], 'checkAddressValidatetor']
+            // [['zipcode', 'houseNumber'], 'checkAddressValidatetor']
         ];
     }
 
@@ -68,8 +68,8 @@ class MaintenanceRequestForm extends Model
         return [
             'email' => Yii::t('customer', 'Email'),
             'firstName' => Yii::t('maintenaceRequest', 'First name'),
-            'lastname' => Yii::t('maintenaceRequest', 'Last name'),
-            'zipcode' => Yii::t('maintenanceRequest', 'Zipcode'),
+            'lastName' => Yii::t('maintenaceRequest', 'Lastname'),
+            'zipcode' => Yii::t('maintenaceRequest', 'Zipcode'),
             'houseNumber' => Yii::t('maintenaceRequest', 'House number'),
             'phone' => Yii::t('maintenaceRequest', 'Phone'),
             'description' => Yii::t('maintenaceRequest', 'Description'),

@@ -72,7 +72,7 @@
 
                             </div>
                             <div class="box-bottom">
-                                <?= Html::a('Reparatie aanvragen', '/computer-onderhoud-of-reparatie-aanvragen') ?>
+                                <?= Html::a('Reparatie aanvragen', '/maintenance-request') ?>
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
 
                             </div>
                             <div class="box-bottom">
-                                <?= Html::a('Reparatie aanvragen', '/computer-onderhoud-of-reparatie-aanvragen') ?>
+                                <?= Html::a('Reparatie aanvragen', '/maintenance-request') ?>
                             </div>
                         </div>
                     </div>

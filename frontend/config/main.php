@@ -65,13 +65,5 @@ return [
             ]
         ],
     ],
-    'modules' => [
-        'social' => [
-            'class' => 'kartik\social\Module',
-            'facebook' => [
-                'appId' => '1051876654824391',
-            ],
-        ],
-    ],
     'params' => $params,
 ];

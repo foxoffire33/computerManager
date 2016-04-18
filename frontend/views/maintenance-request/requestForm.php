@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = Yii::t('maintenaceRequest', 'Maintenance Reques
         <p>
             Via het formulier hier onder kunt u snel en makkelijk een reparaie aanvragen.<br/>
             Wij nemen dan zo snel mogelijk contact met u op om de computer bij u thuis op te halen.
-            <br/> Of bij u thuis klaar te maken <?= Html::a('mogelijkheden', ['/pgae/mogelijkheden-thuis']); ?><br/>
+            <br/> Of bij u thuis klaar te maken <?= Html::a('mogelijkheden', ['/page/mogelijkheden-thuis']); ?><br/>
             En als uw computer klaar is sluiten wij alles weer bij u thuis aan.
             Nog vragen? neem dan contact met ons op via het <?= Html::a('contact formulier', ['/site/contact']) ?> of
             bel
@@ -38,18 +38,18 @@ $this->params['breadcrumbs'][] = Yii::t('maintenaceRequest', 'Maintenance Reques
             </div>
         </div>
         <div class="row">
+            <div class="col-sm-8">
+                <?= $form->field($model, 'address')->textInput() ?>
+            </div>
             <div class="col-sm-4">
                 <?= $form->field($model, 'zipcode')->textInput(['keyup' => 'alert($(this).val())']) ?>
-            </div>
-            <div class="col-sm-2">
-                <?= $form->field($model, 'houseNumber')->textInput(['tpye' => 'number']) ?>
             </div>
         </div>
         <div class="row">
             <?= $form->field($model, 'description')->textArea(['rows' => 6]); ?>
         </div>
         <div class="form-group">
-            <?= Html::submitButton(Yii::t('MaintenaceRequest', 'Requesting'), ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Yii::t('maintenaceRequest', 'Requesting'), ['class' => 'btn btn-primary']) ?>
         </div>
         <?php ActiveForm::end(); ?>
     </div>
