@@ -39,7 +39,7 @@ class MaintenanceRequestForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['firstName', 'lastName', 'email', 'zipcode', 'address', 'phone', 'description'], 'required'],
+            [['firstName', 'lastName', 'email', 'zipcode', 'address', 'phone', 'description', 'city'], 'required'],
             [['houseNumber'], 'integer'],
             ['zipcode', 'match', 'pattern' => '/^[0-9]{4}[A-Z]{2}/'],
             [['phone'], 'string', 'max' => 10],
@@ -73,6 +73,7 @@ class MaintenanceRequestForm extends Model
             'houseNumber' => Yii::t('maintenaceRequest', 'House number'),
             'phone' => Yii::t('maintenaceRequest', 'Phone'),
             'description' => Yii::t('maintenaceRequest', 'Description'),
+            'address' => Yii::t('maintenaceRequest', 'Address'),
         ];
     }
 
