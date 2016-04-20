@@ -142,6 +142,8 @@ class InvoiceController extends BackendController
         } else {
             $invoiceRuleModels = $model->invoiceRules;
         }
+
+        $model->customerNameVirtual = (!empty($model->customer->name) ? $model->customer->name : $model->customerNameVirtual);
         return $this->render('update', ['model' => $model, 'invoiceRules' => $invoiceRuleModels]);
 
     }
