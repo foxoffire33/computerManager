@@ -39,7 +39,7 @@ class MaintenanceRequestForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['firstName', 'lastName', 'email', 'zipcode', 'address', 'phone', 'description', 'city'], 'required'],
+            [['firstName', 'lastName', 'email', 'zipcode', 'houseNumber', 'phone', 'description'], 'required'],
             [['houseNumber'], 'integer'],
             ['zipcode', 'match', 'pattern' => '/^[0-9]{4}[A-Z]{2}/'],
             [['phone'], 'string', 'max' => 10],
@@ -50,7 +50,7 @@ class MaintenanceRequestForm extends Model
             [['email', 'phone'], 'unique', 'targetClass' => 'common\models\Customer'],
             [['email'], 'unique', 'targetClass' => 'common\models\User'],
             //custom validatetor postcode Api
-            // [['zipcode', 'houseNumber'], 'checkAddressValidatetor']
+            [['zipcode', 'houseNumber'], 'checkAddressValidatetor']
         ];
     }
 
@@ -74,6 +74,7 @@ class MaintenanceRequestForm extends Model
             'phone' => Yii::t('maintenaceRequest', 'Phone'),
             'description' => Yii::t('maintenaceRequest', 'Description'),
             'address' => Yii::t('maintenaceRequest', 'Address'),
+            'city' => Yii::t('maintenaceRequest', 'City'),
         ];
     }
 

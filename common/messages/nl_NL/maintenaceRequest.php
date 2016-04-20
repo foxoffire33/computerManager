@@ -10,7 +10,8 @@ return [
     'House number' => 'Huisnummer',
     'Phone' => 'Telefoon',
     'Description' => 'Het probleem',
-    'Address' => 'adres',
+    'Address' => 'Adres',
+    'City' => 'Plaats',
     //model attributes
     'Computer ID' => 'Computer',
     'Description' => 'Omschrijving',

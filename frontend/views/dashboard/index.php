@@ -17,26 +17,11 @@ $this->params['breadcrumbs'][] = Yii::t('dashboard', 'Dashboard');
                     ]]),
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-                    'reference' => [
-                        'attribute' => 'reference',
-                        'header' => Yii::t('invoice', 'Reference'),
-                    ],
-                    'invoice_number' => [
-                        'attribute' => 'invoice_number',
-                        'header' => Yii::t('invoice', 'Invoice Number')
-                    ],
-                    'payed:boolean' => [
-                        'attribute' => 'payed',
-                        'header' => Yii::t('invoice', 'Payed')
-                    ],
-                    'exBtw:currency' => [
-                        'attribute' => 'exBtw',
-                        'header' => Yii::t('invoice', 'Excl btw'),
-                    ],
-                    'inBtw:currency' => [
-                        'attribute' => 'inBtw',
-                        'header' => Yii::t('invoice', 'Incl btw'),
-                    ],
+                    'reference',
+                    'invoice_number',
+                    'payed:boolean',
+                    'exBtw:currency',
+                    'inBtw:currency',
                     [
                         'class' => 'yii\grid\ActionColumn',
                         'template' => '{download}',

@@ -27,7 +27,9 @@ class DashboardController extends FrontendController
             $pdf = new mPDF();
             $pdf->WriteHTML($content);
 
-            return $pdf->Output("{$invoice->customer->name}-{$invoice->invoice_number}.pdf", 'D');
+            // return $content;
+
+            return $pdf->Output("{$invoice->invoice_number}.pdf", 'D');
         }
         throw new NotFoundHttpException();
     }

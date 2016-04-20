@@ -43,7 +43,7 @@ class UserController extends FrontendController
         }
         $model = new LoginForm(['scenario' => LoginForm::RBAC_FRONTEND_ROLE]);
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->redirect(['/dashboard']);
         }
         return $this->render('login', ['model' => $model]);
 
