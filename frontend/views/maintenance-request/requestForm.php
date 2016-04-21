@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 $this->params['breadcrumbs'][] = Yii::t('maintenaceRequest', 'Maintenance Request');
 ?>
 <div class="container">
+	<h1><?= Yii::t('maintenaceRequest', 'Maintenance Request'); ?></h1>
     <p>
         Via het formulier hieronder kunt u snel en makkelijk een reparatie aanvragen.
         Wij nemen dan zo snel mogelijk contact met u op om de computer bij u thuis op te halen.

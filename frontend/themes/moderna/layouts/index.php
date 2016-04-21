@@ -44,7 +44,7 @@
             <div class="col-lg-12">
                 <div class="big-cta">
                     <div class="cta-text">
-                        <h2>Voordelig en effectief computeronderhoud in Groningen</h2>
+                        <h1>Voordelig en effectief computeronderhoud in Groningen</h2>
                     </div>
                 </div>
             </div>
