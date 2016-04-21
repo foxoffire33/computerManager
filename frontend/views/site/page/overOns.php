@@ -26,8 +26,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Over ons'];
         </p>
     </div>
     <div class="col-sm-3">
-        <div class="col-sm-8 col-sm-12 text-center">
-            <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+		<div class="col-sm-8 col-sm-12 text-center">
+			<?= Html::img('/images/foto_reinier.jpeg',['class' => 'img-circle img-responsive img-center']); ?>
             <h3>Reinier<br/>
                 <small>De la parra</small>
             </h3>
