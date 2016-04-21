@@ -1,4 +1,4 @@
-Beste <?= $model->customerName; ?>, u aanvraag wordt verwerkt, Wij nemen binnen twee werkdagen contact met u op.
+Beste <?= str_replace(',', '', $model->customerName) ?>, u aanvraag wordt verwerkt wij nemen binnen twee werkdagen contact met u op.
 <br/>
 U kunt inloggen met de volgende gegevens.<br/>
 <ul>

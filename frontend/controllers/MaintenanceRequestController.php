@@ -90,7 +90,7 @@ class MaintenanceRequestController extends FrontendController
                 Yii::$app->mailer->compose('maintenanceRequestExisting', ['model' => $model])
                     ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']])
                     ->setTo([$computer->customer->email => $computer->customer->name])
-                    ->setSubject(Yii::t('maintenanceRequest', 'Your request has revered'))
+                    ->setSubject(Yii::t('maintenaceRequest', 'Your request has revered'))
                     ->send();
                 return $this->redirect(['/dashboard/view-computer', 'id' => $computer->id]);
             }
