@@ -8,10 +8,9 @@ $this->params['breadcrumbs'][] = Yii::t('maintenaceRequest', 'Maintenance Reques
     <p>
         Via het formulier hieronder kunt u snel en makkelijk een reparatie aanvragen.
         Wij nemen dan zo snel mogelijk contact met u op om de computer bij u thuis op te halen.
-        Of kijk voor de                                                                                  bij u thuis.
+		Of kijk voor de <?= Html::a('mogelijkheden',['/site/static','page' => 'mogelijkheden-thuis']) ?> bij u thuis.
         Als uw computer klaar is sluiten wij alles weer bij u thuis aan.
-        Nog vragen? neem dan contact met ons op via het
-
+        Nog vragen? neem dan contact met ons op via het <?= Html::a('contactformulier',['/site/contact']) ?>
     </p>
     <?php $form = ActiveForm::begin([
         'enableClientValidation' => false,
