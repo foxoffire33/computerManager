@@ -36,6 +36,7 @@ class MyMenu
         return [['label' => 'Home', 'url' => ['/site/index']],
             ['label' => Yii::t('nav', 'Maintenance request'), 'url' => '/maintenance-request', 'visible' => Yii::$app->user->isGuest],
             ['label' => Yii::t('nav', 'Wij komen naar u'), 'url' => ['/page/mogelijkheden-thuis']],
+            ['label' => Yii::t('nav', 'Over ons'), 'url' => ['/page/over-ons']],
             ['label' => Yii::t('nav', 'Tarieven'), 'url' => ['/page/computer-onderhoud-en-reparatie-tarieven']],
             /* ['label' => 'Informatie', [], 'items' => [
                  ['label' => 'Hoe werken wij', 'url' => ['/page/onderhoud-waarom']],
