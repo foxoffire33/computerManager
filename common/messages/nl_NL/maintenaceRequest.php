@@ -14,7 +14,7 @@ return [
     'City' => 'Plaats',
     //model attributes
     'Computer ID' => 'Computer',
-    'Description' => 'Omschrijving',
+    'Description' => 'Omschrijving van uw probleem',
     'Date Done' => 'Afleveren op',
     'Date Apointment' => 'Ophalen op',
     //status
@@ -22,8 +22,9 @@ return [
     'Process' => 'Bezig',
     'Done' => 'Klaar',
     'Maintenance requests ({count})' => 'Onderhoud aanvragen ({count})',
-    'Thenks, we send you a mail with your account' => 'Bedankt, wij hebben uw een mail gestuurd met uw account',
+    'Thenks, we send you a mail with your account' => 'Bedankt, wij hebben u een mail gestuurd met uw account',
     'Your request has revered' => 'Uw onderhouds aanvraag is ontvangen',
     'Username: {username}' => 'Gebruikersnaam: {username}',
     'Password: {password}' => 'Wachtwoord: {password}',
+    'Send maintenance request' => 'Verstuur reparatie aanvraag'
 ];

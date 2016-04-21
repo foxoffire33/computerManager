@@ -6,7 +6,7 @@ return [
     'Name' => 'Naam',
     'Zipcode' => 'Postcode',
     'City' => 'Stad',
-    'Email' => 'E-Mail',
+    'Email' => 'E-mail',
     'Phone' => 'Telefoon',
     'Iban' => 'IBAN',
     'Address' => 'adres',

@@ -16,6 +16,7 @@ use yii\helpers\Html;
 <body>
     <?php $this->beginBody() ?>
     <?= $content ?>
+    <br />
     <p>
         Met vriendelijke groet<br/> Reinier de la Parra<br/>
         http://computeronderhouden.nl

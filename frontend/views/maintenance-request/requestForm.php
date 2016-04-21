@@ -4,52 +4,59 @@ use yii\widgets\ActiveForm;
 
 $this->params['breadcrumbs'][] = Yii::t('maintenaceRequest', 'Maintenance Request');
 ?>
-    <div class="container">
-        <p>
-            Via het formulier hier onder kunt u snel en makkelijk een reparatie aanvragen.<br/>
-            Wij nemen dan zo snel mogelijk contact met u op om de computer bij u thuis op te halen.
-            <br/>of kijk voor de <?= Html::a('mogelijkheden', ['/page/mogelijkheden-thuis']); ?> bij u thuis.<br/>
-            Als uw computer klaar is sluiten wij alles weer bij u thuis aan.
-            Nog vragen? neem dan contact met ons op via het <?= Html::a('contact formulier', ['/site/contact']) ?>
+<div class="container">
+    <p>
+        Via het formulier hieronder kunt u snel en makkelijk een reparatie aanvragen.
+        Wij nemen dan zo snel mogelijk contact met u op om de computer bij u thuis op te halen.
+        Of kijk voor de                                                                                  bij u thuis.
+        Als uw computer klaar is sluiten wij alles weer bij u thuis aan.
+        Nog vragen? neem dan contact met ons op via het
 
-        </p>
-        <?php $form = ActiveForm::begin([
-            'enableClientValidation' => false,
-            'enableAjaxValidation' => true,
-            'validateOnSubmit' => true,
-            'validateOnChange' => false,
-            'validateOnBlur' => false,
-        ]); ?>
-        <div class="row">
-            <div class="col-sm-6">
+    </p>
+    <?php $form = ActiveForm::begin([
+        'enableClientValidation' => false,
+        'enableAjaxValidation' => true,
+        'validateOnSubmit' => true,
+        'validateOnChange' => false,
+        'validateOnBlur' => false,
+    ]); ?>
+    <div class="row">
+        <div class="col-sm-6">
                 <?= $form->field($model, 'firstName')->textInput() ?>
             </div>
-            <div class="col-sm-6">
+        <div class="col-sm-6">
                 <?= $form->field($model, 'lastName')->textInput() ?>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
                 <?= $form->field($model, 'email')->textInput(['type' => 'email']) ?>
             </div>
-            <div class="col-sm-6">
+        <div class="col-sm-6">
                 <?= $form->field($model, 'phone')->textInput(['type' => 'tel']) ?>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-8">
-                <?= $form->field($model, 'zipcode')->textInput() ?>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+                <?= $form->field($model, 'city')->textInput() ?>
             </div>
-            <div class="col-sm-4">
-                <?= $form->field($model, 'houseNumber')->textInput(['keyup' => 'alert($(this).val())']) ?>
+        <div class="col-sm-4">
+                <?= $form->field($model, 'zipcode')->textInput(['keyup' => 'alert($(this).val())']) ?>
             </div>
-        </div>
-        <div class="row col-sm-12">
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+             <?= $form->field($model, 'address')->textInput() ?>
+        </div
+    </div>
+    <div class="row">
+        <div class=" col-sm-12">
             <?= $form->field($model, 'description')->textArea(['rows' => 6]); ?>
         </div>
-        <div class="form-group">
-            <?= Html::submitButton(Yii::t('maintenaceRequest', 'Requesting'), ['class' => 'btn btn-primary']) ?>
-        </div>
-        <?php ActiveForm::end(); ?>
     </div>
+    <div class="form-group">
+            <?= Html::submitButton(Yii::t('maintenaceRequest', 'Send maintenance request'), ['class' => 'btn btn-primary']) ?>
+        </div>
+    <?php ActiveForm::end(); ?>
+</div>
 <?php $this->registerJs('$(\'#maintenancerequestform-zipcode\').keyup(function(e){$(this).val($(this).val().toUpperCase());})'); ?>
