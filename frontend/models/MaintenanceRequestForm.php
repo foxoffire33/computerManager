@@ -46,7 +46,6 @@ class MaintenanceRequestForm extends Model
             // email has to be a valid email address
             ['email', 'email'],
             [['firstName', 'lastName'], 'string', 'length' => [2, 128]],
-            [['firstName', 'lastName'], 'unique', 'targetClass' => 'common\models\Customer', 'targetAttribute' => ['customerName' => 'name']],
             [['email', 'phone'], 'unique', 'targetClass' => 'common\models\Customer'],
             [['email'], 'unique', 'targetClass' => 'common\models\User'],
             //custom validatetor postcode Api

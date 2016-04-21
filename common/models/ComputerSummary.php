@@ -29,6 +29,7 @@ class ComputerSummary extends ActiveRecord
 
     const TYPE_DESKTOP = 0;
     const TYPE_LAPTOP = 1;
+    const TYPE_TABLET = 2;
     //scenarios
     const SCENARIO_FRONTEND = 'frontend';
 
@@ -63,7 +64,7 @@ class ComputerSummary extends ActiveRecord
             //integer
             [['customer_id', 'type', 'model_id'], 'integer'],
             //in voor dropdown
-            ['type', 'in', 'range' => [self::TYPE_DESKTOP, self::TYPE_LAPTOP]],
+            ['type', 'in', 'range' => [self::TYPE_DESKTOP, self::TYPE_LAPTOP, self::TYPE_TABLET]],
             //safe
             [['datetime_created', 'datetime_updated'], 'safe'],
         ];

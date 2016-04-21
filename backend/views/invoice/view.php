@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'name',
                 'price:currency',
                 'quantity',
-                'subtotal:currency',
+                'subtotaal:currency',
                 [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update}{delete}',

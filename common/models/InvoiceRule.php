@@ -114,7 +114,8 @@ class InvoiceRule extends ActiveRecord
         return $this->hasOne(InvoiceRuleType::className(), ['id' => 'type_id']);
     }
 
-    public function getSubtotal(){
+    public function getSubtotaal()
+    {
         return $this->quantity * $this->price;
     }
 

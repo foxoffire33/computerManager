@@ -34,11 +34,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'type' => [
                 'filter' => [
                     ComputerSummary::TYPE_DESKTOP => Yii::t('computerSummary', 'Desktop'),
-                    ComputerSummary::TYPE_LAPTOP => Yii::t('computerSummary', 'Laptop')
+                    ComputerSummary::TYPE_LAPTOP => Yii::t('computerSummary', 'Laptop'),
+                    ComputerSummary::TYPE_TABLET => Yii::t('computerSummary', 'Tablet')
                 ],
                 'attribute' => 'type',
                 'value' => function ($data) {
-                    return ($data->type ? Yii::t('computerSummary', 'Laptop') : Yii::t('computerSummary', 'Desktop'));
+                    return ($data->type == ComputerSummary::TYPE_LAPTOP ? Yii::t('computerSummary', 'Laptop') : ($data->type == ComputerSummary::TYPE_DESKTOP ? Yii::t('computerSummary', 'Desktop') : Yii::t('computerSummary', 'Tablet')));
                 }
             ],
             'model_id' => [

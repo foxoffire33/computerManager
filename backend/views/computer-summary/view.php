@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\models\ComputerSummary;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\ComputerSummary */
@@ -33,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'type' => [
                 'attribute' => 'type',
-                'value' => ($model->type ? Yii::t('computerSummary', 'Laptop') : Yii::t('computerSummary', 'Desktop'))
+                'value' => ($model->type == ComputerSummary::TYPE_LAPTOP ? Yii::t('computerSummary', 'Laptop') : ($model->type == ComputerSummary::TYPE_DESKTOP ? Yii::t('computerSummary', 'Desktop') : Yii::t('computerSummary', 'Tablet')))
             ],
             'serial_number',
             'datetime_created:datetime',

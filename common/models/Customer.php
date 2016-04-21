@@ -39,7 +39,7 @@ class Customer extends ActiveRecord
     public function rules()
     {
         return [
-            [['name','email','phone'],'unique'],
+            [['email', 'phone'], 'unique'],
             ['email','email'],
             //regix for adres and zipcode
             ['adres','match','pattern' => '/[A-Za-z0-9\-\\,.]/'],

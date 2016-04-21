@@ -23,7 +23,8 @@ use common\models\Customer;
 
     <?= $form->field($model, 'type')->dropDownList([
         ComputerSummary::TYPE_DESKTOP => Yii::t('computerSumaary','Desktop'),
-        ComputerSummary::TYPE_LAPTOP => Yii::t('computerSumaary','Laptop')
+        ComputerSummary::TYPE_LAPTOP => Yii::t('computerSumaary', 'Laptop'),
+        ComputerSummary::TYPE_TABLET => Yii::t('computerSumaary', 'Tablet')
     ]) ?>
 
     <?= $form->field($model, 'modelNameVirtual')->widget(Select2::classname(), [

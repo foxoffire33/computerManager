@@ -4,6 +4,7 @@ use common\models\MaintenanceRequest;
 use yii\bootstrap\Collapse;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\models\ComputerSummary;
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('dashboard', 'Dashboard'), 'url' => ['/dashboard']];
 $this->params['breadcrumbs'][] = Yii::t('dashboard', 'View computer');
@@ -20,7 +21,7 @@ $this->params['breadcrumbs'][] = $model->name;
             'name',
             'type' => [
                 'attribute' => 'type',
-                'value' => ($model->type ? Yii::t('computerSummary', 'Laptop') : Yii::t('computerSummary', 'Desktop'))
+                'value' => ($model->type == ComputerSummary::TYPE_LAPTOP ? Yii::t('computerSummary', 'Laptop') : ($model->type == ComputerSummary::TYPE_DESKTOP ? Yii::t('computerSummary', 'Desktop') : Yii::t('computerSummary', 'Tablet')))
             ],
             'serial_number',
             [

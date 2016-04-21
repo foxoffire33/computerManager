@@ -24,7 +24,7 @@ use yii\grid\GridView;
                     'name',
                     'price:currency',
                     'quantity',
-                    'subtotal:currency',
+                    'subtotaal:currency',
                 ],
             ]) ?>
         </p>
