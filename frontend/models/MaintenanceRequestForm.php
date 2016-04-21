@@ -39,7 +39,7 @@ class MaintenanceRequestForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['firstName', 'lastName', 'email', 'zipcode', 'houseNumber', 'phone', 'description'], 'required'],
+            [['firstName', 'lastName','address','city', 'email', 'zipcode', 'houseNumber', 'phone', 'description'], 'required'],
             [['houseNumber'], 'integer'],
             ['zipcode', 'match', 'pattern' => '/^[0-9]{4}[A-Z]{2}/'],
             [['phone'], 'string', 'max' => 10],
@@ -48,8 +48,6 @@ class MaintenanceRequestForm extends Model
             [['firstName', 'lastName'], 'string', 'length' => [2, 128]],
             [['email', 'phone'], 'unique', 'targetClass' => 'common\models\Customer'],
             [['email'], 'unique', 'targetClass' => 'common\models\User'],
-            //custom validatetor postcode Api
-            [['zipcode', 'houseNumber'], 'checkAddressValidatetor']
         ];
     }
 
@@ -75,16 +73,5 @@ class MaintenanceRequestForm extends Model
             'address' => Yii::t('maintenaceRequest', 'Address'),
             'city' => Yii::t('maintenaceRequest', 'City'),
         ];
-    }
-
-    public function checkAddressValidatetor()
-    {
-        $postcodeApi = new PostcodeApi($this->zipcode, $this->houseNumber);
-        if (($postcodeApiData = $postcodeApi->return) !== false) {
-            $this->address = "{$postcodeApiData['street']} {$this->houseNumber}";
-            $this->city = $postcodeApiData['municipality'];
-        } else {
-            $this->addError('zipcode', Yii::t('maintenanceRequest', 'Not found'));
-        }
     }
 }
