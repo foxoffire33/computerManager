@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Over ons'];
     <div class="col-sm-9">
         <h2>Wat is het idee achter computeronderhouden.nl</h2>
         <p>Wij willen het mensen zo simpel mogelijk maken om hun computer te laten repareren.<br/>
-            U kunt als u nog geen klant bent via ons <?= Html::a('reparatieformulier', ['maintenance-request']) ?> een
+            U kunt als u nog geen klant bent via ons <?= Html::a('reparatieformulier', ['/maintenance-request']) ?> een
             reparatie aanvragen.
             Als u al wel klant bent, kunt u inloggen en onderhouden voor een computer aanvragen.
             De standaard bij computeronderhouden.nl is dat wij de computer bij u thuis komen op halen of afleveren.
