@@ -49,6 +49,11 @@ class ResetPasswordForm extends Model
         ];
     }
 
+    public function attributeLabels()
+    {
+        return ['password' => Yii::t('user', 'Password')];
+    }
+
     /**
      * Resets password.
      *

@@ -17,7 +17,8 @@ use yii\helpers\Html;
     <?php $this->beginBody() ?>
     <?= $content ?>
     <p>
-        Met vrienderlijke groet <?= Yii::$app->params['adminName']; ?><br/>
+        Met vriendelijke groet<br/> <?= Yii::$app->params['adminName']; ?><br/>
+        http://computeronderhouden.nl
     </p>
     <?php $this->endBody() ?>
 </body>

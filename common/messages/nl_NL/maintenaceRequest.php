@@ -24,6 +24,6 @@ return [
     'Maintenance requests ({count})' => 'Onderhoud aanvragen ({count})',
     'Thenks, we send you a mail with your account' => 'Bedankt, wij hebben uw een mail gestuurd met uw account',
     'Your request has revered' => 'Uw onderhouds aanvraag is ontvangen',
-    'Username, {username}' => 'Gebruikersnaam, {username}',
-    'Password, {password}' => 'Wachtwoord, {password}',
+    'Username: {username}' => 'Gebruikersnaam: {username}',
+    'Password: {password}' => 'Wachtwoord: {password}',
 ];

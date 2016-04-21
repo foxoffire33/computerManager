@@ -56,7 +56,7 @@ class MaintenanceRequestForm extends Model
 
     public function beforeValidate()
     {
-        $this->customerName = trim("{$this->firstName}, {$this->lastName}");
+        $this->customerName = trim("{$this->firstName} {$this->lastName}");
         return parent::beforeValidate();
     }
 

@@ -52,11 +52,20 @@ class LoginForm extends Model
                         Yii::$app->authManager->checkAccess($user->id, 'customer');
                 }
                 if (!$hasNoError) {
-                    $this->addError('password', 'Incorrect username or password.');
+                    $this->addError('password', Yii::t('user', 'Incorrect username or password.'));
                 }
             }
         }
         return parent::beforeValidate();
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'username' => Yii::t('user', 'Username'),
+            'password' => Yii::t('user', 'Password'),
+            'rememberMe' => Yii::t('user', 'Remember Me'),
+        ];
     }
 
     /**

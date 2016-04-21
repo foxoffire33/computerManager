@@ -70,10 +70,10 @@ class UserController extends FrontendController
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+                Yii::$app->session->setFlash('success', Yii::t('user', 'Check your email for further instructions.'));
                 return $this->goHome();
             } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
+                Yii::$app->session->setFlash('error', Yii::t('user', 'Sorry, we are unable to reset password for email provided.'));
             }
         }
         return $this->render('requestPasswordResetToken', ['model' => $model]);
@@ -94,7 +94,7 @@ class UserController extends FrontendController
             throw new BadRequestHttpException($e->getMessage());
         }
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password was saved.');
+            Yii::$app->session->setFlash('success', Yii::t('user', 'New password was saved.'));
             return $this->goHome();
         }
         return $this->render('resetPassword', [
@@ -111,7 +111,7 @@ class UserController extends FrontendController
                 return $this->redirect(['/user/login']);
             }
         }
-        Yii::$app->session->setFlash('danger', Yii::t('user', 'YShomthing wen wrong'));
+        Yii::$app->session->setFlash('danger', Yii::t('user', 'Shomthing when wrong'));
         return $this->redirect(['/user/login']);
     }
 }

@@ -12,5 +12,6 @@ return [
     'No' => 'Nee',
     'view' => 'Bekijk',
     'Back' => 'Vorige',
-    'send' => 'Verstuur'
+    'send' => 'Verstuur',
+    'save' => 'Opslaan',
 ];

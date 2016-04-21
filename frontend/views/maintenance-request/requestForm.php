@@ -6,12 +6,11 @@ $this->params['breadcrumbs'][] = Yii::t('maintenaceRequest', 'Maintenance Reques
 ?>
     <div class="container">
         <p>
-            Via het formulier hier onder kunt u snel en makkelijk een reparaie aanvragen.<br/>
+            Via het formulier hier onder kunt u snel en makkelijk een reparatie aanvragen.<br/>
             Wij nemen dan zo snel mogelijk contact met u op om de computer bij u thuis op te halen.
-            <br/> Of bij u thuis klaar te maken <?= Html::a('mogelijkheden', ['/page/mogelijkheden-thuis']); ?><br/>
-            En als uw computer klaar is sluiten wij alles weer bij u thuis aan.
-            Nog vragen? neem dan contact met ons op via het <?= Html::a('contact formulier', ['/site/contact']) ?> of
-            bel
+            <br/>of kijk voor de <?= Html::a('mogelijkheden', ['/page/mogelijkheden-thuis']); ?> bij u thuis.<br/>
+            Als uw computer klaar is sluiten wij alles weer bij u thuis aan.
+            Nog vragen? neem dan contact met ons op via het <?= Html::a('contact formulier', ['/site/contact']) ?>
 
         </p>
         <?php $form = ActiveForm::begin([

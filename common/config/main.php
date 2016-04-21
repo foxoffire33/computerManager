@@ -1,5 +1,6 @@
 <?php
 return [
+    'name' => 'Computeronderhouden.nl',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'language' => 'nl_NL',
     'components' => [

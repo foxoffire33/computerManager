@@ -30,6 +30,18 @@
             <div class="widget">
                 <h5 class="widgetheading">Laatste computernieuws</h5>
                 <?php // FacebookPlugin::widget(['type'=>FacebookPlugin::POST, 'settings' => ['href'=>'http://facebook.com/<page_name>/posts/<id>']]); ?>
+                <a class="twitter-timeline" href="https://twitter.com/foxoffire33/lists/computeronderhouden-nl"
+                   data-widget-id="723043001035952128">Tweets from
+                    https://twitter.com/foxoffire33/lists/computeronderhouden-nl</a>
+                <script>!function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + "://platform.twitter.com/widgets.js";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, "script", "twitter-wjs");</script>
                 <ul class="link-list">
                     <!--                                    <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
                                                         <li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
