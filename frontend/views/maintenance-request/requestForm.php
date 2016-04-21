@@ -37,17 +37,17 @@ $this->params['breadcrumbs'][] = Yii::t('maintenaceRequest', 'Maintenance Reques
             </div>
     </div>
     <div class="row">
-        <div class="col-sm-8">
-                <?= $form->field($model, 'city')->textInput() ?>
-            </div>
-        <div class="col-sm-4">
-                <?= $form->field($model, 'zipcode')->textInput(['keyup' => 'alert($(this).val())']) ?>
-            </div>
-    </div>
-    <div class="row">
         <div class="col-sm-12">
              <?= $form->field($model, 'address')->textInput() ?>
-        </div
+        </div>
+	</div>
+	<div class="row">
+		<div class="col-sm-8">	
+			<?= $form->field($model, 'city')->textInput() ?>
+        </div>
+	    <div class="col-sm-4">
+          <?= $form->field($model, 'zipcode')->textInput(['keyup' => 'alert($(this).val())']) ?>
+      </div>
     </div>
     <div class="row">
         <div class=" col-sm-12">

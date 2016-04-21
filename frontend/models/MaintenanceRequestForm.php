@@ -20,7 +20,6 @@ class MaintenanceRequestForm extends Model
     public $firstName;
     public $lastName;
     public $zipcode;
-    public $houseNumber;
     public $phone;
     //MaintenanceRequest model
     public $description;
@@ -39,8 +38,7 @@ class MaintenanceRequestForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['firstName', 'lastName','address','city', 'email', 'zipcode', 'houseNumber', 'phone', 'description'], 'required'],
-            [['houseNumber'], 'integer'],
+            [['firstName', 'lastName','address','city', 'email', 'zipcode', 'phone', 'description'], 'required'],
             ['zipcode', 'match', 'pattern' => '/^[0-9]{4}[A-Z]{2}/'],
             [['phone'], 'string', 'max' => 10],
             // email has to be a valid email address
