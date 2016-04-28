@@ -29,10 +29,8 @@
         <div class="col-lg-4">
             <div class="widget">
                 <h5 class="widgetheading">Laatste computernieuws</h5>
-                <?php // FacebookPlugin::widget(['type'=>FacebookPlugin::POST, 'settings' => ['href'=>'http://facebook.com/<page_name>/posts/<id>']]); ?>
-                <a class="twitter-timeline" href="https://twitter.com/foxoffire33/lists/computeronderhouden-nl"
-                   data-widget-id="723043001035952128">Tweets from
-                    https://twitter.com/foxoffire33/lists/computeronderhouden-nl</a>
+                <a class="twitter-timeline" href="https://twitter.com/Computerhg" data-widget-id="725658116034027520">Tweets
+                    by @Computerhg</a>
                 <script>!function (d, s, id) {
                         var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
                         if (!d.getElementById(id)) {
@@ -52,7 +50,7 @@
         <div class="col-lg-4">
             <div class="widget">
                 <!--                                <h5 class="widgetheading">Flickr photostream</h5>
-                                                <div class="flickr_badge">
+                                                <div class="flickr_badge">}(document, "script", "twitter-wjs");
                                                     <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
                                                 </div>-->
                 <div class="clear">

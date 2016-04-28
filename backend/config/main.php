@@ -24,7 +24,7 @@ return [
         ],
         'session' => [
             'name' => '_backendSessionId', // unique for backend
-            'savePath' => __DIR__ . '/../runtime', // a temporary folder on backend
+            'savePath' => sys_get_temp_dir(), // a temporary folder on backend
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
