@@ -1,12 +1,12 @@
 <?php
 return [
     'Log' => 'Gebeurtenis',
-    'Logs' => 'Gebeurtenisen',
+    'Logs' => 'Gebeurtenissen',
     //attributes
     'Computer ID' => 'Computer',
     'Type' => 'Type',
     'Event Datetime' => 'datum/tijd gebeurtenis',
     'Description' => 'Omschrijving',
-    'Logs ({count})' => 'Gebeurtenisen ({count})'
+    'Logs ({count})' => 'Gebeurtenissen ({count})'
 
 ];

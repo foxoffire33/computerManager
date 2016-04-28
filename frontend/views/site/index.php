@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Copmuter onderhoud en reparatie in Groningen en omstreken';
 ?>
 <div class="site-index">
 
@@ -23,10 +23,10 @@ $this->title = 'My Yii Application';
             </div>
             <div class="col-lg-4">
                 <h2>Computer stuk?</h2>
-                <p>Als uw computer het niet meer doet komt een medewerker van Computeronderhouden.nl bij u langs
+                <p>Een medewerker van Computeronderhouden.nl komt bij u langs
                     om de computer op te halen. Vervolgens wordt de computer gerepareerd en ontvangt u via de e-mail
                     updates over de uitgevoerde werkzaamheden. Als uw computer weer klaar is wordt deze weer bij
-                    u thuisgebracht en geinstalleerd.</p>
+                    u thuisgebracht en ge&iuml;nstalleerd.</p>
 
                 <p><a class="btn btn-default">Reparatie aanvragen</a></p>
             </div>
