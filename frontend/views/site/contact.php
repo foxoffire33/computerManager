@@ -13,7 +13,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
     <h1><?= Html::encode($this->title) ?></h1>
-
+    <p>
+        Gebruik onderstaand formulier om ons een mail te sturen of bel ons op telefoonnummer 085 876 99 57.
+    </p>
     <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>

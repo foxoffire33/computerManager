@@ -19,7 +19,8 @@ use yii\helpers\Html;
     <br />
     <p>
         Met vriendelijke groet<br/> Reinier de la Parra<br/>
-        http://computeronderhouden.nl
+        http://www.computeronderhouden.nl<br />
+        085 876 99 57
     </p>
     <?php $this->endBody() ?>
 </body>
