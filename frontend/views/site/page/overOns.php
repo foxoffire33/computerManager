@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Over ons'];
 	<h1>Over ons</h1>
 </div>
 <div class="row">
-    <div class="col-sm-9">
+    <div class="col-sm-12">
         <h2>Wat is het idee achter Computeronderhouden.nl</h2>
         <p>Een computer of tablet moet zorgeloos werken. Uw nieuwe computer werkt altijd snel en zonder problemen. Na verloop van tijd wordt een computer langzamer. 
             Zonder regulier onderhoud aan Windows en de hardware zal een computer frustaties gaan opleveren. Ons doel is dat mensen zonder problemen 
@@ -20,15 +20,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Over ons'];
             of de computer nog naar behoren werkt. Mocht dit niet zo zijn, dan hebben wij snel alle gegevens paraat en sporen wij snel het probleem op. U kunt 
             vervolgens via onze website het gepleegde onderhoud inzien en tevens inzien wanneer wij weer aanraden om een onderhoudsbeurt uit te voerne.
         </p>
-    </div>
-    <div class="col-sm-3">
-		<div class="col-sm-8 col-sm-12 text-center">
-			<?= Html::img('/images/foto_reinier.jpeg',['class' => 'img-circle img-responsive img-center']); ?>
-            <h3>Reinier<br/>
-                <small>De la Parra</small>
-            </h3>
-            <p>Hoi! Ik doe alle onderhoud en reparaties van Computeronderhouden.nl. Vragen? Neem vrijblijvend contact op.</p>
-        </div>
     </div>
 </div>
 <div class="row">

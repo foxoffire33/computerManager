@@ -18,6 +18,7 @@ class DashboardController extends FrontendController
         ]);
     }
 
+    /*
     public function actionDownloadInvoice($id)
     {
         if (!empty(($invoice = Invoice::findOne($id))) && Yii::$app->user->can('downloadOwnInvoice', ['id' => $id])) {
@@ -32,7 +33,7 @@ class DashboardController extends FrontendController
             return $pdf->Output("{$invoice->invoice_number}.pdf", 'D');
         }
         throw new NotFoundHttpException();
-    }
+    }*/
 
     public function actionViewComputer($id)
     {
