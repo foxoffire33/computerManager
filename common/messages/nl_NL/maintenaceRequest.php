@@ -23,7 +23,7 @@ return [
     'Done' => 'Klaar',
     'Maintenance requests ({count})' => 'Onderhoud aanvragen ({count})',
     'Thanks, we will send you a mail with your account' => 'Bedankt voor uw aanvraag. U heeft ter bevestiging een e-mail ontvangen.',
-    'Your request has revered' => 'Uw onderhouds aanvraag is ontvangen',
+    'Your request has revered' => 'Uw onderhoudsaanvraag is ontvangen',
     'Username: {username}' => 'Gebruikersnaam: {username}',
     'Password: {password}' => 'Wachtwoord: {password}',
     'Send maintenance request' => 'Verstuur reparatie aanvraag'
