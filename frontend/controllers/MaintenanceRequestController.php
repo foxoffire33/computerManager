@@ -60,7 +60,7 @@ class MaintenanceRequestController extends FrontendController
                                 $maintenanceRequest->computer_id = $computerSummary->id;
                                 if ($maintenanceRequest->save()) {
                                     //set status message
-                                    Yii::$app->session->setFlash('success', Yii::t('maintenaceRequest', 'Thenks, we send you a mail with your account'));
+                                    Yii::$app->session->setFlash('success', Yii::t('maintenaceRequest', 'Thanks, we will send you a mail with your account'));
                                     //send mail
                                     Yii::$app->mailer->compose('maintenanceRequest', ['model' => $model])
                                         ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']])

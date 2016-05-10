@@ -22,7 +22,7 @@ return [
     'Process' => 'Bezig',
     'Done' => 'Klaar',
     'Maintenance requests ({count})' => 'Onderhoud aanvragen ({count})',
-    'Thenks, we send you a mail with your account' => 'Bedankt, wij hebben u een mail gestuurd met uw account',
+    'Thanks, we will send you a mail with your account' => 'Bedankt voor uw aanvraag. U heeft ter bevestiging een e-mail ontvangen.',
     'Your request has revered' => 'Uw onderhouds aanvraag is ontvangen',
     'Username: {username}' => 'Gebruikersnaam: {username}',
     'Password: {password}' => 'Wachtwoord: {password}',
