@@ -18,7 +18,7 @@
             <div class="widget">
                 <h5 class="widgetheading">Regelen</h5>
                 <ul class="link-list">
-                    <li><a href="/maintenance">Onderhoud aanvragen</a></li>
+                    <li><a href="/maintenance-request">Onderhoud aanvragen</a></li>
                     <li><a href="/user/login">Inloggen</a></li>
                     <li><a target="_blank" href="/AVComputerOnderhouden.pdf">Algemene voorwaarden</a></li>
                     <!--                                    <li><a href="#">Career center</a></li>

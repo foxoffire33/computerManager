@@ -20,7 +20,7 @@ $bundel = ModernaAsset::register($this);
         <meta name="description" content="Houd uw computer snel en werkbaar via ComputerOnderhouden.nl">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <?= Html::csrfMetaTags() ?>
-        <title><?= Html::encode(Yii::$app->params['applicationName']) ?></title>
+        <title><?= Html::encode(Yii::$app->params['applicationName']) ?> - Computeronderhoud en computer reparatie in Groningen</title>
         <style type="text/css">
             .flexslider .slides > li {
                 display: none;

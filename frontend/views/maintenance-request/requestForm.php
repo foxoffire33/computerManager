@@ -8,10 +8,12 @@ $this->params['breadcrumbs'][] = Yii::t('maintenaceRequest', 'Maintenance Reques
 	<h1><?= Yii::t('maintenaceRequest', 'Maintenance Request'); ?></h1>
     <p>
         Via het formulier hieronder kunt u snel en makkelijk een reparatie aanvragen.
-        Wij nemen dan zo snel mogelijk contact met u op om de computer bij u thuis op te halen.
-		Of kijk voor de <?= Html::a('mogelijkheden',['/site/static','page' => 'mogelijkheden-thuis']) ?> bij u thuis.
-        Als uw computer klaar is sluiten wij alles weer bij u thuis aan.
-        Nog vragen? neem dan contact met ons op via het <?= Html::a('contactformulier',['/site/contact']) ?>
+        Wij nemen dan zo snel mogelijk contact met u op om een afspraak te maken. Vervolgens 
+        overleggen we of de computer door ons wordt opgehaald of een reparatie op <?= Html::a('locatie',['/site/static','page' => 'mogelijkheden-thuis']) ?> mogelijk is.
+    </p>
+        
+    <p>Als uw computer klaar is sluiten wij alles weer bij u thuis aan.
+        Vraag via onderstaand formulier uw onderhoud aan of neem contact met ons op via het <?= Html::a('contactformulier',['/site/contact']) ?>.
     </p>
     <?php $form = ActiveForm::begin([
         'enableClientValidation' => false,
@@ -37,17 +39,17 @@ $this->params['breadcrumbs'][] = Yii::t('maintenaceRequest', 'Maintenance Reques
             </div>
     </div>
     <div class="row">
+        <div class="col-sm-8">
+            <?= $form->field($model, 'address')->textInput() ?>                
+            </div>
+        <div class="col-sm-4">
+                <?= $form->field($model, 'zipcode')->textInput(['keyup' => 'alert($(this).val())']) ?>
+            </div>
+    </div>
+    <div class="row">
         <div class="col-sm-12">
-             <?= $form->field($model, 'address')->textInput() ?>
-        </div>
-	</div>
-	<div class="row">
-		<div class="col-sm-8">	
-			<?= $form->field($model, 'city')->textInput() ?>
-        </div>
-	    <div class="col-sm-4">
-          <?= $form->field($model, 'zipcode')->textInput(['keyup' => 'alert($(this).val())']) ?>
-      </div>
+             <?= $form->field($model, 'city')->textInput() ?>
+        </div
     </div>
     <div class="row">
         <div class=" col-sm-12">
