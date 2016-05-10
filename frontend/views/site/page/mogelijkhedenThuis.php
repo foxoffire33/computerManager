@@ -7,14 +7,14 @@ $this->params['breadcrumbs'][] = ['label' => 'Mogelijkheden thuis'];
     <p>Wij repareren / installeren bij u thuis, zodat u dezelfde dag uw computer weer kunt gebruiken.</p>
     <div class="row">
         <span class="col-xs-7 fa fa-search" style="font-weight: 700"> Onderzoek </span>
-        <p class="col-xs-5 pull-right">Als u denkt dat uw computer niet helemaal werkt zoals het zal moeten komen wijbij u langs
+        <p class="col-xs-5 pull-right">Als u denkt dat uw computer niet helemaal werkt zoals het zal moeten, komen wij bij u langs
              om te kijken wat het probleem is. We beoordelen ter plekke of we de computer bij u thuis kunnen repareren of dat
             wij de computer moeten meenemen.</p>
         <p class="col-xs-5 pull-right"></p>
     </div>
     <div class="row">
         <span class="col-xs-7 fa fa-desktop" style="font-weight: 700"> Technische dienst</span>
-        <p class="col-xs-5 pull-right">Problemen met wifi, het aansluiten en installeren van uw computer of tablet? Computeronderhouden.nl omt bij 
+        <p class="col-xs-5 pull-right">Problemen met wifi, het aansluiten en installeren van uw computer of tablet? Computeronderhouden.nl komt bij 
             u langs om alles te installeren. </p>
     </div>
     <div class="row">
