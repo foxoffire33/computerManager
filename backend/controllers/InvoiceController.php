@@ -10,12 +10,29 @@ use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
+use mPDF;
 
 /**
  * InvoiceController implements the CRUD actions for Invoice model.
  */
 class InvoiceController extends BackendController
 {
+
+    public function actionDownloadInvoice($id)
+    {
+        if (!empty(($invoice = Invoice::findOne($id)))) {
+            $this->layout = '@frontend/themes/moderna/layouts/print';
+            $content = $this->render('@frontend/views/dashboard/invoicePdf', ['model' => $invoice]);
+
+            $pdf = new mPDF();
+            $pdf->WriteHTML($content);
+
+            // return $content;
+
+            return $pdf->Output("{$invoice->invoice_number}.pdf", 'D');
+        }
+        throw new NotFoundHttpException();
+    }
 
     /**
      * Lists all Invoice models.

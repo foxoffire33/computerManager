@@ -44,7 +44,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'exBtw:currency',
             'inBtw:currency',
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}{update}{delete}{download}',
+                'contentOptions' => ['width' => 50],
+                'buttons' => [
+                    'download' => function ($url, $model, $key) {
+                        return Html::a('<i class="fa fa-download"></i> ', ['download-invoice', 'id' => $model->id]);
+                    },
+                ]
+            ],
         ],
     ]); ?>
 

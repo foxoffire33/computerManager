@@ -7,7 +7,7 @@ return [
     'Invoice ID' => 'Factuur',
     'Type ID' => 'Type',
     'Vat ID' => 'Btw',
-    'Name' => 'omschrijving',
+    'Name' => 'Omschrijving',
     'Price' => 'Prijs',
     'Quantity' => 'Aantal',
     'Subtotal' => 'Subtotaal'
