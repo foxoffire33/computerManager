@@ -13,7 +13,7 @@ class ActiveRecord extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if ($this->hasAttribute('datetime_created') && $this->hasAttribute('datetime_updated')) {
-            $date = date('Y-m-d h:i:s');
+            $date = gmdate('Y-m-d h:i:s');
             if ($this->isNewRecord) {
                 $this->datetime_created = $date;
             }

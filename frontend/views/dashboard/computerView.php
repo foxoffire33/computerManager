@@ -41,8 +41,8 @@ $this->params['breadcrumbs'][] = $model->name;
         $logItems = [];
         foreach ($model->logs as $log) {
             $logItem = [
-                'label' => $log->event_datetime,
-                'content' => $log->description,
+                'label' => Yii::$app->formatter->asDatetime($log->event_datetime),
+                'content' => nl2br($log->description),
                 'options' => ['class' => ($log->type == Log::TYPE_INFORMATION ? 'panel-success' : ($log->type == Log::TYPE_WARNING ? 'panel-warning' : 'panel-danger'))]
             ];
             $logItems[] = $logItem;
