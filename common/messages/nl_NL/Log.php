@@ -7,6 +7,9 @@ return [
     'Type' => 'Type',
     'Event Datetime' => 'datum/tijd gebeurtenis',
     'Description' => 'Omschrijving',
-    'Logs ({count})' => 'Gebeurtenissen ({count})'
+    'Logs ({count})' => 'Gebeurtenissen ({count})',
+    'Information' => 'Informatie',
+    'Warning' => 'Waarschuwing',
+    'Error' => 'Fout'
 
 ];
