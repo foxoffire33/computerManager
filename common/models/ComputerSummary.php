@@ -117,7 +117,7 @@ class ComputerSummary extends ActiveRecord
             'datetime_updated' => Yii::t('common', 'Datetime Updated'),
             //form labels
             'customerNameVirtual' => Yii::t('computerSummary', 'Customer'),
-            'modelNameVirtual' => Yii::t('computerModels', 'Model'),
+            'modelNameVirtual' => Yii::t('computerSummary', 'Model'),
         ];
     }
 
