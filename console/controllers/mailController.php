@@ -46,7 +46,7 @@ class MailController extends Controller
 
     private function getMaintenanceRequestByDateTime($datetime)
     {
-        return MaintenanceRequest::find()->where('date(date_done) <= :ready_date and mail_sended IS NULL', [':ready_date' => $datetime])->all();
+        return MaintenanceRequest::find()->where('date(date_done) <= :ready_date', [':ready_date' => $datetime])->all();
     }
 
     private function modifyDatetime($datetimeModifyString)
