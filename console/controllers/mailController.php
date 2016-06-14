@@ -59,11 +59,11 @@ class MailController extends Controller
     {
         if ($models != null) {
             foreach ($models as $model) {
-                $model->scenario = MaintenanceRequest::SCENARIO_MAIL;
                 if (isset($model->computer->customer->name) && isset($model->computer->customer->email)) {
 
                     $mailSetup = Yii::$app->mailer->compose($layout, ['model' => $model])
                         ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']])
+                        ->setBcc([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']])
                         ->setSubject('Onderhoud computer');
 
 
@@ -71,16 +71,6 @@ class MailController extends Controller
                     if (!$mailSetup->send()) {
                         $this->errorCode = self::EXIT_CODE_SEND_MAIL_ERROR;
                     }
-                    $mailSetup->setTo([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']]);
-                    if (!$mailSetup->send()) {
-                        $this->errorCode = self::EXIT_CODE_SEND_MAIL_ERROR;
-                    }
-
-                    if($this->exitcode == self::EXIT_CODE_NORMAL){
-                        $model->mail_sended = time();
-                        $model->save();
-                    }
-
                 }
             }
         }
