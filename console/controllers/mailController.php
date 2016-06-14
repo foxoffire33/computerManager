@@ -11,6 +11,10 @@ use yii\console\Controller;
 class MailController extends Controller
 {
 
+    const EXIT_CODE_SEND_MAIL_ERROR = 2;
+    private $exitcode = self::EXIT_CODE_NORMAL;
+
+
     private $dateTimeToDay;
 
     public function init()
@@ -19,40 +23,30 @@ class MailController extends Controller
         $this->dateTimeToDay = new \DateTime('NOW');
     }
 
+    /**
+     * deze functie checkt of er mail moet worden verstuurd en zo ja naar wie.
+     */
     public function actionIndex()
     {
-        try {
-            $this->actionDefault(); //standaard mails
-            return 0; //return 0 zo weer de server dat de cronjob klaar is
-        } catch (Exception $error) {
-            return 1;//retirn 1 er ging iets fout
-        }
+        $this->actionDefault(); //standaard mails
+        return $this->exitcode;
     }
 
-    public function actionDefault()
+    private function actionDefault()
     {
 
         //check and send mails
-        if (($models = $this->getMaintenanceRequestByDateTime($this->modifyDatetime('-1 month'))) !== false) {
+        if (!is_null(($models = $this->getMaintenanceRequestByDateTime($this->modifyDatetime('-1 month'))))) {
             $this->sendMail('maintenanceRequests/oneMonth', $models); //1 maand na reparatie
-        } else {
-            return 1;
         }
-        if (($models = $this->getMaintenanceRequestByDateTime($this->modifyDatetime('-5 month'))) !== false) {
+        if (!is_null(($models = $this->getMaintenanceRequestByDateTime($this->modifyDatetime('-5 month'))))) {
             $this->sendMail('maintenanceRequests/sixMonths', $models); //6 maanden na reparatie
-        } else {
-            return 1;
         }
-        return 0;
     }
 
     private function getMaintenanceRequestByDateTime($datetime)
     {
-        try {
-            return MaintenanceRequest::find()->where('date(date_done) =:ready_date', [':ready_date' => $datetime])->all();
-        } catch (\Exception $error) {
-            return false;
-        }
+        return MaintenanceRequest::find()->where('date(date_done) =:ready_date', [':ready_date' => $datetime])->all();
     }
 
     private function modifyDatetime($datetimeModifyString)
@@ -72,7 +66,13 @@ class MailController extends Controller
                         ->setSubject('Onderhoud computer');
 
                     $mailSetup->setTo([$model->computer->customer->email => $model->computer->customer->name])->send();
+                    if (!$mailSetup->send()) {
+                        $this->errorCode = self::EXIT_CODE_SEND_MAIL_ERROR;
+                    }
                     $mailSetup->setTo([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']])->send();
+                    if (!$mailSetup->send()) {
+                        $this->errorCode = self::EXIT_CODE_SEND_MAIL_ERROR;
+                    }
                 }
             }
         }

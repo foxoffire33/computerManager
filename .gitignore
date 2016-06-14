@@ -3,7 +3,7 @@
 
 # phpstorm project files
 .idea
-
+/frontend/web/assets
 # netbeans project files
 nbproject
 
