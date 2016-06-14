@@ -46,7 +46,7 @@ class MailController extends Controller
 
     private function getMaintenanceRequestByDateTime($datetime)
     {
-        return MaintenanceRequest::find()->where('date(date_done) =:ready_date', [':ready_date' => $datetime])->all();
+        return MaintenanceRequest::find()->where('date(date_done) <= :ready_date and mail_sended IS NULL', [':ready_date' => $datetime])->all();
     }
 
     private function modifyDatetime($datetimeModifyString)
@@ -59,20 +59,28 @@ class MailController extends Controller
     {
         if ($models != null) {
             foreach ($models as $model) {
+                $model->scenario = MaintenanceRequest::SCENARIO_MAIL;
                 if (isset($model->computer->customer->name) && isset($model->computer->customer->email)) {
 
                     $mailSetup = Yii::$app->mailer->compose($layout, ['model' => $model])
                         ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']])
                         ->setSubject('Onderhoud computer');
 
-                    $mailSetup->setTo([$model->computer->customer->email => $model->computer->customer->name])->send();
+
+                    $mailSetup->setTo([$model->computer->customer->email => $model->computer->customer->name]);
                     if (!$mailSetup->send()) {
                         $this->errorCode = self::EXIT_CODE_SEND_MAIL_ERROR;
                     }
-                    $mailSetup->setTo([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']])->send();
+                    $mailSetup->setTo([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']]);
                     if (!$mailSetup->send()) {
                         $this->errorCode = self::EXIT_CODE_SEND_MAIL_ERROR;
                     }
+
+                    if($this->exitcode == self::EXIT_CODE_NORMAL){
+                        $model->mail_sended = time();
+                        $model->save();
+                    }
+
                 }
             }
         }

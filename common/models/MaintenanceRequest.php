@@ -27,6 +27,7 @@ class MaintenanceRequest extends ActiveRecord
     const STATUS_DONE = 2;
     //scenarios
     const SCENARIO_FRONTEND = 'frontend';
+    const SCENARIO_MAIL = 'mail';
 
     public $computerNameVirtual;
     public $query_customer_email;
@@ -46,13 +47,13 @@ class MaintenanceRequest extends ActiveRecord
     public function rules()
     {
         return [
-            [['computerNameVirtual', 'description'], 'required'],
+            [['computerNameVirtual', 'description'], 'required','except' => self::SCENARIO_MAIL],
             ['status', 'required', 'on' => self::SCENARIO_DEFAULT],
             [['status'], 'default', 'value' => self::STATUS_REQUEST],
             [['computer_id', 'status'], 'integer'],
             [['description'], 'string'],
-            [['date_apointment', 'date_done'], 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
-            [['date_done', 'date_apointment', 'datetime_created', 'datetime_updated', 'computerNameVirtual'], 'safe'],
+            [['date_apointment', 'date_done'], 'date', 'format' => 'yyyy-MM-dd HH:mm:ss','except' => self::SCENARIO_MAIL],
+            [['date_done', 'date_apointment', 'datetime_created', 'datetime_updated', 'computerNameVirtual','mail_sended'], 'safe'],
             [['computerNameVirtual'], 'exist', 'targetClass' => 'common\models\ComputerSummary', 'targetAttribute' => 'name'],
             ['status', 'in', 'range' => [self::STATUS_REQUEST, self::STATUS_PROCESS, self::STATUS_DONE]],
             [['computerNameVirtual', 'computer_id'], 'hasComputerAlReadyAMaintenenceRequestValidatetor']
@@ -90,7 +91,8 @@ class MaintenanceRequest extends ActiveRecord
     public function scenarios()
     {
         return array_merge([
-            self::SCENARIO_FRONTEND => ['computer_id', 'description', 'status']
+            self::SCENARIO_FRONTEND => ['computer_id', 'description', 'status'],
+            self::SCENARIO_MAIL => ['mail_sended'],
         ], parent::scenarios());
     }
 
