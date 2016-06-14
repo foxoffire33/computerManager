@@ -1,4 +1,4 @@
-<p> Beste                                        ,</p>
+<p> Beste                                         ,</p>
 <p>
     Wij hebben een hlaf jaar geleden onbderhoud of een reparatie uitgevoert bij u computer. <br/>
     Het wordt aanbovolen om elk half jaar oude windows bestanden op te ruimen. wij controleeren dan ook direct de
