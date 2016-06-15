@@ -15,10 +15,9 @@ use yii\helpers\Html;
 </head>
 <body>
     <?php $this->beginBody() ?>
-    <?= $content ?>
-    <br />
+    <?= $content ?>  
     <p>
-        Met vriendelijke groet<br/> Reinier de la Parra<br/>
+        Met vriendelijke groet,<br/><br /> Reinier de la Parra<br/>
         http://www.computeronderhouden.nl<br />
         085 876 99 57
     </p>
