@@ -19,7 +19,7 @@ class InvoiceSearch extends Invoice
     {
         return [
             [['id', 'customer_id', 'payed'], 'integer'],
-            [['reference', 'invoice_number', 'description', 'datetime_created', 'datetime_updated'], 'safe'],
+            [['reference', 'invoice_number', 'description', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -59,8 +59,8 @@ class InvoiceSearch extends Invoice
             'id' => $this->id,
             'customer_id' => $this->customer_id,
             'payed' => $this->payed,
-            'datetime_created' => $this->datetime_created,
-            'datetime_updated' => $this->datetime_updated,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'reference', $this->reference])

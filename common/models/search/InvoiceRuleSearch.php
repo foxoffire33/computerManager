@@ -19,7 +19,7 @@ class InvoiceRuleSearch extends InvoiceRule
     {
         return [
             [['id', 'invoice_id', 'type_id', 'vat_id'], 'integer'],
-            [['name', 'datetime_created', 'datetime_updated'], 'safe'],
+            [['name', 'created_at', 'updated_at'], 'safe'],
             [['price', 'quantity'], 'number'],
         ];
     }
@@ -63,8 +63,8 @@ class InvoiceRuleSearch extends InvoiceRule
             'vat_id' => $this->vat_id,
             'price' => $this->price,
             'quantity' => $this->quantity,
-            'datetime_created' => $this->datetime_created,
-            'datetime_updated' => $this->datetime_updated,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);

@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $data->brand->name;
                 }
             ],
-            'datetime_created:datetime',
-            'datetime_updated:datetime',
+            'created_at:datetime',
+            'updated_at:datetime',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

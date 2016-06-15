@@ -44,8 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'price:currency',
             'quantity',
-            'datetime_created:datetime',
-            'datetime_updated:datetime',
+            'created_at:datetime',
+            'updated_at:datetime',
         ],
     ]) ?>
 

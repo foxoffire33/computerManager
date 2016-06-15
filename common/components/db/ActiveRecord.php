@@ -8,16 +8,24 @@
  */
 namespace common\components\db;
 
+use yii\behaviors\TimestampBehavior;
+
 class ActiveRecord extends \yii\db\ActiveRecord
 {
+
+    public function behaviors()
+    {
+        return [TimestampBehavior::className()];
+    }
+
     public function beforeSave($insert)
     {
-        if ($this->hasAttribute('datetime_created') && $this->hasAttribute('datetime_updated')) {
+        if ($this->hasAttribute('created_at') && $this->hasAttribute('updated_at')) {
             $date = gmdate('Y-m-d h:i:s');
             if ($this->isNewRecord) {
-                $this->datetime_created = $date;
+                $this->created_at = $date;
             }
-            $this->datetime_updated = $date;
+            $this->updated_at = $date;
         }
         return parent::beforeSave($insert);
     }

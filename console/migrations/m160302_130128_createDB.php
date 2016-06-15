@@ -116,8 +116,8 @@ class m160302_130128_createDB extends Migration
     private function getDatetimeUpdateAndCreate()
     {
         return [
-            'datetime_created' => $this->dateTime(),
-            'datetime_updated' => $this->dateTime()
+            'created_at' => $this->dateTime(),
+            'updated_at' => $this->dateTime()
         ];
     }
 

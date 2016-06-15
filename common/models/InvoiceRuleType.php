@@ -10,7 +10,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
- * @property string $datetime_created
+ * @property string $created_at
  * @property string $datetime_updated
  *
  * @property InvoiceRule[] $invoiceRules
@@ -31,7 +31,7 @@ class InvoiceRuleType extends ActiveRecord
     public function rules()
     {
         return [
-            [['datetime_created', 'datetime_updated'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 128]
         ];
     }
@@ -44,8 +44,8 @@ class InvoiceRuleType extends ActiveRecord
         return [
             'id' => Yii::t('invoiceRuleType', 'ID'),
             'name' => Yii::t('invoiceRuleType', 'Name'),
-            'datetime_created' => Yii::t('common', 'Datetime Created'),
-            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            'created_at' => Yii::t('common', 'Datetime Created'),
+            'updated_at' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 

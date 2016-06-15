@@ -165,8 +165,8 @@ CREATE TABLE IF NOT EXISTS `brand` (
   `email` varchar(128) DEFAULT NULL,
   `phone` varchar(128) DEFAULT NULL,
   `webpage` varchar(128) DEFAULT NULL,
-  `datetime_created` datetime DEFAULT NULL,
-  `datetime_updated` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -174,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `brand` (
 -- Gegevens worden geëxporteerd voor tabel `brand`
 --
 
-INSERT INTO `brand` (`id`, `name`, `country`, `address`, `zipcode`, `city`, `email`, `phone`, `webpage`, `datetime_created`, `datetime_updated`) VALUES
+INSERT INTO `brand` (`id`, `name`, `country`, `address`, `zipcode`, `city`, `email`, `phone`, `webpage`, `created_at`, `updated_at`) VALUES
 (1, 'Onbekend', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2016-03-22 15:03:56', '2016-03-22 15:03:56'),
 (2, 'Asus', '', '', '', '', '', '', '', '2016-04-18 12:45:06', '2016-04-18 12:45:06'),
 (3, 'Apple', '', '', '', '', '', '', '', '2016-04-18 12:53:57', '2016-04-18 12:53:57');
@@ -189,8 +189,8 @@ CREATE TABLE IF NOT EXISTS `computer_model` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `brand_id` int(11) DEFAULT NULL,
   `name` varchar(128) DEFAULT NULL,
-  `datetime_created` datetime DEFAULT NULL,
-  `datetime_updated` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `brand_id_model_fk` (`brand_id`)
@@ -200,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `computer_model` (
 -- Gegevens worden geëxporteerd voor tabel `computer_model`
 --
 
-INSERT INTO `computer_model` (`id`, `brand_id`, `name`, `datetime_created`, `datetime_updated`) VALUES
+INSERT INTO `computer_model` (`id`, `brand_id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Onbekend', '2016-03-22 15:03:56', '2016-03-22 15:03:56'),
 (2, 2, 'V3-M2NC61P', '2016-04-18 12:45:27', '2016-04-18 12:45:27'),
 (3, 3, 'I pad G3', '2016-04-18 12:54:16', '2016-04-18 12:54:16');
@@ -218,8 +218,8 @@ CREATE TABLE IF NOT EXISTS `computer_summary` (
   `type` smallint(1) DEFAULT NULL,
   `model_id` int(11) DEFAULT NULL,
   `serial_number` varchar(128) DEFAULT NULL,
-  `datetime_created` datetime DEFAULT NULL,
-  `datetime_updated` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `customer_id_computer_fk` (`customer_id`),
@@ -230,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `computer_summary` (
 -- Gegevens worden geëxporteerd voor tabel `computer_summary`
 --
 
-INSERT INTO `computer_summary` (`id`, `name`, `customer_id`, `type`, `model_id`, `serial_number`, `datetime_created`, `datetime_updated`) VALUES
+INSERT INTO `computer_summary` (`id`, `name`, `customer_id`, `type`, `model_id`, `serial_number`, `created_at`, `updated_at`) VALUES
 (11, 'Riemke''s computer', 11, 0, 2, '9BPBAU003084', '2016-04-18 12:50:08', '2016-04-18 12:50:08'),
 (12, 'mijn ipad', 11, 0, 3, 'nog geen', '2016-04-18 12:54:35', '2016-04-18 12:54:35');
 
@@ -250,8 +250,8 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `phone` varchar(14) DEFAULT NULL,
   `iban` varchar(128) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `datetime_created` datetime DEFAULT NULL,
-  `datetime_updated` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `customer_user_id_fk` (`user_id`)
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
 -- Gegevens worden geëxporteerd voor tabel `customer`
 --
 
-INSERT INTO `customer` (`id`, `name`, `adres`, `zipcode`, `city`, `email`, `phone`, `iban`, `user_id`, `datetime_created`, `datetime_updated`) VALUES
+INSERT INTO `customer` (`id`, `name`, `adres`, `zipcode`, `city`, `email`, `phone`, `iban`, `user_id`, `created_at`, `updated_at`) VALUES
 (11, 'Riemke, Bakker', 'Schoolstraat 25', '9781JL', 'Bedum', 'riemke_bakker@hotmail.com', '0503012404', '', NULL, '2016-04-18 12:44:10', '2016-04-18 12:44:10');
 
 -- --------------------------------------------------------
@@ -278,8 +278,8 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   `invoice_date` date NOT NULL,
   `payed` tinyint(1) DEFAULT '0',
   `description` text,
-  `datetime_created` datetime DEFAULT NULL,
-  `datetime_updated` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `customer_id_invoice_fk` (`customer_id`)
@@ -299,8 +299,8 @@ CREATE TABLE IF NOT EXISTS `invoice_rule` (
   `name` varchar(128) DEFAULT NULL,
   `price` float DEFAULT NULL,
   `quantity` float DEFAULT NULL,
-  `datetime_created` datetime DEFAULT NULL,
-  `datetime_updated` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `invoice_id_fk` (`invoice_id`),
@@ -317,8 +317,8 @@ CREATE TABLE IF NOT EXISTS `invoice_rule` (
 CREATE TABLE IF NOT EXISTS `invoice_rule_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
-  `datetime_created` datetime DEFAULT NULL,
-  `datetime_updated` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
@@ -327,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `invoice_rule_type` (
 -- Gegevens worden geëxporteerd voor tabel `invoice_rule_type`
 --
 
-INSERT INTO `invoice_rule_type` (`id`, `name`, `datetime_created`, `datetime_updated`) VALUES
+INSERT INTO `invoice_rule_type` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'Reparatie', '2016-03-23 10:28:10', '2016-03-23 10:28:10'),
 (2, 'Onderhoud', '2016-04-18 12:58:00', '2016-04-18 12:58:00'),
 (3, 'Op locatie', '2016-04-18 12:58:18', '2016-04-18 12:58:18'),
@@ -345,8 +345,8 @@ CREATE TABLE IF NOT EXISTS `log` (
   `type` smallint(1) DEFAULT NULL,
   `event_datetime` datetime DEFAULT NULL,
   `description` text,
-  `datetime_created` datetime DEFAULT NULL,
-  `datetime_updated` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `computer_id_log_fk` (`computer_id`)
@@ -365,8 +365,8 @@ CREATE TABLE IF NOT EXISTS `maintenance_request` (
   `description` text,
   `date_done` date DEFAULT NULL,
   `date_apointment` date DEFAULT NULL,
-  `datetime_created` datetime DEFAULT NULL,
-  `datetime_updated` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `compuster_id_fk` (`computer_id`)
@@ -376,7 +376,7 @@ CREATE TABLE IF NOT EXISTS `maintenance_request` (
 -- Gegevens worden geëxporteerd voor tabel `maintenance_request`
 --
 
-INSERT INTO `maintenance_request` (`id`, `computer_id`, `status`, `description`, `date_done`, `date_apointment`, `datetime_created`, `datetime_updated`) VALUES
+INSERT INTO `maintenance_request` (`id`, `computer_id`, `status`, `description`, `date_done`, `date_apointment`, `created_at`, `updated_at`) VALUES
 (25, 11, 2, 'Ik heb onlangs onze computer bij jullie gebracht', '2015-07-28', '2015-07-14', '2016-04-18 12:53:13', '2016-04-18 12:53:41'),
 (26, 12, 0, 'Kun jij toevallig ook mijn I-pad opschonen zodat hij weer wat sneller wordt?\r\nIk wil hem wel komen brengen.', NULL, NULL, '2016-04-18 12:55:13', '2016-04-18 12:55:13');
 
@@ -442,8 +442,8 @@ CREATE TABLE IF NOT EXISTS `vat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
   `procentage` smallint(2) DEFAULT NULL,
-  `datetime_created` datetime DEFAULT NULL,
-  `datetime_updated` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
@@ -452,7 +452,7 @@ CREATE TABLE IF NOT EXISTS `vat` (
 -- Gegevens worden geëxporteerd voor tabel `vat`
 --
 
-INSERT INTO `vat` (`id`, `name`, `procentage`, `datetime_created`, `datetime_updated`) VALUES
+INSERT INTO `vat` (`id`, `name`, `procentage`, `created_at`, `updated_at`) VALUES
 (1, '21% Btw', 21, '2016-03-23 10:28:01', '2016-03-24 11:27:23');
 
 --

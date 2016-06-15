@@ -15,7 +15,7 @@ use Yii;
  * @property string $name
  * @property double $price
  * @property double $quantity
- * @property string $datetime_created
+ * @property string $created_at
  * @property string $datetime_updated
  *
  * @property Vat $vat
@@ -48,7 +48,7 @@ class InvoiceRule extends ActiveRecord
             [['invoiceNameVirtual','name', 'price', 'quantity', 'type_id', 'vat_id'], 'required'],
             [['invoice_id', 'type_id', 'vat_id'], 'integer'],
             [['price', 'quantity'], 'number'],
-            [['datetime_created', 'datetime_updated','name', 'price', 'quantity', 'type_id', 'vat_id','exBtw','inBtw'], 'safe'],
+            [['created_at', 'updated_at','name', 'price', 'quantity', 'type_id', 'vat_id','exBtw','inBtw'], 'safe'],
             [['name'], 'string', 'max' => 128],
             [['invoiceNameVirtual'], 'exist', 'targetClass' => 'common\models\Invoice', 'targetAttribute' => 'invoice_number'],
             ['type_id', 'exist', 'targetClass' => 'common\models\InvoiceRuleType', 'targetAttribute' => 'id'],
@@ -84,8 +84,8 @@ class InvoiceRule extends ActiveRecord
             'name' => Yii::t('invoiceRule', 'Name'),
             'price' => Yii::t('invoiceRule', 'Price'),
             'quantity' => Yii::t('invoiceRule', 'Quantity'),
-            'datetime_created' => Yii::t('common', 'Datetime Created'),
-            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            'created_at' => Yii::t('common', 'Datetime Created'),
+            'updated_at' => Yii::t('common', 'Datetime Updated'),
             'invoiceNameVirtual' => Yii::t('invoice', 'Invoice Number')
         ];
     }

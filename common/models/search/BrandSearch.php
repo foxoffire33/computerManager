@@ -19,7 +19,7 @@ class BrandSearch extends Brand
     {
         return [
             [['id'], 'integer'],
-            [['name', 'country', 'address', 'zipcode', 'city', 'email', 'phone', 'webpage', 'datetime_created', 'datetime_updated'], 'safe'],
+            [['name', 'country', 'address', 'zipcode', 'city', 'email', 'phone', 'webpage', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -57,8 +57,8 @@ class BrandSearch extends Brand
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'datetime_created' => $this->datetime_created,
-            'datetime_updated' => $this->datetime_updated,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

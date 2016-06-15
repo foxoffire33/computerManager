@@ -36,8 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'phone',
             'webpage:url',
-            'datetime_created:datetime',
-            'datetime_updated:datetime',
+            'created_at:datetime',
+            'updated_at:datetime',
         ],
     ]) ?>
 </div>

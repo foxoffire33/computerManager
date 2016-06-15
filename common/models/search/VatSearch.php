@@ -19,7 +19,7 @@ class VatSearch extends Vat
     {
         return [
             [['id', 'procentage'], 'integer'],
-            [['name', 'datetime_created', 'datetime_updated'], 'safe'],
+            [['name', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -58,8 +58,8 @@ class VatSearch extends Vat
         $query->andFilterWhere([
             'id' => $this->id,
             'procentage' => $this->procentage,
-            'datetime_created' => $this->datetime_created,
-            'datetime_updated' => $this->datetime_updated,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);

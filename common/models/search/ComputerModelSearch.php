@@ -20,7 +20,7 @@ class ComputerModelSearch extends ComputerModel
         return [
             [['id'], 'integer'],
             [['name'],'string','length' => [1,128]],
-            [['name', 'datetime_created', 'datetime_updated','brand_id'], 'safe'],
+            [['name', 'created_at', 'updated_at','brand_id'], 'safe'],
         ];
     }
 
@@ -56,8 +56,8 @@ class ComputerModelSearch extends ComputerModel
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'computer_model.datetime_created' => $this->datetime_created,
-            'computer_model.datetime_updated' => $this->datetime_updated,
+            'computer_model.created_at' => $this->created_at,
+            'computer_model.updated_at' => $this->updated_at,
         ]);
 
         $query->joinWith('brand');

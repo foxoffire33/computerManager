@@ -14,7 +14,7 @@ use Yii;
  * @property string $invoice_number
  * @property integer $payed
  * @property string $description
- * @property string $datetime_created
+ * @property string $created_at
  * @property string $datetime_updated
  *
  * @property Customer $customer
@@ -45,7 +45,7 @@ class Invoice extends ActiveRecord
             [['customerNameVirtual', 'payed', 'invoice_number', 'invoice_date'], 'required'],
             [['customer_id', 'payed'], 'integer'],
             [['description'], 'string'],
-            [['datetime_created', 'datetime_updated'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['reference', 'invoice_number'], 'string', 'max' => 128],
             [['customerNameVirtual'], 'exist', 'targetClass' => 'common\models\Customer', 'targetAttribute' => 'name'],
             [['payed'], 'in', 'range' => [self::PAYED_NO, self::PAYED_YES]]
@@ -73,8 +73,8 @@ class Invoice extends ActiveRecord
             'invoice_date' => Yii::t('invoice', 'Invoice Date'),
             'payed' => Yii::t('invoice', 'Payed'),
             'description' => Yii::t('invoice', 'Description'),
-            'datetime_created' => Yii::t('common', 'Datetime Created'),
-            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            'created_at' => Yii::t('common', 'Datetime Created'),
+            'updated_at' => Yii::t('common', 'Datetime Updated'),
             'inBtw' => Yii::t('invoice', 'Incl Btw'),
             'exBtw' => Yii::t('invoice', 'Excl Btw'),
             //form labels

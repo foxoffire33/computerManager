@@ -16,7 +16,7 @@ use yii\db\Expression;
  * @property integer $type
  * @property integer $model_id
  * @property string $serial_number
- * @property string $datetime_created
+ * @property string $created_at
  * @property string $datetime_updated
  *
  * @property ComputerModel $model
@@ -66,7 +66,7 @@ class ComputerSummary extends ActiveRecord
             //in voor dropdown
             ['type', 'in', 'range' => [self::TYPE_DESKTOP, self::TYPE_LAPTOP, self::TYPE_TABLET]],
             //safe
-            [['datetime_created', 'datetime_updated'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -113,8 +113,8 @@ class ComputerSummary extends ActiveRecord
             'type' => Yii::t('computerSummary', 'Type'),
             'model_id' => Yii::t('computerSummary', 'Model'),
             'serial_number' => Yii::t('computerSummary', 'Serial Number'),
-            'datetime_created' => Yii::t('common', 'Datetime Created'),
-            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            'created_at' => Yii::t('common', 'Datetime Created'),
+            'updated_at' => Yii::t('common', 'Datetime Updated'),
             //form labels
             'customerNameVirtual' => Yii::t('computerSummary', 'Customer'),
             'modelNameVirtual' => Yii::t('computerSummary', 'Model'),

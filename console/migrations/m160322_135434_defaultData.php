@@ -15,14 +15,14 @@ class m160322_135434_defaultData extends Migration
 
         $this->insert('brand',[
             'name' => 'Onbekend',
-            'datetime_created' => date('Y-m-d H:i:s'),
-            'datetime_updated' => date('Y-m-d H:i:s')
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
         $this->insert('computer_model',[
             'name' => 'Onbekend',
             'brand_id' => Brand::findOne(['name' => 'Onbekend'])->id,
-            'datetime_created' => date('Y-m-d H:i:s'),
-            'datetime_updated' => date('Y-m-d H:i:s')
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
         return true;
     }

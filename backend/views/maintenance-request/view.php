@@ -41,8 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'date_done:datetime',
             'date_apointment:datetime',
-            'datetime_created:datetime',
-            'datetime_updated:datetime',
+            'created_at:datetime',
+            'updated_at:datetime',
         ],
     ]) ?>
 

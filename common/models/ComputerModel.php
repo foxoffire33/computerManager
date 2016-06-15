@@ -11,7 +11,7 @@ use Yii;
  * @property integer $id
  * @property integer $brand_id
  * @property string $name
- * @property string $datetime_created
+ * @property string $created_at
  * @property string $datetime_updated
  *
  * @property Brand $brand
@@ -41,7 +41,7 @@ class ComputerModel extends ActiveRecord
             //deze validatetor voert een query uit op het brand model en kijkt of name bestaat
             [['virtualBrandName'], 'exist', 'targetClass' => 'common\models\Brand', 'targetAttribute' => 'name'],
             //safe
-            [['datetime_created', 'datetime_updated', 'virtualBrandName'], 'safe'],
+            [['created_at', 'updated_at', 'virtualBrandName'], 'safe'],
             //char limits
             [['name'], 'string', 'max' => 128],
             //
@@ -68,8 +68,8 @@ class ComputerModel extends ActiveRecord
             'brand_id' => Yii::t('brand', 'Brand'),
             'name' => Yii::t('computerModel', 'Name'),
             'virtualBrandName' => Yii::t('brand', 'Brand'),
-            'datetime_created' => Yii::t('common', 'Datetime Created'),
-            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            'created_at' => Yii::t('common', 'Datetime Created'),
+            'updated_at' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 

@@ -19,7 +19,7 @@ class CustomerSearch extends Customer
     {
         return [
             [['id'], 'integer'],
-            [['name', 'adres', 'zipcode', 'city', 'email', 'phone', 'iban', 'datetime_created', 'datetime_updated'], 'safe'],
+            [['name', 'adres', 'zipcode', 'city', 'email', 'phone', 'iban', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -57,8 +57,8 @@ class CustomerSearch extends Customer
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'datetime_created' => $this->datetime_created,
-            'datetime_updated' => $this->datetime_updated,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

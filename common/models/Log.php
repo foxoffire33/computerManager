@@ -14,7 +14,7 @@ use Yii;
  * @property integer $mode
  * @property string $event_datetime
  * @property string $description
- * @property string $datetime_created
+ * @property string $created_at
  * @property string $datetime_updated
  *
  * @property ComputerSummary $computer
@@ -45,7 +45,7 @@ class Log extends ActiveRecord
             [['computerNameVirtual', 'event_datetime', 'type', 'description'], 'required'],
             [['type'], 'integer'],
             ['event_datetime', 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
-            [['event_datetime', 'datetime_created', 'datetime_updated'], 'safe'],
+            [['event_datetime', 'created_at', 'updated_at'], 'safe'],
             [['computerNameVirtual'], 'exist', 'targetClass' => 'common\models\ComputerSummary', 'targetAttribute' => 'name'],
             [['description'], 'string'],
             ['type', 'in', 'range' => [self::TYPE_INFORMATION, self::TYPE_WARNING, self::TYPE_ERROR]]
@@ -69,8 +69,8 @@ class Log extends ActiveRecord
             'type' => Yii::t('log', 'Type'),
             'event_datetime' => Yii::t('log', 'Event Datetime'),
             'description' => Yii::t('log', 'Description'),
-            'datetime_created' => Yii::t('common', 'Datetime Created'),
-            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            'created_at' => Yii::t('common', 'Datetime Created'),
+            'updated_at' => Yii::t('common', 'Datetime Updated'),
             //form labels
             'computerNameVirtual' => Yii::t('computerSummary', 'Computer'),
         ];

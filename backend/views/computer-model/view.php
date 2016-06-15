@@ -33,8 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->brand->name
             ],
             'name',
-            'datetime_created',
-            'datetime_updated',
+            'created_at',
+            'updated_at',
         ],
     ]) ?>
 

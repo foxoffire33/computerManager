@@ -41,8 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'exBtw:currency',
             'inBtw:currency',
             'description:ntext',
-            'datetime_created',
-            'datetime_updated',
+            'created_at',
+            'updated_at',
         ],
     ]) ?>
     </div>

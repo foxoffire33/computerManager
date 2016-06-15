@@ -37,8 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => ($model->type == ComputerSummary::TYPE_LAPTOP ? Yii::t('computerSummary', 'Laptop') : ($model->type == ComputerSummary::TYPE_DESKTOP ? Yii::t('computerSummary', 'Desktop') : Yii::t('computerSummary', 'Tablet')))
             ],
             'serial_number',
-            'datetime_created:datetime',
-            'datetime_updated:datetime',
+            'created_at:datetime',
+            'updated_at:datetime',
         ],
     ]) ?>
 </div>

@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $model->name;
         $logItems = [];
         foreach ($model->maintenanceRequests as $maintenanceRequest) {
             $logItem = [
-                'label' => Yii::$app->formatter->asDate($maintenanceRequest->datetime_created),
+                'label' => Yii::$app->formatter->asDate($maintenanceRequest->created_at),
                 'content' => $maintenanceRequest->description,
                 'content' => DetailView::widget([
                     'model' => $maintenanceRequest,
@@ -75,8 +75,8 @@ $this->params['breadcrumbs'][] = $model->name;
                         ],
                         'date_done:datetime',
                         'date_apointment:datetime',
-                        'datetime_created:datetime',
-                        'datetime_updated:datetime',
+                        'created_at:datetime',
+                        'updated_at:datetime',
                         'description',
                     ],
                 ]),

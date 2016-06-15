@@ -16,7 +16,7 @@ use Yii;
  * @property string $email
  * @property string $phone
  * @property string $iban
- * @property string $datetime_created
+ * @property string $created_at
  * @property string $datetime_updated
  *
  * @property ComputerSummary[] $computerSummaries
@@ -45,7 +45,7 @@ class Customer extends ActiveRecord
             ['adres','match','pattern' => '/[A-Za-z0-9\-\\,.]/'],
             ['zipcode','match', 'pattern' => '/^[0-9]{4}[A-Z]{2}/'],
             //todo on register validatetors
-            [['datetime_created', 'datetime_updated'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['name', 'adres', 'zipcode', 'city', 'email', 'iban'], 'string', 'max' => 128],
             [['phone'], 'string', 'max' => 14]
         ];
@@ -65,8 +65,8 @@ class Customer extends ActiveRecord
             'email' => Yii::t('customer', 'Email'),
             'phone' => Yii::t('customer', 'Phone'),
             'iban' => Yii::t('customer', 'Iban'),
-            'datetime_created' => Yii::t('common', 'Datetime Created'),
-            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            'created_at' => Yii::t('common', 'Datetime Created'),
+            'updated_at' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 

@@ -14,7 +14,7 @@ use Yii;
  * @property string $description
  * @property string $date_done
  * @property string $date_apointment
- * @property string $datetime_created
+ * @property string $created_at
  * @property string $datetime_updated
  *
  * @property ComputerSummary $computer
@@ -53,7 +53,7 @@ class MaintenanceRequest extends ActiveRecord
             [['computer_id', 'status'], 'integer'],
             [['description'], 'string'],
             [['date_apointment', 'date_done'], 'date', 'format' => 'yyyy-MM-dd HH:mm:ss','except' => self::SCENARIO_MAIL],
-            [['date_done', 'date_apointment', 'datetime_created', 'datetime_updated', 'computerNameVirtual','mail_sended'], 'safe'],
+            [['date_done', 'date_apointment', 'created_at', 'updated_at', 'computerNameVirtual','mail_sended'], 'safe'],
             [['computerNameVirtual'], 'exist', 'targetClass' => 'common\models\ComputerSummary', 'targetAttribute' => 'name'],
             ['status', 'in', 'range' => [self::STATUS_REQUEST, self::STATUS_PROCESS, self::STATUS_DONE]],
             [['computerNameVirtual', 'computer_id'], 'hasComputerAlReadyAMaintenenceRequestValidatetor']
@@ -108,8 +108,8 @@ class MaintenanceRequest extends ActiveRecord
             'description' => Yii::t('maintenaceRequest', 'Description'),
             'date_done' => Yii::t('maintenaceRequest', 'Date Done'),
             'date_apointment' => Yii::t('maintenaceRequest', 'Date Apointment'),
-            'datetime_created' => Yii::t('common', 'Datetime Created'),
-            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            'created_at' => Yii::t('common', 'Datetime Created'),
+            'updated_at' => Yii::t('common', 'Datetime Updated'),
             //form labels
             'computerNameVirtual' => Yii::t('computerSummary', 'Computer')
         ];

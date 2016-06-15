@@ -11,7 +11,7 @@ use Yii;
  * @property integer $id
  * @property string $name
  * @property integer $procentage
- * @property string $datetime_created
+ * @property string $created_at
  * @property string $datetime_updated
  *
  * @property InvoiceRule[] $invoiceRules
@@ -33,7 +33,7 @@ class Vat extends ActiveRecord
     {
         return [
             [['id', 'procentage'], 'integer'],
-            [['datetime_created', 'datetime_updated'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 128],
             [['id'], 'unique']
         ];
@@ -48,8 +48,8 @@ class Vat extends ActiveRecord
             'id' => Yii::t('vat', 'ID'),
             'name' => Yii::t('vat', 'Name'),
             'procentage' => Yii::t('vat', 'Procentage'),
-            'datetime_created' => Yii::t('common', 'Datetime Created'),
-            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            'created_at' => Yii::t('common', 'Datetime Created'),
+            'updated_at' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 

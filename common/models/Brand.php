@@ -17,7 +17,7 @@ use Yii;
  * @property string $email
  * @property string $phone
  * @property string $webpage
- * @property string $datetime_created
+ * @property string $created_at
  * @property string $datetime_updated
  *
  * @property ComputerModel[] $computerModels
@@ -41,7 +41,7 @@ class Brand extends ActiveRecord
             [['name', 'email', 'phone', 'webpage'], 'unique'],
             ['email', 'email'],
             ['webpage', 'url'],
-            [['datetime_created', 'datetime_updated'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['name', 'country', 'address', 'zipcode', 'city', 'email', 'phone', 'webpage'], 'string', 'max' => 128],
             ['name', 'match', 'not' => true, 'pattern' => '/,/'],
         ];
@@ -62,8 +62,8 @@ class Brand extends ActiveRecord
             'email' => Yii::t('brand', 'Email'),
             'phone' => Yii::t('brand', 'Phone'),
             'webpage' => Yii::t('brand', 'Webpage'),
-            'datetime_created' => Yii::t('common', 'Datetime Created'),
-            'datetime_updated' => Yii::t('common', 'Datetime Updated'),
+            'created_at' => Yii::t('common', 'Datetime Created'),
+            'updated_at' => Yii::t('common', 'Datetime Updated'),
         ];
     }
 
