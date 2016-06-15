@@ -76,4 +76,15 @@ class MailController extends Controller
         }
     }
 
+    public function actionTest()
+    {
+        $mailSetup = Yii::$app->mailer->compose()
+            ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']])
+            ->setBcc([Yii::$app->params['adminEmail'] => Yii::$app->params['adminName']])
+            ->setTextBody('Plain text content')
+            ->setHtmlBody('<b>HTML content</b>')
+            ->setSubject('Onderhoud computer');
+        $mailSetup->send();
+    }
+
 }
