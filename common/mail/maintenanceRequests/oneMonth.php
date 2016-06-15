@@ -1,2 +1,2 @@
 <p> Beste <?= $model->computer->customer->name ?>,</p>
-<p>Wij hebben onlangs uw computer gerepareerd en willen graag weten of u tevreden bent over de reparatie/onderhoud aan uw computer. Graag horen we of wij u nog ergens mee van dienst kunnen zijn. </p>
+<p>Wij hebben onlangs uw computer gerepareerd en willen graag weten of u tevreden bent over de werkzaamheden aan uw computer. Graag horen we of wij u nog ergens mee van dienst kunnen zijn. </p>
