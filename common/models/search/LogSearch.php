@@ -19,7 +19,7 @@ class LogSearch extends Log
     {
         return [
             [['id', 'type'], 'integer'],
-            [['event_datetime', 'description', 'computer_id'], 'safe'],
+            [['event_at', 'description', 'computer_id'], 'safe'],
         ];
     }
 
@@ -59,7 +59,7 @@ class LogSearch extends Log
 
         $query->andFilterWhere([
             'log.type' => $this->type,
-            'event_datetime' => $this->event_datetime,
+            'event_at' => $this->event_at,
         ]);
 
         $query->andFilterWhere(['like', 'computer_summary.name', $this->computer_id]);

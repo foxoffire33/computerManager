@@ -27,6 +27,16 @@ class m160615_093607_datetime_to_timestamp extends Migration
         $this->updateTable(new ComputerModel);
         $this->updateTable(new ComputerSummary);
         $this->updateTable(new Brand);
+
+        $log = new Log();
+        $this->renameColumn($log::tableName(), 'event_datetime', 'event_at');
+        $allData = $log::find()->select('id,event_at')->asArray()->all();
+        $this->alterColumn($log::tableName(), 'event_at', 'INT');
+        if (!empty($allData)) {
+            foreach ($allData as $data) {
+                $this->update($log::tableName(), ['event_at' => strtotime($data['event_at'])], ['id' => $data['id']]);
+            }
+        }
     }
 
     private function updateTable($model)
@@ -43,7 +53,7 @@ class m160615_093607_datetime_to_timestamp extends Migration
         //update change columns with correct data
         if (!empty($TempDataArray)) {
             foreach ($TempDataArray as $data) {
-                $this->update($model::tableName(), ['created_at' => strtotime($data['created_at']), 'updated_at' => strtotime($data['updated_at'])]);
+                $this->update($model::tableName(), ['created_at' => strtotime($data['created_at']), 'updated_at' => strtotime($data['updated_at'])], ['id' => $data['id']]);
             }
         }
     }
@@ -60,6 +70,15 @@ class m160615_093607_datetime_to_timestamp extends Migration
         $this->resetTable(new ComputerModel);
         $this->resetTable(new ComputerSummary);
         $this->resetTable(new Brand);
+
+        $log = new Log();
+        $this->renameColumn($log::tableName(), 'event_at', 'event_datetime');
+        $allData = $log::find()->select('id,event_datetime')->asArray()->all();
+        if (!empty($allData)) {
+            foreach ($allData as $data) {
+                $this->update($log::tableName(), ['event_datetime' => gmdate('Y-m-d H:i:s', $data['event_datetime'])], ['id' => $data['id']]);
+            }
+        }
     }
 
     private function resetTable($model)
@@ -74,7 +93,7 @@ class m160615_093607_datetime_to_timestamp extends Migration
 
         if (!empty($TempDataArray)) {
             foreach ($TempDataArray as $data) {
-                $this->update($model::tableName(), ['datetime_created' => gmdate('Y-m-d H:i:s',$data['datetime_created']), 'datetime_updated' => gmdate('Y-m-d H:i:s',$data['datetime_updated'])]);
+                $this->update($model::tableName(), ['datetime_created' => gmdate('Y-m-d H:i:s', $data['datetime_created']), 'datetime_updated' => gmdate('Y-m-d H:i:s', $data['datetime_updated'])], ['id' => $data['id']]);
             }
         }
     }

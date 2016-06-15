@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return ($data->type == Log::TYPE_INFORMATION ? Yii::t('log', 'Information') : ($data->type == Log::TYPE_WARNING ? Yii::t('log', 'Warning') : Yii::t('log', 'Error')));
                 }
             ],
-            'event_datetime',
+            'event_at',
             'description:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'type_id',
                 'value' => ($model->type == Log::TYPE_INFORMATION ? Yii::t('log', 'Information') : ($model->type == Log::TYPE_WARNING ? Yii::t('log', 'Warning') : Yii::t('log', 'Error')))
             ],
-            'event_datetime:datetime',
+            'event_at:datetime',
             'created_at:datetime',
             'updated_at:datetime',
         ],

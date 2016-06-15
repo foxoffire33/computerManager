@@ -42,10 +42,10 @@ class Log extends ActiveRecord
     public function rules()
     {
         return [
-            [['computerNameVirtual', 'event_datetime', 'type', 'description'], 'required'],
+            [['computerNameVirtual', 'event_at', 'type', 'description'], 'required'],
             [['type'], 'integer'],
-            ['event_datetime', 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
-            [['event_datetime', 'created_at', 'updated_at'], 'safe'],
+            ['event_at', 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'],
+            [['event_at', 'created_at', 'updated_at'], 'safe'],
             [['computerNameVirtual'], 'exist', 'targetClass' => 'common\models\ComputerSummary', 'targetAttribute' => 'name'],
             [['description'], 'string'],
             ['type', 'in', 'range' => [self::TYPE_INFORMATION, self::TYPE_WARNING, self::TYPE_ERROR]]
@@ -54,6 +54,7 @@ class Log extends ActiveRecord
 
     public function beforeSave($insert)
     {
+        $this->event_at = strtotime($this->event_at);
         $this->computer_id = ComputerSummary::find()->where(['name' => $this->computerNameVirtual])->one()->id;
         return parent::beforeSave($insert);
     }
@@ -67,7 +68,7 @@ class Log extends ActiveRecord
             'id' => Yii::t('log', 'ID'),
             'computer_id' => Yii::t('log', 'Computer ID'),
             'type' => Yii::t('log', 'Type'),
-            'event_datetime' => Yii::t('log', 'Event Datetime'),
+            'event_at' => Yii::t('log', 'Event Datetime'),
             'description' => Yii::t('log', 'Description'),
             'created_at' => Yii::t('common', 'Datetime Created'),
             'updated_at' => Yii::t('common', 'Datetime Updated'),

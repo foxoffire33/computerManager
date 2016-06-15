@@ -94,7 +94,7 @@ class m160302_130128_createDB extends Migration
             'id' => $this->primaryKey(11)->unique(),
             'computer_id' => $this->integer(11),
             'type' => $this->smallInteger(1),
-            'event_datetime' => $this->dateTime(),
+            'event_at' => $this->dateTime(),
             'description' => $this->text()
         ], $this->getDatetimeUpdateAndCreate()));
 
@@ -116,8 +116,8 @@ class m160302_130128_createDB extends Migration
     private function getDatetimeUpdateAndCreate()
     {
         return [
-            'created_at' => $this->dateTime(),
-            'updated_at' => $this->dateTime()
+            'datetime_created' => $this->dateTime(),
+            'datetime_updated' => $this->dateTime()
         ];
     }
 

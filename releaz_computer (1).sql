@@ -343,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `computer_id` int(11) DEFAULT NULL,
   `type` smallint(1) DEFAULT NULL,
-  `event_datetime` datetime DEFAULT NULL,
+  `event_at` datetime DEFAULT NULL,
   `description` text,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
