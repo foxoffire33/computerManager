@@ -1,9 +1,9 @@
 <?php
 namespace frontend\controllers;
 
-use Yii;
-use frontend\models\ContactForm;
 use frontend\components\web\FrontendController;
+use frontend\models\ContactForm;
+use Yii;
 use yii\helpers\Inflector;
 use yii\web\NotFoundHttpException;
 
@@ -13,6 +13,30 @@ class SiteController extends FrontendController
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'yii\filters\HttpCache',
+                'only' => ['static'],
+                'lastModified' => function ($action, $params) {
+                    $filePath = Yii::getAlias('@frontend') . '/views/site/page/' . Inflector::variablize(Yii::$app->request->get('page')) . '.php';
+                    return filemtime($filePath);
+                },
+                'sessionCacheLimiter' => 'public',
+            ],
+            [
+                'class' => 'yii\filters\HttpCache',
+                'only' => ['index', 'contact'],
+                'lastModified' => function ($action, $params) {
+                    $filePath = Yii::getAlias('@frontend') . '/views/site/' . strtolower($action->id) . '.php';
+                    return filemtime($filePath);
+                },
+                'sessionCacheLimiter' => 'public',
+            ],
+        ];
     }
 
     public function actionContact()
@@ -33,8 +57,9 @@ class SiteController extends FrontendController
         }
     }
 
-    public function actionStatic($page = 'index') {
-        $filePath = Yii::getAlias('@frontend').'/views/site/page/' . Inflector::variablize($page) . '.php';
+    public function actionStatic($page = 'index')
+    {
+        $filePath = Yii::getAlias('@frontend') . '/views/site/page/' . Inflector::variablize($page) . '.php';
         if (is_file($filePath)) {
             return $this->render('page/' . Inflector::variablize($page));
         }

@@ -27,3 +27,4 @@ $this->params['breadcrumbs'][] = ['label' => 'Mogelijkheden thuis'];
             Computeronderhouden.nl bij u thuis om het software pakket te installeren.</p>
     </div>
 </div>
+
