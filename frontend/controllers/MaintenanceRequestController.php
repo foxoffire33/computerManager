@@ -23,6 +23,23 @@ class MaintenanceRequestController extends FrontendController
 {
     public $defaultAction = 'index';
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'yii\filters\HttpCache',
+                'only' => ['index'],
+                'lastModified' => function ($action, $params) {
+                    if (is_null(Yii::$app->session->getAllFlashes())) {
+                        return time();
+                    }
+                    return filemtime(Yii::getAlias('@frontend') . '/views/maintenance-request/requestForm.php');
+                },
+                'sessionCacheLimiter' => 'public',
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         if (Yii::$app->user->isGuest) {
