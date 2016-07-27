@@ -11,7 +11,7 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-contact">
+<div class="col-sm-12">
     <h1><?= Html::encode($this->title) ?></h1>
     <p>
         Gebruik onderstaand formulier om ons een mail te sturen of bel ons op telefoonnummer 085 876 99 57.

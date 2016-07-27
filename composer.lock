@@ -1263,12 +1263,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "5ca33a716188422e85560cdce0cb2110a998a618"
+                "reference": "a30c0519eaefe70ab0fbebe8cef88e393a207ed0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/5ca33a716188422e85560cdce0cb2110a998a618",
-                "reference": "5ca33a716188422e85560cdce0cb2110a998a618",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/a30c0519eaefe70ab0fbebe8cef88e393a207ed0",
+                "reference": "a30c0519eaefe70ab0fbebe8cef88e393a207ed0",
                 "shasum": ""
             },
             "require": {
@@ -1308,7 +1308,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-06-14 13:48:39"
+            "time": "2016-07-25 07:22:15"
         },
         {
             "name": "phpspec/php-diff",

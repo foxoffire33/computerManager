@@ -1,12 +1,13 @@
 <?php
 $this->params['breadcrumbs'][] = ['label' => 'Informatie'];
 $this->params['breadcrumbs'][] = ['label' => 'Onderhoud en reparatie tarieven'];
+use yii\helpers\Html;
 ?>
 <div class="container">
-	<h1>Onderhoud en reparatie tarieven</h1>
+    <h1>Onderhoud en reparatie tarieven</h1>
     <div class="row">
         <h2>Kosten voor eenmalige actie</h2>
-        <div class="col-xs-15">
+        <div class="col-xs-12">
             <div class="row" itemscope="" itemtype="http://schema.org/Product">
                 <span class="col-xs-9 fa fa-search" style="font-weight: 700" itemprop="name"> Onderzoek (per uur)</span>
                 <div class="col-xs-3">
@@ -79,24 +80,24 @@ $this->params['breadcrumbs'][] = ['label' => 'Onderhoud en reparatie tarieven'];
                     </div>
                 </div>
             </div>
-        </div>
-        <h2>Onderhoudsabonnement</h2>
-        <div class="row" itemscope="" itemtype="http://schema.org/Product">
-            <span class="col-xs-9 fa fa-check" style="font-weight: 700" itemprop="name"> Halfjaarlijkse APK check (jaarlijkse kosten)</span>
-            <div class="col-xs-3">
-                <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-                    <span itemprop="priceCurrency" content="EUR">€</span> <span itemprop="price">95,00</span>
+            <h2>Onderhoudsabonnement</h2>
+            <div class="row" itemscope="" itemtype="http://schema.org/Product">
+                <span class="col-xs-9 fa fa-check" style="font-weight: 700" itemprop="name"> Halfjaarlijkse APK check (jaarlijkse kosten)</span>
+                <div class="col-xs-3">
+                    <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                        <span itemprop="priceCurrency" content="EUR">€</span> <span itemprop="price">95,00</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <h2>Voorrijkosten</h2>
-        <div class="row" itemscope="" itemtype="http://schema.org/Product">
+            <h2>Voorrijkosten</h2>
+            <div class="row" itemscope="" itemtype="http://schema.org/Product">
             <span class="col-xs-9 fa fa-car" style="font-weight: 700"
                   itemprop="name"> Voorrijkosten per kilometer</span>
-            <div class="col-xs-3">
-                <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-                    <span itemprop="priceCurrency" content="EUR">€</span> <span itemprop="price">0,35</span>
+                <div class="col-xs-3">
+                    <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                        <span itemprop="priceCurrency" content="EUR">€</span> <span itemprop="price">0,35</span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -12,17 +12,12 @@ class ModernaAsset extends AssetBundle {
     public $cssOptions = ['async' => 'async'];
     public $jsOptions = ['position' => \yii\web\View::POS_END, 'async' => 'async'];
     public $css = [
-        'http://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700',
-        '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
-        //'js/google-code-prettify/prettify.css',
-        // 'css/font-awesome.css',
-        //'css/fancybox/jquery.fancybox.css',
-        //'css/overwrite.css',
-        //'css/animate.css',
+        'css/fonts.css',
         'css/flexslider.css',
         'css/style.css',
         'skins/default.css',
-        'css/site.css'
+        'css/site.css',
+        '/css/font-awesome.min.css',
     ];
     public $js = [
         //'js/jquery.easing.1.3.js',

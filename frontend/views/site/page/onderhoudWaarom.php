@@ -2,7 +2,7 @@
 $this->params['breadcrumbs'][] = ['label' => 'Informatie', 'url' => ['/site']];
 $this->params['breadcrumbs'][] = ['label' => 'Informatie', 'url' => ['/site/static?page=onderhoud-waarom']];
 ?>
-<div class="col-lg-12">          
+<div class="col-xs-12">
     <h1>Computer onderhoud</h1>
     <div class="row">
         <div class="col-lg-6">

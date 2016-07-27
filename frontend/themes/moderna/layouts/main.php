@@ -5,6 +5,7 @@ use frontend\components\web\BreadcrumsSeo;
 use frontend\components\web\MyMenu;
 use frontend\themes\moderna\AssetsBundel\ModernaAsset;
 use yii\helpers\Html;
+use yii\widgets\Spaceless;
 
 //
 
@@ -17,36 +18,22 @@ $bundel = ModernaAsset::register($this);
     <html lang="<?= Yii::$app->language ?>">
     <head>
         <meta charset="<?= Yii::$app->charset ?>">
-        <meta name="description" content="Houd uw computer snel en werkbaar via ComputerOnderhouden.nl">
+        <meta name="description" content="Houd uw computer snel en werkbaar">
+        <meta property="og:title" content="Houd uw computer snel en werkbaar"/>
+        <meta property="og:description" content="<?= $this->title ?> "/>
+        <meta property="og:image" content="/images/logo.png"/>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <?= Html::csrfMetaTags() ?>
-        <title><?= Html::encode(Yii::$app->params['applicationName']) ?> - Computeronderhoud en computer reparatie in Groningen</title>
-        <style type="text/css">
-            .flexslider .slides > li {
-                display: none;
-                -webkit-backface-visibility: hidden;
-            }
-        </style>
+        <title>Computeronderhoud/reparatie in Groningen</title>
         <?php $this->head() ?>
     </head>
     <body>
-    <script>
-        //        (function (i, s, o, g, r, a, m) {
-        //            i['GoogleAnalyticsObject'] = r;
-        //            i[r] = i[r] || function () {
-        //                    (i[r].q = i[r].q || []).push(arguments)
-        //                }, i[r].l = 1 * new Date();
-        //            a = s.createElement(o),
-        //                m = s.getElementsByTagName(o)[0];
-        //            a.async = 1;
-        //            a.src = g;
-        //            m.parentNode.insertBefore(a, m)
-        //        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        //
-        //        ga('create', 'UA-1727337-66', 'auto');
-        //        ga('send', 'pageview');
-
-    </script>
+    <?php Spaceless::begin(); ?>
+    <?php Yii::$app->controller->view->registerCss('.flexslider .slides > li { display: none;  -webkit-backface-visibility: hidden; }'); ?>
+    <?php if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Speed Insights') === false): ?>
+        <?php Yii::$app->controller->view->registerJs('(function (i, s, o, g, r, a, m) {i[\'GoogleAnalyticsObject\'] = r;i[r] = i[r] || function () {(i[r].q = i[r].q || []).push(arguments)}, i[r].l = 1 * new Date();a = s.createElement(o),m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m)})(window, document, \'script\', \'//www.google-analytics.com/analytics.js\', \'ga\');ga(\'create\', \'UA-1727337-66\', \'auto\');ga(\'send\', \'pageview\');', \yii\web\View::POS_HEAD); ?>
+    <?php endif; ?>
     <?php $this->beginBody() ?>
     <section id="wrapper">
         <!-- start header -->
@@ -104,19 +91,18 @@ $bundel = ModernaAsset::register($this);
     </section>
     <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
     <script type="application/ld+json">
-            { "@context" : "http://schema.org",
-            "@type" : "Organization",
-            "name" : "ComputerOnderhouden",
-            "url" : "http://www.computeronderhouden.nl",
-            "sameAs" : [ "https://www.facebook.com/pages/ComputerOnderhoudennl/442709885907316"]
-            }
+        { "@context" : "http://schema.org", "@type" : "Organization", "name" : "ComputerOnderhouden","url" : "http://www.computeronderhouden.nl","sameAs" : [ "https://www.facebook.com/pages/ComputerOnderhoudennl/442709885907316"]}
+
     </script>
     <?php if (isset($this->params['breadcrumbs'])): ?>
         <script type='application/ld+json'>
     <?= BreadcrumsSeo::makeBreadcrums($this->params['breadcrumbs']) ?>
+
+
         </script>
     <?php endif; ?>
     <?php $this->endBody() ?>
+    <?php Spaceless::end(); ?>
     </body>
     </html>
 <?php $this->endPage() ?>
