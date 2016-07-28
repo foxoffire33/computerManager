@@ -3,14 +3,14 @@
         <div class="col-lg-3">
             <div class="widget">
                 <h5 class="widgetheading">Contact</h5>
-                <address>
-                    <strong>Computeronderhouden.nl</strong><br>
-                    Zeewinde 3-11A, 9738 AM<br>
-                    Groningen</address>
-                <p>
-                    <i class="icon-phone"></i> 085 876 99 57 <br>
-                    <i class="icon-envelope-alt"></i> info@computeronderhouden.nl
-                </p>
+                <div itemscope itemtype="http://schema.org/Person">
+                    <span itemprop="name">Computeronderhouden.nl</span><br/>
+                    <span itemprop="address">   Zeewinde 3-11A, 9738 AM<br>
+                        Groningen</span><br/>
+                    <span itemprop="tel">085 876 99 57</span><br/><br/>
+                    <a itemprop="email" href="mailto:info@computeronderhouden.nl">info@computeronderhouden.nl</a>
+                </div>
+
             </div>
         </div>
         <div class="col-lg-4">

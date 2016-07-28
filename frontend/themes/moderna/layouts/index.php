@@ -6,27 +6,27 @@
                 <div id="main-slider" class="flexslider">
                     <ul class="slides">
                         <li>
-                            <img src="<?= $bundel->baseUrl ?>/img/slides/4.jpg" alt="silder image one"/>
+                            <img src="/img/slides/4.jpg" alt="silder image one"/>
                             <div class="flex-caption">
-                                <h3>Is uw computer langzaam?</h3>
+                                <h2>Is uw computer langzaam?</h2>
                                 <p>Via ComputerOnderhouden.nl kunt u snel en simpel een onderhoudsbeurt aanvragen voor
                                     uw computer</p>
                                 <?= Html::a('Reparatie aanvragen', '/maintenance-request', ['class' => 'btn btn-theme']) ?>
                             </div>
                         </li>
                         <li>
-                            <img src="<?= $bundel->baseUrl ?>/img/slides/5.jpg" alt="silder image two"/>
+                            <img src="/img/slides/5.jpg" alt="silder image two"/>
                             <div class="flex-caption">
-                                <h3>Computer informatie bekijken</h3>
+                                <h2>Computer informatie bekijken</h2>
                                 <p>Nadat uw computer bij ons is geweest kunt u zien wat er in uw computer zit en welke
                                     programma's er op staan</p>
                                 <?= Html::a('Reparatie aanvragen', '/maintenance-request', ['class' => 'btn btn-theme']) ?>
                             </div>
                         </li>
                         <li>
-                            <img src="<?= $bundel->baseUrl ?>/img/slides/3.jpg" alt="silder image three"/>
+                            <img src="/img/slides/3.jpg" alt="silder image three"/>
                             <div class="flex-caption">
-                                <h3>Reparaties inzien</h3>
+                                <h2>Reparaties inzien</h2>
                                 <p>Uw kunt per computer zien wat de status van de reparatie is en wat wij gedaan
                                     hebben</p>
                                 <?= Html::a('Reparatie aanvragen', '/maintenance-request', ['class' => 'btn btn-theme']) ?>
@@ -89,7 +89,7 @@
 
                             </div>
                             <div class="box-bottom">
-                                <?= Html::a('Reparatie aanvragen', '/computer-onderhoud-of-reparatie-aanvragen') ?>
+                                <?= Html::a('Reparatie aanvragen', '/maintenance-request') ?>
                             </div>
                         </div>
                     </div>

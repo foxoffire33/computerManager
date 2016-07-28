@@ -25,7 +25,7 @@ $bundel = ModernaAsset::register($this);
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <?= Html::csrfMetaTags() ?>
-        <title>Computeronderhoud/reparatie in Groningen</title>
+        <title>Computeronderhoud en computer reparatie in Groningen</title>
         <?php $this->head() ?>
     </head>
     <body>
@@ -47,7 +47,7 @@ $bundel = ModernaAsset::register($this);
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/" style="padding-bottom: 15px"><span>Computer</span><br/>onderhouden.nl</a>
+                        <a class="navbar-brand" href="/"><span>Computer</span><br/>onderhouden.nl</a>
                     </div>
                     <div class="navbar-collapse collapse ">
                         <?= MyMenu::MyMenu(['options' => ['class' => 'nav navbar-nav']]); ?>
